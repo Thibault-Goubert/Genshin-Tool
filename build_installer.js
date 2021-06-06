@@ -6,10 +6,9 @@ const path = require('path');
 
 // 2. Define input and output directory.
 // Important: the directories must be absolute, not relative e.g
-// appDirectory: "F:/Users/Schibo/Documents/Repos_Git/Electron/Genshin-Tools/GenshinTool-win32-x64",
 const APP_DIR = path.resolve(__dirname, './GenshinTool-win32-x64');
-// outputDirectory: "C:\\Users\*\Desktop\windows_installer", 
 const OUT_DIR = path.resolve(__dirname, './windows_installer');
+const ICO_DIR = path.resolve(__dirname, './app/ressources/exe-icon.ico')
 
 // 3. Instantiate the MSICreator
 const msiCreator = new MSICreator({
@@ -22,7 +21,7 @@ const msiCreator = new MSICreator({
     name: 'Genshin Tool',
     manufacturer: 'Schibo',
     version: '1.0.0',
-    appIconPath: 'F:/Users/Schibo/Documents/Repos_Git/Electron/Genshin-Tools/app/ressources/exe-icon.ico',
+    appIconPath: ICO_DIR,
 
     // Configure installer User Interface
     ui: {
