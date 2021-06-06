@@ -1,0 +1,16 @@
+{
+  "name": "genshin-tool",
+  "version": "1.0.0",
+  "description": "Outil de gestion de ressources pour Genshin Impact",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "",
+  "author": "Schibo",
+  "devDependencies": {
+    "electron": "^13.1.0",
+    "electron-packager": "^15.2.0",
+    "electron-wix-msi": "^3.2.0"
+  }
+}

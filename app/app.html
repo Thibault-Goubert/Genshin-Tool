@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Listes de Ressources sur Genshin</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+
+<body>
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+		<!-- Modal content -->
+		<div id="myModal-content" class="modal-content">
+			<span class="close">&times;</span>
+			<p id="myModal-text"></p>
+			<div class="row">
+				<div id="myModal-btn-yes" class="btn">Oui</div>
+				<div id="myModal-btn-no" class="btn">Non</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="mora_xp_minerais">
+			<div class="row">
+				<div class="panel big high" id='panel_mora'>
+					<div class="content big">
+						<img class="background big" src="assets/Icons_Case/case_gr.png">
+						<img class="icone center" src="assets/Icons/moras.png">
+					</div>
+					<div class="mora">
+						<div class="flex nb_mora">
+							<input type="text" placeholder="x" id="input_left-nb_mora" />
+						</div>
+						<div class="flex total_mora">
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_rigth-total_mora" />
+						</div>
+					</div>
+				</div>
+				<div class="panel big high" id='panel_xp'>
+					<div class="content">
+						<img class="background left" src="assets/Icons_Case/case_ve.png">
+						<img class="icone left" src="assets/Icons/bouquin_xp_b.png">
+
+						<img class="background right" src="assets/Icons_Case/case_vi.png">
+						<img class="icone right" src="assets/Icons/bouquin_xp_vi.png">
+					</div>
+					<div class="book">
+						<div class="flex nb_book">
+							<input type="text" placeholder="x" id="input_left-nb_book_b" />
+							<span>+</span>
+							<input type="text" placeholder="x" id="input_left-nb_book_vi" />
+						</div>
+						<div class="flex xp_total">
+							<span>=</span>
+							<input type="text" placeholder="x" id="input_left-xp_total" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_rigth-xp_total" />
+						</div>
+					</div>
+				</div>
+				<div class="panel high" id='panel_minerais'>
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/minerais.png">
+					</div>
+					<div class="minerais">
+						<div class="flex nb_minerais">
+							<input type="text" placeholder="x" id="input_left-nb_minerais" />
+						</div>
+						<div class="flex total_minerais">
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_rigth-total_minerais" />
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div id="btn_group" class="row">
+		<div id="btn_boss_domains" class="btn">Boss/Domains</div>
+		<div id="btn_harvestables" class="btn">Récoltables</div>
+	</div>
+
+	<div id="list_ressources_boss_domains" class="row">
+		<div class="gem_list bigRigthSpace">
+			<div class="row">
+				<div class="panel" id="panel-gem_a_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/gem_a_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_a_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/gem_a_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_a_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/gem_a_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_vi" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_a_g">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/gem_a_g.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_g" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_g" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-gem_c_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/gem_c_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_c_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_c_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_c_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/gem_c_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_c_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_c_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_c_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/gem_c_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_c_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_c_vi" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_c_g">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/gem_c_g.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_c_g" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_c_g" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-gem_e_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/gem_e_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_e_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_e_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_e_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/gem_e_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_e_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_e_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_e_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/gem_e_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_e_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_e_vi" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_e_g">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/gem_e_g.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_e_g" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_e_g" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-gem_h_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/gem_h_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_h_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_h_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_h_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/gem_h_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_h_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_h_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_h_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/gem_h_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_h_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_h_vi" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_h_g">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/gem_h_g.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_h_g" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_h_g" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-gem_p_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/gem_p_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_p_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_p_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_p_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/gem_p_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_p_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_p_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_p_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/gem_p_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_p_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_p_vi" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_p_g">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/gem_p_g.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_p_g" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_p_g" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-gem_g_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/gem_g_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_g_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_g_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_g_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/gem_g_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_g_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_g_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_g_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/gem_g_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_g_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_g_vi" />
+					</div>
+				</div>
+				<div class="panel" id="panel-gem_g_g">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/gem_g_g.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_g_g" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_g_g" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="elem_list bigRigthSpace">
+			<div class="row">
+				<div class="row bigRigthSpace">
+					<div class="panel" id="panel-elem_a_1">
+						<div class="content">
+							<img class="background" src="assets/Icons_Case/case_vi.png">
+							<img class="icone" src="assets/Icons/elem_a_1.png">
+						</div>
+						<div class="flex">
+							<input type="text" placeholder="x" id="input_left-elem_a_1" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_rigth-elem_a_1" />
+						</div>
+					</div>
+					<div class="panel" id="panel-elem_a_2">
+						<div class="content">
+							<img class="background" src="assets/Icons_Case/case_vi.png">
+							<img class="icone" src="assets/Icons/elem_a_2.png">
+						</div>
+						<div class="flex">
+							<input type="text" placeholder="x" id="input_left-elem_a_2" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_rigth-elem_a_2" />
+						</div>
+					</div>
+				</div>
+				<div class="panel" id="panel-elem_o_1">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/elem_o_1.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-elem_o_1" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-elem_o_1" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-elem_c_1">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/elem_c_1.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-elem_c_1" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-elem_c_1" />
+					</div>
+				</div>
+				<div class="panel" id="panel-elem_c_2">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/elem_c_2.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-elem_c_2" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-elem_c_2" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-elem_e_1">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/elem_e_1.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-elem_e_1" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-elem_e_1" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-elem_h_1">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/elem_h_1.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-elem_h_1" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-elem_h_1" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-elem_p_1">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/elem_p_1.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-elem_p_1" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-elem_p_1" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-elem_g_1">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/elem_g_1.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-elem_g_1" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-elem_g_1" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="talent_list bigRigthSpace">
+			<div class="row">
+				<div class="panel" id="panel-talent_resistance_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/talent_resistance_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_resistance_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_resistance_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-talent_resistance_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/talent_resistance_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_resistance_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_resistance_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-talent_resistance_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/talent_resistance_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_resistance_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_resistance_vi" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-talent_ballad_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/talent_ballad_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_ballad_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_ballad_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-talent_ballad_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/talent_ballad_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_ballad_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_ballad_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-talent_ballad_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/talent_ballad_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_ballad_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_ballad_vi" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-talent_freedom_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/talent_freedom_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_freedom_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_freedom_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-talent_freedom_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/talent_freedom_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_freedom_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_freedom_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-talent_freedom_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/talent_freedom_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_freedom_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_freedom_vi" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-talent_prosperity_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/talent_prosperity_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_prosperity_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_prosperity_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-talent_prosperity_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/talent_prosperity_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_prosperity_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_prosperity_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-talent_prosperity_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/talent_prosperity_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_prosperity_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_prosperity_vi" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-talent_gold_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/talent_gold_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_gold_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_gold_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-talent_gold_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/talent_gold_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_gold_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_gold_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-talent_gold_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/talent_gold_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_gold_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_gold_vi" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-talent_diligence_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/talent_diligence_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_diligence_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_diligence_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-talent_diligence_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/talent_diligence_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_diligence_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_diligence_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-talent_diligence_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/talent_diligence_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-talent_diligence_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-talent_diligence_vi" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="boss_list bigRigthSpace">
+			<div class="row">
+				<div class="panel" id="panel-dvalin_feather">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/dvalin_feather.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-dvalin_feather" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-dvalin_feather" />
+					</div>
+				</div>
+				<div class="panel" id="panel-dvalin_sigh">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/dvalin_sigh.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-dvalin_sigh" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-dvalin_sigh" />
+					</div>
+				</div>
+				<div class="panel" id="panel-dvalin_claw">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/dvalin_claw.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-dvalin_claw" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-dvalin_claw" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-boreas_tail">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/boreas_tail.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-boreas_tail" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-boreas_tail" />
+					</div>
+				</div>
+				<div class="panel" id="panel-boreas_ring">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/boreas_ring.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-boreas_ring" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-boreas_ring" />
+					</div>
+				</div>
+				<div class="panel" id="panel-boreas_locket">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/boreas_locket.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-boreas_locket" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-boreas_locket" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-childe_shadow">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/childe_shadow.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-childe_shadow" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-childe_shadow" />
+					</div>
+				</div>
+				<div class="panel" id="panel-childe_tusk">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/childe_tusk.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-childe_tusk" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-childe_tusk" />
+					</div>
+				</div>
+				<div class="panel" id="panel-childe_shard">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/childe_shard.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-childe_shard" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-childe_shard" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-azhdaha_scale">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/azhdaha_scale.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-azhdaha_scale" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-azhdaha_scale" />
+					</div>
+				</div>
+				<div class="panel" id="panel-azhdaha_crown">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/azhdaha_crown.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-azhdaha_crown" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-azhdaha_crown" />
+					</div>
+				</div>
+				<div class="panel" id="panel-azhdaha_branch">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/azhdaha_branch.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-azhdaha_branch" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-azhdaha_branch" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel_empty">
+				</div>
+				<div class="panel_empty">
+				</div>
+				<div class="panel_empty">
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-crown">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/crown.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-crown" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-crown" />
+					</div>
+				</div>
+				<div class="panel_empty">
+				</div>
+				<div class="panel_empty">
+				</div>
+
+			</div>
+		</div>
+		<div class="domains_list bigRigthSpace">
+			<div class="row">
+				<div class="panel" id="panel-menottes_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/menottes_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-menottes_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-menottes_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-menottes_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/menottes_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-menottes_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-menottes_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-menottes_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/menottes_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-menottes_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-menottes_vi" />
+					</div>
+				</div>
+				<div class="panel" id="panel-menottes_g">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/menottes_g.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-menottes_g" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-menottes_g" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-fang_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/fang_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-fang_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-fang_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-fang_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/fang_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-fang_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-fang_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-fang_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/fang_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-fang_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-fang_vi" />
+					</div>
+				</div>
+				<div class="panel" id="panel-fang_g">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/fang_g.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-fang_g" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-fang_g" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-tablette_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/tablette_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-tablette_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-tablette_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-tablette_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/tablette_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-tablette_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-tablette_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-tablette_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/tablette_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-tablette_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-tablette_vi" />
+					</div>
+				</div>
+				<div class="panel" id="panel-tablette_g">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/tablette_g.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-tablette_g" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-tablette_g" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-pillar_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/pillar_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-pillar_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-pillar_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-pillar_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/pillar_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-pillar_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-pillar_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-pillar_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/pillar_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-pillar_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-pillar_vi" />
+					</div>
+				</div>
+				<div class="panel" id="panel-pillar_g">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/pillar_g.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-pillar_g" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-pillar_g" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-puzzle_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/puzzle_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-puzzle_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-puzzle_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-puzzle_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/puzzle_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-puzzle_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-puzzle_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-puzzle_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/puzzle_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-puzzle_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-puzzle_vi" />
+					</div>
+				</div>
+				<div class="panel" id="panel-puzzle_g">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/puzzle_g.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-puzzle_g" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-puzzle_g" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-billes_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/billes_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-billes_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-billes_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-billes_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/billes_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-billes_b" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-billes_b" />
+					</div>
+				</div>
+				<div class="panel" id="panel-billes_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/billes_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-billes_vi" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-billes_vi" />
+					</div>
+				</div>
+				<div class="panel" id="panel-billes_g">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_g.png">
+						<img class="icone" src="assets/Icons/billes_g.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-billes_g" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-billes_g" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="list_ressources_harvestable" class="row">
+
+		<div class="material_list bigRigthSpace">
+			<div class="row">
+				<div class="panel" id="panel-calla_lily">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/calla_lily.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-cecilia">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/cecilia.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-dandelion_seed">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/dandelion_seed.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-philanemo_mushroom">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/philanemo_mushroom.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-small_lamp_grass">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/small_lamp_grass.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-valberry">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/valberry.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-windwheel_aster">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/windwheel_aster.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-wolfhook">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/wolfhook.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-cor_lapis">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/cor_lapis.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-glaze_lily">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/glaze_lily.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-jueyun_chili">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/jueyun_chili.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-noctilucous_jade">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/noctilucous_jade.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-silk_flower">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/silk_flower.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-violetgrass">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/violetgrass.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-qingxin">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/qingxin.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-starconch">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/starconch.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-sea_ganoderma">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/sea_ganoderma.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="normal_loot_list1 bigRigthSpace">
+			<div class="row">
+				<div class="panel" id="panel-slime_gr">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/slime_gr.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-slime_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/slime_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-slime_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/slime_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-mask_gr">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/mask_gr.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-mask_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/mask_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-mask_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/mask_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-scroll_gr">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/scroll_gr.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-scroll_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/scroll_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-scroll_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/scroll_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-arrowhead_gr">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/arrowhead_gr.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-arrowhead_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/arrowhead_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-arrowhead_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/arrowhead_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-insignia_gr">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/insignia_gr.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-insignia_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/insignia_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-insignia_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/insignia_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-tr_hoarder_gr">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/tr_hoarder_gr.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-tr_hoarder_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/tr_hoarder_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-tr_hoarder_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/tr_hoarder_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="normal_loot_list2 bigRigthSpace">
+			<div class="row">
+				<div class="panel" id="panel-nectar_gr">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_gr.png">
+						<img class="icone" src="assets/Icons/nectar_gr.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-nectar_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/nectar_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-nectar_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/nectar_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="rare_loot_list">
+			<div class="row">
+				<div class="panel" id="panel-horn_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/horn_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-horn_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/horn_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-horn_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/horn_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-branch_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/branch_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-branch_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/branch_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-branch_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/branch_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-chaos_device_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/chaos_device_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-chaos_device_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/chaos_device_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-chaos_device_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/chaos_device_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-mist_grass_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/mist_grass_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-mist_grass_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/mist_grass_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-mist_grass_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/mist_grass_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-knife_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/knife_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-knife_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/knife_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-knife_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/knife_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="panel" id="panel-bone_ve">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_ve.png">
+						<img class="icone" src="assets/Icons/bone_ve.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-bone_b">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_b.png">
+						<img class="icone" src="assets/Icons/bone_b.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+				<div class="panel" id="panel-bone_vi">
+					<div class="content">
+						<img class="background" src="assets/Icons_Case/case_vi.png">
+						<img class="icone" src="assets/Icons/bone_vi.png">
+					</div>
+					<div class="flex">
+						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
+						<span>/</span>
+						<input type="text" placeholder="x" id="input_rigth-gem_a_ve" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/app.js"></script>
+</body>
+
+</html>
