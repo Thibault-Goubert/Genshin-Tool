@@ -2,7 +2,7 @@
   "name": "genshin-tool",
   "version": "1.0.0",
   "description": "Outil de gestion de ressources pour Genshin Impact",
-  "main": "main.js",
+  "main": "app/js/main.js",
   "scripts": {
     "start": "electron ."
   },
