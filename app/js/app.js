@@ -29,24 +29,28 @@ $(document).ready(function () {
     let splitted_date_ob = date_ob.toString().toLowerCase().split(" ");
 
     let day = splitted_date_ob[0];
-    let hour = splitted_date_ob[4].split(":")[0];
 
     let domday_monday_thursday = $("#farm_ressources_days_monday_thursday");
     let domday_tuesday_friday = $("#farm_ressources_days_tuesday_friday");
     let domday_wednesday_saturday = $("#farm_ressources_days_wednesday_saturday");
 
+    let frame_monday_thursday = $("#farm_ressources_monday_thursday_frame");
+
     switch (day) {
         case 'mon':
         case 'thu':
             domday_monday_thursday.addClass("day_active");
+            frame_monday_thursday.addClass("frame_active");
             break;
         case 'tue':
         case 'fri':
             domday_tuesday_friday.addClass("day_active");
+            frame_monday_thursday.addClass("frame_active");
             break;
         case 'wed':
         case 'sat':
             domday_wednesday_saturday.addClass("day_active");
+            frame_monday_thursday.addClass("frame_active");
             break;
         case 'sun':
             domday_monday_thursday.addClass("day_active");
@@ -124,9 +128,9 @@ var span = document.getElementsByClassName("close")[0];
 inputs.each(function () {
     var input = $(this);
     var inputid = input[0].id;
-
-    input.click(function () {
-        if (inputid.includes("rigth")) {
+    
+    if (inputid.includes("right")) {
+        input.click(function () {        
             input.blur();
             $("#myModal-text")[0].innerHTML = "Changer la valeur de " + inputid + " ?";
             $("#myModal-btn-yes").click(function () {
@@ -134,8 +138,9 @@ inputs.each(function () {
                 input[0].focus();
             });
             modal.style.display = "block";
-        }
-    });
+        });
+        $(this).attr('tabindex', '-1');
+    };
 
     input[0].addEventListener('input', function (e) {
         var value = e.target.value;

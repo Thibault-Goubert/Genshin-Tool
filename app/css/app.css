@@ -139,7 +139,7 @@ div.total_mora input{
     flex-direction: row;
 }
 
-.bigRigthSpace{
+.bigRightSpace{
     margin-right: 37px;
 }
 
@@ -203,7 +203,7 @@ div.total_minerais input{
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 5; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -239,10 +239,12 @@ div.total_minerais input{
 
 .farm_ressources_monday_thursday{
     align-items: center;
+    margin-bottom: 10px;
 }
 
-.farm_ressources_thusday_friday{
+.farm_ressources_tuesday_friday{
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .farm_ressources_wednesday_saturday{
@@ -254,10 +256,10 @@ div.total_minerais input{
     position: relative;
     width: 40px;
     border-radius: 3px 0px 0px 3px;
-    box-shadow: 0px 0px 4px black;     
+    box-shadow: 0px 0px 4px black;
     background-color: #282a2f;
     color: #36393f;
-    height: 205px;
+    height: 220px;
 }
 
 .day_active{
@@ -272,4 +274,17 @@ div.total_minerais input{
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.farm_ressources_frame{
+    border: solid;
+    border-color: #282a2f;
+    border-width: thin;
+    border-radius: 0px 3px 3px 0px;
+    z-index: 1;
+    border-left: none;
+}
+
+.frame_active{
+    border-color: #e9e5dc;
 }
