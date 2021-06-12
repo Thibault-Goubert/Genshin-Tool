@@ -22,7 +22,6 @@ $(document).ready(function () {
         storage.setItem("btn_boss_domains", "checked");
     }
 
-
     var date_ob = new Date();
     date_ob.setHours(date_ob.getHours() - 4);
 
@@ -35,6 +34,8 @@ $(document).ready(function () {
     let domday_wednesday_saturday = $("#farm_ressources_days_wednesday_saturday");
 
     let frame_monday_thursday = $("#farm_ressources_monday_thursday_frame");
+    let frame_tuesday_friday = $("#farm_ressources_tuesday_friday_frame");
+    let frame_wednesday_saturday = $("#farm_ressources_wednesday_saturday_frame");
 
     switch (day) {
         case 'mon':
@@ -45,17 +46,21 @@ $(document).ready(function () {
         case 'tue':
         case 'fri':
             domday_tuesday_friday.addClass("day_active");
-            frame_monday_thursday.addClass("frame_active");
+            frame_tuesday_friday.addClass("frame_active");
             break;
         case 'wed':
         case 'sat':
             domday_wednesday_saturday.addClass("day_active");
-            frame_monday_thursday.addClass("frame_active");
+            frame_wednesday_saturday.addClass("frame_active");
             break;
         case 'sun':
             domday_monday_thursday.addClass("day_active");
             domday_tuesday_friday.addClass("day_active");
             domday_wednesday_saturday.addClass("day_active");
+
+            frame_monday_thursday.addClass("frame_active");
+            frame_tuesday_friday.addClass("frame_active");
+            frame_wednesday_saturday.addClass("frame_active");
             break;
         default:
             console.log("Default: => " + day);
@@ -116,7 +121,10 @@ btnHarvestables.click(function () {
 });
 
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = $("#myModal");
+
+var modalBtnYes = $("#myModal-btn-yes");
+var modalBtnNo = $("#myModal-btn-no");
 
 // Get the button that opens the modal
 var inputs = $("input");
@@ -133,11 +141,11 @@ inputs.each(function () {
         input.click(function () {        
             input.blur();
             $("#myModal-text")[0].innerHTML = "Changer la valeur de " + inputid + " ?";
-            $("#myModal-btn-yes").click(function () {
-                modal.style.display = "none";
+            modalBtnYes.click(function () {
+                modal[0].style.display = "none";
                 input[0].focus();
             });
-            modal.style.display = "block";
+            modal[0].style.display = "block";
         });
         $(this).attr('tabindex', '-1');
     };
@@ -176,17 +184,26 @@ inputs.each(function () {
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
-    modal.style.display = "none";
+    modal[0].style.display = "none";
 };
 
-$("#myModal-btn-no").click(function () {
-    modal.style.display = "none";
+modalBtnNo.click(function () {
+    modal[0].style.display = "none";
+});
+
+window.addEventListener("keyup", function(event) {
+    if (event.code == "Enter") {
+        modalBtnYes.click();
+    }
+    if (event.code == "Escape") {
+        modalBtnNo.click();
+    }
 });
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
-        modal.style.display = "none";
+        modal[0].style.display = "none";
     }
 };
 

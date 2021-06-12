@@ -16,7 +16,7 @@ const msiCreator = new MSICreator({
     outputDirectory: OUT_DIR,
 
     // Configure metadata
-    description: 'Application des gestion de ressources pour Genshin Impact',
+    description: 'Application des gestion pour Genshin Impact',
     exe: 'GenshinTool',
     name: 'Genshin Tool',
     manufacturer: 'Schibo',
