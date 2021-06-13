@@ -1,4 +1,45 @@
-var storage = window.localStorage;
+const storage = window.localStorage;
+
+//#region Variables
+//Get all inputs
+let inputs = $("input");
+
+// #region Tabs 
+//Get tabs
+let btnBossDomains = $("#btn_boss_domains");
+let btnHarvestables = $("#btn_harvestables");
+//Get tabs display
+let listRessourcesBossDomains = $("#list_ressources_boss_domains");
+let listRessourcesHarvestable = $("#list_ressources_harvestable");
+//#endregion
+
+// #region Modal Variables
+// Get the modal
+let modal = $("#myModal");
+// Get modal buttons
+let modalBtnYes = $("#myModal-btn-yes");
+let modalBtnNo = $("#myModal-btn-no");
+// Get the <span> element that closes the modal
+let modalSpan = document.getElementsByClassName("close")[0];
+// #endregion
+//#endregion
+
+//#region window actions
+window.addEventListener("keyup", function(event) {
+    if (event.code == "Enter") {
+        modalBtnYes.click();
+    }
+    if (event.code == "Escape") {
+        modalBtnNo.click();
+    }
+});
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal[0].style.display = "none";
+    }
+};
+//#endregion
 
 $(document).ready(function () {
     if (storage.length > 0) {
@@ -20,119 +61,9 @@ $(document).ready(function () {
         storage.setItem("list_ressources_harvestable", "collapsed");
         $("#btn_boss_domains").addClass("checked");
         storage.setItem("btn_boss_domains", "checked");
-    }
-
-    var date_ob = new Date();
-    date_ob.setHours(date_ob.getHours() - 4);
-
-    let splitted_date_ob = date_ob.toString().toLowerCase().split(" ");
-
-    let day = splitted_date_ob[0];
-
-    let domday_monday_thursday = $("#farm_ressources_days_monday_thursday");
-    let domday_tuesday_friday = $("#farm_ressources_days_tuesday_friday");
-    let domday_wednesday_saturday = $("#farm_ressources_days_wednesday_saturday");
-
-    let frame_monday_thursday = $("#farm_ressources_monday_thursday_frame");
-    let frame_tuesday_friday = $("#farm_ressources_tuesday_friday_frame");
-    let frame_wednesday_saturday = $("#farm_ressources_wednesday_saturday_frame");
-
-    switch (day) {
-        case 'mon':
-        case 'thu':
-            domday_monday_thursday.addClass("day_active");
-            frame_monday_thursday.addClass("frame_active");
-            break;
-        case 'tue':
-        case 'fri':
-            domday_tuesday_friday.addClass("day_active");
-            frame_tuesday_friday.addClass("frame_active");
-            break;
-        case 'wed':
-        case 'sat':
-            domday_wednesday_saturday.addClass("day_active");
-            frame_wednesday_saturday.addClass("frame_active");
-            break;
-        case 'sun':
-            domday_monday_thursday.addClass("day_active");
-            domday_tuesday_friday.addClass("day_active");
-            domday_wednesday_saturday.addClass("day_active");
-
-            frame_monday_thursday.addClass("frame_active");
-            frame_tuesday_friday.addClass("frame_active");
-            frame_wednesday_saturday.addClass("frame_active");
-            break;
-        default:
-            console.log("Default: => " + day);
-    }
+    }    
 });
 
-$(".content").click(function () {
-    var panel = $(this).parent();
-    var isHided = panel.hasClass("hide");
-
-    if (isHided) {
-        panel.removeClass("hide");
-        storage.removeItem(panel[0].id);
-    }
-    else {
-        panel.addClass("hide");
-        storage.setItem(panel[0].id, "hide");
-    }
-});
-
-var btnBossDomains = $("#btn_boss_domains");
-var btnHarvestables = $("#btn_harvestables");
-var listRessourcesBossDomains = $("#list_ressources_boss_domains");
-var listRessourcesHarvestable = $("#list_ressources_harvestable");
-
-btnBossDomains.click(function () {
-    var isChecked = btnBossDomains.hasClass("checked");
-    if (!isChecked) {
-        btnBossDomains.addClass("checked");
-        storage.setItem(btnBossDomains[0].id, "checked");
-
-        btnHarvestables.removeClass("checked");
-        storage.removeItem(btnHarvestables[0].id, "checked");
-
-        listRessourcesBossDomains.removeClass("collapsed");
-        storage.removeItem(listRessourcesBossDomains[0].id, "collapsed");
-
-        listRessourcesHarvestable.addClass("collapsed");
-        storage.setItem(listRessourcesHarvestable[0].id, "collapsed");
-    }
-});
-
-btnHarvestables.click(function () {
-    var isChecked = btnHarvestables.hasClass("checked");
-    if (!isChecked) {
-        btnHarvestables.addClass("checked");
-        storage.setItem(btnHarvestables[0].id, "checked");
-
-        btnBossDomains.removeClass("checked");
-        storage.removeItem(btnBossDomains[0].id, "checked");
-
-        listRessourcesBossDomains.addClass("collapsed");
-        storage.setItem(listRessourcesBossDomains[0].id, "collapsed");
-
-        listRessourcesHarvestable.removeClass("collapsed");
-        storage.removeItem(listRessourcesHarvestable[0].id, "collapsed");
-    }
-});
-
-// Get the modal
-var modal = $("#myModal");
-
-var modalBtnYes = $("#myModal-btn-yes");
-var modalBtnNo = $("#myModal-btn-no");
-
-// Get the button that opens the modal
-var inputs = $("input");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the input, open the modal
 inputs.each(function () {
     var input = $(this);
     var inputid = input[0].id;
@@ -182,31 +113,64 @@ inputs.each(function () {
     });
 });
 
+//#region clicks
+$(".hideable").click(function () {
+    var panel = $(this).parent();
+    var isHided = panel.hasClass("hide");
+
+    if (isHided) {
+        panel.removeClass("hide");
+        storage.removeItem(panel[0].id);
+    }
+    else {
+        panel.addClass("hide");
+        storage.setItem(panel[0].id, "hide");
+    }
+});
+btnBossDomains.click(function () {
+    var isChecked = btnBossDomains.hasClass("checked");
+    if (!isChecked) {
+        btnBossDomains.addClass("checked");
+        storage.setItem(btnBossDomains[0].id, "checked");
+
+        btnHarvestables.removeClass("checked");
+        storage.removeItem(btnHarvestables[0].id, "checked");
+
+        listRessourcesBossDomains.removeClass("collapsed");
+        storage.removeItem(listRessourcesBossDomains[0].id, "collapsed");
+
+        listRessourcesHarvestable.addClass("collapsed");
+        storage.setItem(listRessourcesHarvestable[0].id, "collapsed");
+    }
+});
+btnHarvestables.click(function () {
+    var isChecked = btnHarvestables.hasClass("checked");
+    if (!isChecked) {
+        btnHarvestables.addClass("checked");
+        storage.setItem(btnHarvestables[0].id, "checked");
+
+        btnBossDomains.removeClass("checked");
+        storage.removeItem(btnBossDomains[0].id, "checked");
+
+        listRessourcesBossDomains.addClass("collapsed");
+        storage.setItem(listRessourcesBossDomains[0].id, "collapsed");
+
+        listRessourcesHarvestable.removeClass("collapsed");
+        storage.removeItem(listRessourcesHarvestable[0].id, "collapsed");
+    }
+});
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
+modalSpan.onclick = function () {
     modal[0].style.display = "none";
 };
-
 modalBtnNo.click(function () {
     modal[0].style.display = "none";
 });
+//#endregion
 
-window.addEventListener("keyup", function(event) {
-    if (event.code == "Enter") {
-        modalBtnYes.click();
-    }
-    if (event.code == "Escape") {
-        modalBtnNo.click();
-    }
-});
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal[0].style.display = "none";
-    }
-};
-
+//#region misc functions
 function isInteger(valueToCheck) {
     return typeof valueToCheck !== 'undefined' && (valueToCheck == parseInt(valueToCheck, 10));
 };
+//#endregion

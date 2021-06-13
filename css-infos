@@ -1,0 +1,73 @@
+// Body
+    background-color: #36393f;
+
+// Hide
+    opacity: .1;
+
+// Text
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+    font-size:smaller;
+    color: #36393f;
+
+
+// Panel
+    width: 62px;
+    height: 85px;
+    box-shadow: 0px 0px 4px black;
+    border-radius: 5px 5px 5px 5px;
+    margin: 6px;
+
+// Panel_Content
+    position: relative;
+    width: 62px;
+    height: 62px;
+    border-radius: 5px 5px 0px 0px;
+
+// Panel_Content_Image
+    width: 62px;
+    height: 62px;
+    position: absolute;
+    border-radius: 5px 5px 0px 0px;
+
+// Panel_Footer
+    width: 29px;
+    height: 23px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #e9e5dc;
+    border-radius: 0px 0px 5px 5px;
+    outline: none;
+    border: none;
+    padding: 0px 0px;
+
+
+// Center
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+
+
+// Flex
+    display: flex;
+
+// Flex_Row
+
+// Center_Items
+    align-items: center;
+    justify-content: center;
+
+
+// Btn
+    border-radius: 3px;
+    background-color: #282a2f;
+    color: #474851;
+    user-select: none;
+
+// Btn_Checked
+    background-color: #e9e5dc;
+
+// Background_Shadow
+    box-shadow: 0px 0px 4px black; 

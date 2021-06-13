@@ -2,280 +2,225 @@ body{
     background-color: #36393f;
 }
 
-div.panel {
-    width: 62px;
-    height: 85px;
-    box-shadow: 0px 0px 4px black;
-    border-radius: 5px 5px 5px 5px;
-    margin: 12px;
+::selection {
+    background-color: #CCC;
 }
 
-div.big {
-    width: 124px;
-}
-
-div.hide{
-    opacity: .1;
-}
-
-div.panel_empty {
-    width: 62px;
-    height: 85px;
-    margin: 12px;
-}
-
-div.content {
-    position: relative;
-    width: 62px;
-    height: 62px;
-    border-radius: 5px 5px 0px 0px;
-    display: flex;
-}
-
-div.content.big{
-    width: 124px;
-}
-
-div.panel input {
-    width: 29px;
-    height: 23px;
-    /*make input doesnt overflow inside div*/
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    /*make input doesnt overflow inside div*/
-    outline: none;
-    border: none;
-    padding: 0px 0px;
-    border-radius: 0px 0px 5px 5px;
-    background-color: #e9e5dc;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: lighter;
-    color: #36393f;
-    text-align: center;
-}
-
-div.big input{
-    width: 60px;
-}
-
-div.xp_total input{
-    width: 52px;
-    height: 18px;
-}
-
-div.nb_book input{
-    width: 52px;
-    height: 18px;
-}
-
-div.nb_book{
-    border-radius: 0px;
-}
-
-.background {
-    width: 62px;
-    height: 62px;
-    position: absolute;
-    border-radius: 5px 5px 0px 0px;
-}
-
-div.nb_mora{
-    border-radius: 0px;
-}
-div.nb_mora input{
-    width: 120px;
-    height: 18px;
-}
-.nb_mora{
-    width: 124px;
-    height: 18px;
-}
-.total_mora{
-    width: 124px;
-    height: 18px;
-}
-div.total_mora input{
-    width: 100px;
-    height: 18px;
-}
-
-.background.big{
-    width: 124px;
-}
-
-.right {
-    left: 100%;
-    border-radius: 0px 5px 0px 0px;
-}
-
-.left{
-    border-radius: 5px 0px 0px 0px;
-}
-
-.icone {
-    width: 62px;
-    height: 62px;
-    position: absolute;
-    border-radius: 5px 5px 0px 0px;
-}
-
-.icone.center{
+.center{    
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%)
 }
-
-.flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0px 0px 5px 5px;
-    background-color: #e9e5dc;
+.large,div.large,img.large{
+    width: 124px;
+}
+img.right {
+    right: 0%;
+    border-radius: 0px 5px 0px 0px;
+}
+img.left{
+    left: 0%;
+    border-radius: 5px 0px 0px 0px;
 }
 
-.row{
+.flex{
     display: flex;
+}
+.flex.row{
     flex-direction: row;
+}
+.item_center{    
+    align-items: center;
+    justify-content: center;
 }
 
 .bigRightSpace{
-    margin-right: 37px;
+    margin-right: 60px;
 }
 
-#btn_boss_domains{
-    width: 115px;
-    height: 30px;
-}
-
-#btn_harvestables{
-    width: 93px;
-    height: 30px;
-}
-
-.btn{
-    display: flex;
-    border-radius: 3px;
-    background-color: #282a2f;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: lighter;
-    margin-bottom: 15px;
-    margin-top: 15px;   
-    user-select: none;
-    margin-left: 12px;
-    box-shadow: 0px 0px 4px black; 
-    color: #474851;
-}
-
-.btn.checked{
+input, .btn, span, p{
+    text-align: center;
     background-color: #e9e5dc;
-    box-shadow: 0px 0px 4px black; 
+    font-family: Calibri;
+    font-weight: lighter;
+    font-size:smaller;
+    color: #36393f;
 }
 
+.hide{
+    opacity: .1;
+}
 .collapsed{
     display: none;
     overflow: hidden;
 }
 
-div.high{
-    height: 98.4px;
+.panel{
+    width: 62px;
+    height: 85px;
+    box-shadow: 0px 0px 4px black;
+    border-radius: 5px 5px 5px 5px;
+    margin: 6px;
+    box-shadow: 0px 0px 4px black; 
 }
+.panel.high{
+    height: 98px;
+}
+.panel_empty {
+    width: 62px;
+    height: 85px;
+    margin: 6px;
+}
+.panel_content{    
+    position: relative;
+    width: 62px;
+    height: 62px;
+    border-radius: 5px 5px 0px 0px;
+}
+.panel_content_image{
+    width: 62px;
+    height: 62px;
+    position: absolute;
+    border-radius: 5px 5px 0px 0px;
+}
+.panel_footer{
+    align-items: center;
+    background-color: #e9e5dc;
+    border-radius: 0px 0px 5px 5px;
+    align-items: center;
+    height: 23px;
+}
+.panel_footer input{
+    width: 29px;
+    height: 23px;
 
-div.nb_minerais{
-    border-radius: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    outline: none;
+    border: none;
+    padding: 0px 0px;
+
+    border-radius: 0px 0px 5px 5px;
 }
-div.nb_minerais input{
-    width: 60px;
+.panel_footer.high{
+    height: 36px;
+}
+.panel_footer.high input{
     height: 18px;
 }
-div.total_minerais input{
+
+.btn{
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 3px;
+    background-color: #282a2f;
+    color: #474851;
+    user-select: none;
+    box-shadow: 0px 0px 4px black; 
+
+    margin-bottom: 15px;
+    margin-top: 15px;   
+    margin-left: 12px;
+}
+.btn.checked{
+    background-color: #e9e5dc;
+}
+#btn_boss_domains{
+    height: 30px;
+    width: 115px;
+}
+#btn_harvestables{
+    height: 30px;
+    width: 94px;
+}
+#myModal-btn-yes,
+#myModal-btn-no
+{
+    width: 26px;
+    height: 20px;
+}
+
+#input_left-nb_mora{
+    width: 120px;
+}
+#input_right-total_mora{
+    width: 110px;
+}
+#input_left-xp_total,
+#input_right-xp_total,
+#input_left-nb_minerais,
+#input_right-total_minerais,
+#input_left-nb_book_vi,
+#input_left-nb_book_b{
     width: 55px;
-    height: 18px;
 }
 
-::selection {
-    background-color: #CCC;
-}
-
-/* The Modal (background) */
+/* The Modal*/
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 5; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+    background-color: #e9e5dc;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
 }
-
 /* The Close Button */
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
-
-.farm_ressources_monday_thursday{
-    align-items: center;
-    margin-bottom: 10px;
-}
-
+  
+.farm_ressources_monday_thursday,
 .farm_ressources_tuesday_friday{
     align-items: center;
     margin-bottom: 10px;
 }
-
 .farm_ressources_wednesday_saturday{
     align-items: center;
 }
-
 .farm_ressources_days
-{
+{    
     position: relative;
+
     width: 40px;
+    height: 196px;
+
     border-radius: 3px 0px 0px 3px;
     box-shadow: 0px 0px 4px black;
     background-color: #282a2f;
     color: #36393f;
-    height: 220px;
 }
-
-.day_active{
-    box-shadow: 0px 0px 4px black;    
-    background-color: #e9e5dc;
-}
-
 .farm_ressources_days p{
-    margin: 0;
     position: absolute;
+    margin: 0;
+
     top: 50%;
     left: 50%;
-    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-
 .farm_ressources_frame{
     border: solid;
     border-color: #282a2f;
@@ -284,7 +229,10 @@ div.total_minerais input{
     z-index: 1;
     border-left: none;
 }
-
+.day_active{
+    box-shadow: 0px 0px 4px black;    
+    background-color: #e9e5dc;
+}
 .frame_active{
     border-color: #e9e5dc;
 }
