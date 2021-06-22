@@ -45,6 +45,11 @@ input, .btn, span, p{
     font-weight: lighter;
     font-size:smaller;
     color: #36393f;
+    border-radius: 3px;
+}
+.btn{    
+    height: 30px;
+    width: 100px;
 }
 
 .hide{
@@ -91,7 +96,7 @@ input, .btn, span, p{
     height: 23px;
 }
 .panel_footer input{
-    width: 29px;
+    width: 28px;
     height: 23px;
 
     -webkit-box-sizing: border-box;
@@ -114,16 +119,17 @@ input, .btn, span, p{
 .btn{
     align-items: center;
     justify-content: center;
-
-    border-radius: 3px;
+    
     background-color: #282a2f;
     color: #474851;
     user-select: none;
     box-shadow: 0px 0px 4px black; 
-
+}
+.btn_principal{    
     margin-bottom: 15px;
     margin-top: 15px;   
-    margin-left: 12px;
+    margin-left: 6px; 
+    margin-right: 6px;
 }
 .btn.checked{
     background-color: #e9e5dc;
@@ -214,6 +220,8 @@ input, .btn, span, p{
     color: #36393f;
 }
 .farm_ressources_days p{
+    background-color: #282a2f;
+    
     position: absolute;
     margin: 0;
 
@@ -233,6 +241,92 @@ input, .btn, span, p{
     box-shadow: 0px 0px 4px black;    
     background-color: #e9e5dc;
 }
+.day_active p{  
+    background-color: #e9e5dc;
+}
 .frame_active{
     border-color: #e9e5dc;
+}
+
+.btn_filtre{
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+.btn_filtre_image{
+    position: absolute;
+    width: 27px;
+    height: 27px;
+}
+.btn_filtre_image_small{
+    position: relative;
+    width: 12px;
+    height: 12px;
+}
+.btn_filtre_flat{    
+    position: relative;
+    width: 66px;
+    height: 13px;
+    border-radius: 8px;
+    line-height: 13px;
+}
+.btn_filtre_flat.no_justify_left_padding{
+    justify-content: left;
+    padding-left: 5px;
+}
+
+#liste_personnages_personnages {
+    width: 900px;
+    flex-flow: wrap;
+}
+.personnage_panel{
+    width: 90px;
+    height: 120px;
+
+    border-radius: 3px;
+    box-shadow: 0px 0px 4px black;
+}
+.personnage_panel_portrait_content{
+    position: relative;
+    width: 90px;
+    height: 97px;
+    border-radius: 3px 3px 0px 0px;
+}
+.personnage_panel_background{
+    position: absolute;
+    width: 90px;
+    height: 97px;
+    border-radius: 3px 3px 0px 0px;
+}
+.personnage_panel_portrait{
+    position: absolute;
+    width: 90px;
+    height: 97px;
+    border-radius: 3px 3px 0px 0px;
+}
+.personnage_panel_element{
+    position: absolute;
+    width: 27px;
+    height: 27px;
+
+    margin-top: 4px;
+    margin-left: 4px;
+}
+.personnage_panel_name{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 23px;   
+
+    width: 90px;
+    height: 23px;
+    border-radius: 0px 0px 3px 3px;
+
+    background-color: #e9e5dc;
+
+    font-family: Calibri;
+    font-weight: lighter;
+    font-size: smaller;
+    color: #36393f;
+
+    user-select: none;
 }

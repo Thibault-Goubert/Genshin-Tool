@@ -21,7 +21,7 @@ function createWindow() {
   mainWindow.loadFile('app/app.html');
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
@@ -29,7 +29,6 @@ function createWindow() {
 // Certaines APIs peuvent être utilisées uniquement quant cet événement est émit.
 app.whenReady().then(function () {
   createWindow();
-
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
@@ -46,3 +45,11 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. Vous pouvez également le mettre dans des fichiers séparés et les inclure ici.
+
+const fs = require('fs');
+const path = require('path');
+
+let rawdata = fs.readFileSync(path.resolve(__dirname, 'student.json'));
+let student = JSON.parse(rawdata);
+console.log(student);
+mainWindow.console.log()

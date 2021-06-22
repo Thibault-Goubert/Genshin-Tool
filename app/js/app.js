@@ -6,6 +6,13 @@ let inputs = $("input");
 
 // #region Tabs 
 //Get tabs
+let btnRessources = $("#btn_ressources");
+let btnPersonnages = $("#btn_personnages");
+//Get tabs display
+let listeRessources = $("#liste_ressources");
+let listePersonnages = $("#liste_personnages");
+
+//Get tabs
 let btnBossDomains = $("#btn_boss_domains");
 let btnHarvestables = $("#btn_harvestables");
 //Get tabs display
@@ -157,6 +164,39 @@ btnHarvestables.click(function () {
 
         listRessourcesHarvestable.removeClass("collapsed");
         storage.removeItem(listRessourcesHarvestable[0].id, "collapsed");
+    }
+});
+
+btnRessources.click(function () {
+    var isChecked = btnRessources.hasClass("checked");
+    if (!isChecked) {
+        btnRessources.addClass("checked");
+        storage.setItem(btnRessources[0].id, "checked");
+
+        btnPersonnages.removeClass("checked");
+        storage.removeItem(btnPersonnages[0].id, "checked");
+
+        listePersonnages.addClass("collapsed");
+        storage.setItem(listePersonnages[0].id, "collapsed");
+
+        listeRessources.removeClass("collapsed");
+        storage.removeItem(listeRessources[0].id, "collapsed");
+    }
+});
+btnPersonnages.click(function () {
+    var isChecked = btnPersonnages.hasClass("checked");
+    if (!isChecked) {
+        btnPersonnages.addClass("checked");
+        storage.setItem(btnPersonnages[0].id, "checked");
+
+        btnRessources.removeClass("checked");
+        storage.removeItem(btnRessources[0].id, "checked");
+
+        listeRessources.addClass("collapsed");
+        storage.setItem(listeRessources[0].id, "collapsed");
+
+        listePersonnages.removeClass("collapsed");
+        storage.removeItem(listePersonnages[0].id, "collapsed");
     }
 });
 // When the user clicks on <span> (x), close the modal

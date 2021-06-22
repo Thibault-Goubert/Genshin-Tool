@@ -11,7 +11,7 @@
 	<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
 	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   
-	<link rel="stylesheet" type="text/css" href="css/new-app.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 
 <body>
@@ -22,1882 +22,1954 @@
 			<span class="close">&times;</span>
 			<p id="myModal-text"></p>
 			<div class="flex row">
-				<div id="myModal-btn-yes" class="btn flex">Oui</div>
-				<div id="myModal-btn-no" class="btn flex">Non</div>
+				<div id="myModal-btn-yes" class="btn flex btn_principal">Oui</div>
+				<div id="myModal-btn-no" class="btn flex btn_principal">Non</div>
 			</div>
 		</div>
 	</div>
 
-	<!--Misc-->
-	<div class="flex row">
-		<div class="mora_xp_minerais">
-			<div class="flex row">
-				<div class="panel large high" id='panel_mora'>
-					<div class="panel_content hideable large">
-						<img class="panel_content_image center large" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image center" src="assets/Icons/recoltables_62/moras.png">
-					</div>
-					<div class="panel_footer high">
-						<div class="flex item_center">
-							<input type="text" placeholder="x" id="input_left-nb_mora" />
-						</div>
-						<div class="flex row item_center">
-							<span>/</span>
-							<input type="text" placeholder="x" id="input_right-total_mora" />
-						</div>
-					</div>
-				</div>
-				<div class="panel large high" id='panel_xp'>
-					<div class="panel_content hideable large flex row">
-						<img class="panel_content_image left" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image left" src="assets/Icons/recoltables_62/bouquin_xp_vi.png">
-
-						<img class="panel_content_image right" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image right" src="assets/Icons/recoltables_62/bouquin_xp_b.png">
-					</div>
-					<div class="panel_footer high">
-						<div class="flex row item_center">
-							<input type="text" placeholder="x" id="input_left-nb_book_vi" />
-							<span>+</span>
-							<input type="text" placeholder="x" id="input_left-nb_book_b" />
-						</div>
-						<div class="flex row item_center">
-							<span>=</span>
-							<input type="text" placeholder="x" id="input_left-xp_total" />
-							<span>/</span>
-							<input type="text" placeholder="x" id="input_right-xp_total" />
-						</div>
-					</div>
-				</div>
-				<div class="panel high" id='panel_minerais'>
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/minerais.png">
-					</div>
-					<div class="panel_footer high">
-						<div class="flex row item_center">
-							<input type="text" placeholder="x" id="input_left-nb_minerais" />
-						</div>
-						<div class="flex row item_center">
-							<span>/</span>
-							<input type="text" placeholder="x" id="input_right-total_minerais" />
-						</div>
-					</div>
-				</div>
-				<div class="panel high" id='panel_parametric_transformer'>
-					<div class="panel_content" id='panel_parametric_transformer_content'>
-						<img class="panel_content_image"  src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image center" src="assets/Icons/recoltables_62/parametric_transformer.png">
-					</div>
-					<div class="panel_footer high" id="panel_parametric_transformer_timer">
-						<div class="flex row item_center" id="panel_parametric_transformer_days"></div>
-						<div class="flex row item_center" id="panel_parametric_transformer_hours_mins"></div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<div id="btn_groupe_principal" class="flex row">
+		<div id="btn_ressources" class="btn flex btn_principal">Ressources</div>
+		<div id="btn_personnages" class="btn flex btn_principal">Personnages</div>
 	</div>
 
-	<div id="btn_group" class="flex row">
-		<div id="btn_boss_domains" class="btn flex">Boss/Domains</div>
-		<div id="btn_harvestables" class="btn flex">Récoltables</div>
-	</div>
+	<div id="liste_ressources" class="checked">
+		<div id="liste_ressources_generales" class="flex row">
+			<div class="mora_xp_minerais">
+				<div class="flex row">
+					<div class="panel large high" id='panel_mora'>
+						<div class="panel_content hideable large">
+							<img class="panel_content_image center large" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image center" src="assets/icons/recoltables/moras.png">
+						</div>
+						<div class="panel_footer item_center high">
+							<div class="flex item_center">
+								<input type="text" placeholder="x" id="input_left-nb_mora" />
+							</div>
+							<div class="flex row item_center">
+								<span>/</span>
+								<input type="text" placeholder="x" id="input_right-total_mora" />
+							</div>
+						</div>
+					</div>
+					<div class="panel large high" id='panel_xp'>
+						<div class="panel_content hideable large flex row">
+							<img class="panel_content_image left" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image left" src="assets/icons/recoltables/bouquin_xp_vi.png">
 
-	<div id="list_ressources_boss_domains" class="flex row">
-		<div class="gem_list bigRightSpace">
-			<div class="flex row">
-				<div class="panel" id="panel-gem_a_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_a_ve.png">
+							<img class="panel_content_image right" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image right" src="assets/icons/recoltables/bouquin_xp_b.png">
+						</div>
+						<div class="panel_footer item_center high">
+							<div class="flex row item_center">
+								<input type="text" placeholder="x" id="input_left-nb_book_vi" />
+								<span>+</span>
+								<input type="text" placeholder="x" id="input_left-nb_book_b" />
+							</div>
+							<div class="flex row item_center">
+								<span>=</span>
+								<input type="text" placeholder="x" id="input_left-xp_total" />
+								<span>/</span>
+								<input type="text" placeholder="x" id="input_right-xp_total" />
+							</div>
+						</div>
 					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_a_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_a_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_a_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_a_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_a_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_a_b" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_a_vi">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_a_vi.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_a_vi" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_a_vi" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_a_g">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_a_g.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_a_g" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_a_g" />
-					</div>
-				</div>
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-gem_c_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_c_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_c_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_c_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_c_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_c_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_c_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_c_b" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_c_vi">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_c_vi.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_c_vi" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_c_vi" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_c_g">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_c_g.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_c_g" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_c_g" />
-					</div>
-				</div>
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-gem_e_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_e_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_e_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_e_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_e_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_e_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_e_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_e_b" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_e_vi">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_e_vi.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_e_vi" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_e_vi" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_e_g">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_e_g.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_e_g" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_e_g" />
-					</div>
-				</div>
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-gem_h_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_h_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_h_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_h_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_h_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_h_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_h_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_h_b" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_h_vi">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_h_vi.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_h_vi" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_h_vi" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_h_g">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_h_g.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_h_g" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_h_g" />
-					</div>
-				</div>
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-gem_p_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_p_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_p_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_p_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_p_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_p_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_p_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_p_b" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_p_vi">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_p_vi.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_p_vi" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_p_vi" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_p_g">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_p_g.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_p_g" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_p_g" />
-					</div>
-				</div>
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-gem_g_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_g_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_g_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_g_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_g_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_g_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_g_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_g_b" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_g_vi">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_g_vi.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_g_vi" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_g_vi" />
-					</div>
-				</div>
-				<div class="panel" id="panel-gem_g_g">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/gem_g_g.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-gem_g_g" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-gem_g_g" />
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="elem_list bigRightSpace">
-			<div class="flex row">
-				<div class="flex row bigRightSpace">
-					<div class="panel" id="panel-elem_a_1">
+					<div class="panel high" id='panel_minerais'>
 						<div class="panel_content hideable">
-							<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-							<img class="panel_content_image" src="assets/Icons/recoltables_62/elem_a_1.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/minerais.png">
 						</div>
-						<div class="panel_footer flex row">
-							<input type="text" placeholder="x" id="input_left-elem_a_1" />
-							<span>/</span>
-							<input type="text" placeholder="x" id="input_right-elem_a_1" />
+						<div class="panel_footer item_center high">
+							<div class="flex row item_center">
+								<input type="text" placeholder="x" id="input_left-nb_minerais" />
+							</div>
+							<div class="flex row item_center">
+								<span>/</span>
+								<input type="text" placeholder="x" id="input_right-total_minerais" />
+							</div>
 						</div>
 					</div>
-					<div class="panel" id="panel-elem_a_2">
+					<div class="panel high" id='panel_parametric_transformer'>
+						<div class="panel_content" id='panel_parametric_transformer_content'>
+							<img class="panel_content_image"  src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image center" src="assets/icons/recoltables/parametric_transformer.png">
+						</div>
+						<div class="panel_footer item_center high" id="panel_parametric_transformer_timer">
+							<div class="flex row item_center" id="panel_parametric_transformer_days"></div>
+							<div class="flex row item_center" id="panel_parametric_transformer_hours_mins"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="btn_groupe_ressources" class="flex row">
+			<div id="btn_boss_domains" class="btn flex btn_principal">Boss/Domains</div>
+			<div id="btn_harvestables" class="btn flex btn_principal">Récoltables</div>
+		</div>
+		<div id="list_ressources_boss_domains" class="flex row">
+			<div class="gem_list bigRightSpace">
+				<div class="flex row">
+					<div class="panel" id="panel-gem_a_ve">
 						<div class="panel_content hideable">
-							<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-							<img class="panel_content_image" src="assets/Icons/recoltables_62/elem_a_2.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_a_ve.png">
 						</div>
-						<div class="panel_footer flex row">
-							<input type="text" placeholder="x" id="input_left-elem_a_2" />
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_a_ve" />
 							<span>/</span>
-							<input type="text" placeholder="x" id="input_right-elem_a_2" />
+							<input type="text" placeholder="x" id="input_right-gem_a_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_a_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_a_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_a_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_a_b" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_a_vi">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_a_vi.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_a_vi" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_a_vi" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_a_g">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_a_g.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_a_g" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_a_g" />
 						</div>
 					</div>
 				</div>
-				<div class="panel" id="panel-elem_o_1">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/elem_o_1.png">
+				<div class="flex row">
+					<div class="panel" id="panel-gem_c_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_c_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_c_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_c_ve" />
+						</div>
 					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-elem_o_1" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-elem_o_1" />
+					<div class="panel" id="panel-gem_c_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_c_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_c_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_c_b" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_c_vi">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_c_vi.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_c_vi" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_c_vi" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_c_g">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_c_g.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_c_g" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_c_g" />
+						</div>
 					</div>
 				</div>
-
+				<div class="flex row">
+					<div class="panel" id="panel-gem_e_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_e_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_e_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_e_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_e_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_e_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_e_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_e_b" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_e_vi">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_e_vi.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_e_vi" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_e_vi" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_e_g">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_e_g.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_e_g" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_e_g" />
+						</div>
+					</div>
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-gem_h_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_h_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_h_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_h_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_h_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_h_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_h_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_h_b" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_h_vi">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_h_vi.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_h_vi" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_h_vi" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_h_g">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_h_g.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_h_g" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_h_g" />
+						</div>
+					</div>
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-gem_p_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_p_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_p_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_p_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_p_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_p_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_p_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_p_b" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_p_vi">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_p_vi.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_p_vi" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_p_vi" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_p_g">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_p_g.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_p_g" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_p_g" />
+						</div>
+					</div>
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-gem_g_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_g_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_g_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_g_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_g_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_g_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_g_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_g_b" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_g_vi">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_g_vi.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_g_vi" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_g_vi" />
+						</div>
+					</div>
+					<div class="panel" id="panel-gem_g_g">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/gem_g_g.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-gem_g_g" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-gem_g_g" />
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-elem_c_1">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/elem_c_1.png">
+			<div class="elem_list bigRightSpace">
+				<div class="flex row">
+					<div class="flex row bigRightSpace">
+						<div class="panel" id="panel-elem_a_1">
+							<div class="panel_content hideable">
+								<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+								<img class="panel_content_image" src="assets/icons/recoltables/elem_a_1.png">
+							</div>
+							<div class="panel_footer item_center flex row">
+								<input type="text" placeholder="x" id="input_left-elem_a_1" />
+								<span>/</span>
+								<input type="text" placeholder="x" id="input_right-elem_a_1" />
+							</div>
+						</div>
+						<div class="panel" id="panel-elem_a_2">
+							<div class="panel_content hideable">
+								<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+								<img class="panel_content_image" src="assets/icons/recoltables/elem_a_2.png">
+							</div>
+							<div class="panel_footer item_center flex row">
+								<input type="text" placeholder="x" id="input_left-elem_a_2" />
+								<span>/</span>
+								<input type="text" placeholder="x" id="input_right-elem_a_2" />
+							</div>
+						</div>
 					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-elem_c_1" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-elem_c_1" />
+					<div class="panel" id="panel-elem_o_1">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/elem_o_1.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-elem_o_1" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-elem_o_1" />
+						</div>
 					</div>
-				</div>
-				<div class="panel" id="panel-elem_c_2">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/elem_c_2.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-elem_c_2" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-elem_c_2" />
-					</div>
-				</div>
 
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-elem_c_1">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/elem_c_1.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-elem_c_1" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-elem_c_1" />
+						</div>
+					</div>
+					<div class="panel" id="panel-elem_c_2">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/elem_c_2.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-elem_c_2" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-elem_c_2" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-elem_e_1">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/elem_e_1.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-elem_e_1" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-elem_e_1" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-elem_h_1">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/elem_h_1.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-elem_h_1" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-elem_h_1" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-elem_p_1">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/elem_p_1.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-elem_p_1" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-elem_p_1" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-elem_g_1">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/elem_g_1.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-elem_g_1" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-elem_g_1" />
+						</div>
+					</div>
+
+				</div>
 			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-elem_e_1">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/elem_e_1.png">
+			<div class="boss_list bigRightSpace">
+				<div class="flex row">
+					<div class="panel" id="panel-dvalin_feather">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/dvalin_feather.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-dvalin_feather" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-dvalin_feather" />
+						</div>
 					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-elem_e_1" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-elem_e_1" />
+					<div class="panel" id="panel-dvalin_sigh">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/dvalin_sigh.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-dvalin_sigh" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-dvalin_sigh" />
+						</div>
+					</div>
+					<div class="panel" id="panel-dvalin_claw">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/dvalin_claw.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-dvalin_claw" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-dvalin_claw" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-boreas_tail">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/boreas_tail.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-boreas_tail" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-boreas_tail" />
+						</div>
+					</div>
+					<div class="panel" id="panel-boreas_ring">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/boreas_ring.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-boreas_ring" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-boreas_ring" />
+						</div>
+					</div>
+					<div class="panel" id="panel-boreas_locket">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/boreas_locket.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-boreas_locket" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-boreas_locket" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-childe_shadow">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/childe_shadow.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-childe_shadow" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-childe_shadow" />
+						</div>
+					</div>
+					<div class="panel" id="panel-childe_tusk">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/childe_tusk.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-childe_tusk" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-childe_tusk" />
+						</div>
+					</div>
+					<div class="panel" id="panel-childe_shard">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/childe_shard.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-childe_shard" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-childe_shard" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-azhdaha_scale">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/azhdaha_scale.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-azhdaha_scale" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-azhdaha_scale" />
+						</div>
+					</div>
+					<div class="panel" id="panel-azhdaha_crown">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/azhdaha_crown.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-azhdaha_crown" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-azhdaha_crown" />
+						</div>
+					</div>
+					<div class="panel" id="panel-azhdaha_branch">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/azhdaha_branch.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-azhdaha_branch" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-azhdaha_branch" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel_empty">
+					</div>
+					<div class="panel_empty">
+					</div>
+					<div class="panel_empty">
 					</div>
 				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-crown">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/crown.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-crown" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-crown" />
+						</div>
+					</div>
+					<div class="panel_empty">
+					</div>
+					<div class="panel_empty">
+					</div>
 
+				</div>
 			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-elem_h_1">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/elem_h_1.png">
+			<div class="farm_ressources">
+				<div class="flex row farm_ressources_monday_thursday">
+					<div class="farm_ressources_days" id="farm_ressources_days_monday_thursday">
+						<p>Lun./ Jeu.</p>
 					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-elem_h_1" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-elem_h_1" />
+					<div class="flex row farm_ressources_frame" id="farm_ressources_monday_thursday_frame">
+						<div class="farm_ressources_monday_thursday_talent farm_ressources_monday_thursday_talent bigRightSpace">
+							<!--Freedom-->
+							<div class="flex row">
+								<div class="panel" id="panel-talent_freedom_ve">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_freedom_ve.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_freedom_ve" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_freedom_ve" />
+									</div>
+								</div>
+								<div class="panel" id="panel-talent_freedom_b">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_freedom_b.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_freedom_b" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_freedom_b" />
+									</div>
+								</div>
+								<div class="panel" id="panel-talent_freedom_vi">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_freedom_vi.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_freedom_vi" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_freedom_vi" />
+									</div>
+								</div>
+
+							</div>
+							<!--Prosperity-->
+							<div class="flex row">
+								<div class="panel" id="panel-talent_prosperity_ve">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_prosperity_ve.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_prosperity_ve" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_prosperity_ve" />
+									</div>
+								</div>
+								<div class="panel" id="panel-talent_prosperity_b">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_prosperity_b.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_prosperity_b" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_prosperity_b" />
+									</div>
+								</div>
+								<div class="panel" id="panel-talent_prosperity_vi">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_prosperity_vi.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_prosperity_vi" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_prosperity_vi" />
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="farm_ressources_monday_thursday_domains">
+							<!--Tablette-->
+							<div class="flex row">
+								<div class="panel" id="panel-tablette_ve">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/tablette_ve.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-tablette_ve" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-tablette_ve" />
+									</div>
+								</div>
+								<div class="panel" id="panel-tablette_b">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/tablette_b.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-tablette_b" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-tablette_b" />
+									</div>
+								</div>
+								<div class="panel" id="panel-tablette_vi">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/tablette_vi.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-tablette_vi" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-tablette_vi" />
+									</div>
+								</div>
+								<div class="panel" id="panel-tablette_g">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/tablette_g.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-tablette_g" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-tablette_g" />
+									</div>
+								</div>
+							</div>
+							<!--Pillar-->
+							<div class="flex row">
+								<div class="panel" id="panel-pillar_ve">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/pillar_ve.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-pillar_ve" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-pillar_ve" />
+									</div>
+								</div>
+								<div class="panel" id="panel-pillar_b">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/pillar_b.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-pillar_b" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-pillar_b" />
+									</div>
+								</div>
+								<div class="panel" id="panel-pillar_vi">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/pillar_vi.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-pillar_vi" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-pillar_vi" />
+									</div>
+								</div>
+								<div class="panel" id="panel-pillar_g">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/pillar_g.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-pillar_g" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-pillar_g" />
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-elem_p_1">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/elem_p_1.png">
+				<div class="flex row farm_ressources_tuesday_friday">
+					<div class="farm_ressources_days" id="farm_ressources_days_tuesday_friday">
+						<p>Mar./ Ven.</p>
 					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-elem_p_1" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-elem_p_1" />
+					<div class="flex row farm_ressources_frame" id="farm_ressources_tuesday_friday_frame">
+						<div class="farm_ressources_tuesday_friday_talent bigRightSpace">
+							<!--Resistance-->
+							<div class="flex row">
+								<div class="panel" id="panel-talent_resistance_ve">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_resistance_ve.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_resistance_ve" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_resistance_ve" />
+									</div>
+								</div>
+								<div class="panel" id="panel-talent_resistance_b">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_resistance_b.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_resistance_b" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_resistance_b" />
+									</div>
+								</div>
+								<div class="panel" id="panel-talent_resistance_vi">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_resistance_vi.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_resistance_vi" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_resistance_vi" />
+									</div>
+								</div>
+
+							</div>
+							<!--Diligence-->
+							<div class="flex row">
+								<div class="panel" id="panel-talent_diligence_ve">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_diligence_ve.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_diligence_ve" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_diligence_ve" />
+									</div>
+								</div>
+								<div class="panel" id="panel-talent_diligence_b">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_diligence_b.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_diligence_b" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_diligence_b" />
+									</div>
+								</div>
+								<div class="panel" id="panel-talent_diligence_vi">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_diligence_vi.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_diligence_vi" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_diligence_vi" />
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="farm_ressources_tuesday_friday_domains">
+							<!--Fang-->
+							<div class="flex row">
+								<div class="panel" id="panel-fang_ve">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/fang_ve.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-fang_ve" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-fang_ve" />
+									</div>
+								</div>
+								<div class="panel" id="panel-fang_b">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/fang_b.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-fang_b" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-fang_b" />
+									</div>
+								</div>
+								<div class="panel" id="panel-fang_vi">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/fang_vi.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-fang_vi" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-fang_vi" />
+									</div>
+								</div>
+								<div class="panel" id="panel-fang_g">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/fang_g.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-fang_g" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-fang_g" />
+									</div>
+								</div>
+							</div>
+							<!--Billes-->
+							<div class="flex row">
+								<div class="panel" id="panel-billes_ve">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/billes_ve.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-billes_ve" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-billes_ve" />
+									</div>
+								</div>
+								<div class="panel" id="panel-billes_b">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/billes_b.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-billes_b" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-billes_b" />
+									</div>
+								</div>
+								<div class="panel" id="panel-billes_vi">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/billes_vi.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-billes_vi" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-billes_vi" />
+									</div>
+								</div>
+								<div class="panel" id="panel-billes_g">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/billes_g.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-billes_g" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-billes_g" />
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-elem_g_1">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/elem_g_1.png">
+				<div class="flex row farm_ressources_wednesday_saturday">
+					<div class="farm_ressources_days" id="farm_ressources_days_wednesday_saturday">
+						<p>Mer./ Sam.</p>
 					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-elem_g_1" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-elem_g_1" />
+					<div class="flex row farm_ressources_frame" id="farm_ressources_wednesday_saturday_frame">
+						<div class="farm_ressources_wednesday_saturday_talent bigRightSpace">
+							<!--Ballad-->
+							<div class="flex row">
+								<div class="panel" id="panel-talent_ballad_ve">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_ballad_ve.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_ballad_ve" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_ballad_ve" />
+									</div>
+								</div>
+								<div class="panel" id="panel-talent_ballad_b">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_ballad_b.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_ballad_b" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_ballad_b" />
+									</div>
+								</div>
+								<div class="panel" id="panel-talent_ballad_vi">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_ballad_vi.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_ballad_vi" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_ballad_vi" />
+									</div>
+								</div>
+							</div>
+							<!--Gold-->
+							<div class="flex row">
+								<div class="panel" id="panel-talent_gold_ve">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_gold_ve.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_gold_ve" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_gold_ve" />
+									</div>
+								</div>
+								<div class="panel" id="panel-talent_gold_b">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_gold_b.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_gold_b" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_gold_b" />
+									</div>
+								</div>
+								<div class="panel" id="panel-talent_gold_vi">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/talent_gold_vi.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-talent_gold_vi" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-talent_gold_vi" />
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="farm_ressources_wednesday_saturday_domains">
+							<!--Menottes-->
+							<div class="flex row">
+								<div class="panel" id="panel-menottes_ve">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/menottes_ve.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-menottes_ve" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-menottes_ve" />
+									</div>
+								</div>
+								<div class="panel" id="panel-menottes_b">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/menottes_b.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-menottes_b" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-menottes_b" />
+									</div>
+								</div>
+								<div class="panel" id="panel-menottes_vi">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/menottes_vi.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-menottes_vi" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-menottes_vi" />
+									</div>
+								</div>
+								<div class="panel" id="panel-menottes_g">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/menottes_g.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-menottes_g" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-menottes_g" />
+									</div>
+								</div>
+							</div>
+							<!--Puzzle-->
+							<div class="flex row">
+								<div class="panel" id="panel-puzzle_ve">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/puzzle_ve.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-puzzle_ve" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-puzzle_ve" />
+									</div>
+								</div>
+								<div class="panel" id="panel-puzzle_b">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/puzzle_b.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-puzzle_b" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-puzzle_b" />
+									</div>
+								</div>
+								<div class="panel" id="panel-puzzle_vi">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/puzzle_vi.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-puzzle_vi" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-puzzle_vi" />
+									</div>
+								</div>
+								<div class="panel" id="panel-puzzle_g">
+									<div class="panel_content hideable">
+										<img class="panel_content_image" src="assets/icons/recoltables/case_g.png">
+										<img class="panel_content_image" src="assets/icons/recoltables/puzzle_g.png">
+									</div>
+									<div class="panel_footer item_center flex row">
+										<input type="text" placeholder="x" id="input_left-puzzle_g" />
+										<span>/</span>
+										<input type="text" placeholder="x" id="input_right-puzzle_g" />
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
-		<div class="boss_list bigRightSpace">
-			<div class="flex row">
-				<div class="panel" id="panel-dvalin_feather">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/dvalin_feather.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-dvalin_feather" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-dvalin_feather" />
-					</div>
-				</div>
-				<div class="panel" id="panel-dvalin_sigh">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/dvalin_sigh.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-dvalin_sigh" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-dvalin_sigh" />
-					</div>
-				</div>
-				<div class="panel" id="panel-dvalin_claw">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/dvalin_claw.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-dvalin_claw" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-dvalin_claw" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-boreas_tail">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/boreas_tail.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-boreas_tail" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-boreas_tail" />
-					</div>
-				</div>
-				<div class="panel" id="panel-boreas_ring">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/boreas_ring.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-boreas_ring" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-boreas_ring" />
-					</div>
-				</div>
-				<div class="panel" id="panel-boreas_locket">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/boreas_locket.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-boreas_locket" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-boreas_locket" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-childe_shadow">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/childe_shadow.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-childe_shadow" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-childe_shadow" />
-					</div>
-				</div>
-				<div class="panel" id="panel-childe_tusk">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/childe_tusk.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-childe_tusk" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-childe_tusk" />
-					</div>
-				</div>
-				<div class="panel" id="panel-childe_shard">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/childe_shard.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-childe_shard" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-childe_shard" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-azhdaha_scale">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/azhdaha_scale.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-azhdaha_scale" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-azhdaha_scale" />
-					</div>
-				</div>
-				<div class="panel" id="panel-azhdaha_crown">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/azhdaha_crown.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-azhdaha_crown" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-azhdaha_crown" />
-					</div>
-				</div>
-				<div class="panel" id="panel-azhdaha_branch">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/azhdaha_branch.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-azhdaha_branch" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-azhdaha_branch" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel_empty">
-				</div>
-				<div class="panel_empty">
-				</div>
-				<div class="panel_empty">
-				</div>
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-crown">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/crown.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-crown" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-crown" />
-					</div>
-				</div>
-				<div class="panel_empty">
-				</div>
-				<div class="panel_empty">
-				</div>
-
-			</div>
-		</div>
-		<div class="farm_ressources">
-			<div class="flex row farm_ressources_monday_thursday">
-				<div class="farm_ressources_days" id="farm_ressources_days_monday_thursday">
-					<p>Lun./ Jeu.</p>
-				</div>
-				<div class="flex row farm_ressources_frame" id="farm_ressources_monday_thursday_frame">
-					<div class="farm_ressources_monday_thursday_talent farm_ressources_monday_thursday_talent bigRightSpace">
-						<!--Freedom-->
-						<div class="flex row">
-							<div class="panel" id="panel-talent_freedom_ve">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_freedom_ve.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_freedom_ve" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_freedom_ve" />
-								</div>
-							</div>
-							<div class="panel" id="panel-talent_freedom_b">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_freedom_b.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_freedom_b" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_freedom_b" />
-								</div>
-							</div>
-							<div class="panel" id="panel-talent_freedom_vi">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_freedom_vi.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_freedom_vi" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_freedom_vi" />
-								</div>
-							</div>
-
+		<div id="list_ressources_harvestable" class="flex row">
+			<div class="material_list bigRightSpace">
+				<div class="flex row">
+					<div class="panel" id="panel-calla_lily">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/calla_lily.png">
 						</div>
-						<!--Prosperity-->
-						<div class="flex row">
-							<div class="panel" id="panel-talent_prosperity_ve">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_prosperity_ve.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_prosperity_ve" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_prosperity_ve" />
-								</div>
-							</div>
-							<div class="panel" id="panel-talent_prosperity_b">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_prosperity_b.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_prosperity_b" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_prosperity_b" />
-								</div>
-							</div>
-							<div class="panel" id="panel-talent_prosperity_vi">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_prosperity_vi.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_prosperity_vi" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_prosperity_vi" />
-								</div>
-							</div>
-
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-calla_lily" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-calla_lily" />
 						</div>
 					</div>
-					<div class="farm_ressources_monday_thursday_domains">
-						<!--Tablette-->
-						<div class="flex row">
-							<div class="panel" id="panel-tablette_ve">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/tablette_ve.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-tablette_ve" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-tablette_ve" />
-								</div>
-							</div>
-							<div class="panel" id="panel-tablette_b">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/tablette_b.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-tablette_b" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-tablette_b" />
-								</div>
-							</div>
-							<div class="panel" id="panel-tablette_vi">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/tablette_vi.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-tablette_vi" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-tablette_vi" />
-								</div>
-							</div>
-							<div class="panel" id="panel-tablette_g">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/tablette_g.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-tablette_g" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-tablette_g" />
-								</div>
-							</div>
+					<div class="panel" id="panel-cecilia">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/cecilia.png">
 						</div>
-						<!--Pillar-->
-						<div class="flex row">
-							<div class="panel" id="panel-pillar_ve">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/pillar_ve.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-pillar_ve" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-pillar_ve" />
-								</div>
-							</div>
-							<div class="panel" id="panel-pillar_b">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/pillar_b.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-pillar_b" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-pillar_b" />
-								</div>
-							</div>
-							<div class="panel" id="panel-pillar_vi">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/pillar_vi.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-pillar_vi" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-pillar_vi" />
-								</div>
-							</div>
-							<div class="panel" id="panel-pillar_g">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/pillar_g.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-pillar_g" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-pillar_g" />
-								</div>
-							</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-cecilia" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-cecilia" />
+						</div>
+					</div>
+					<div class="panel" id="panel-dandelion_seed">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/dandelion_seed.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-dandelion_seed" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-dandelion_seed" />
+						</div>
+					</div>
+					<div class="panel" id="panel-philanemo_mushroom">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/philanemo_mushroom.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-philanemo_mushroom" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-philanemo_mushroom" />
+						</div>
+					</div>
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-small_lamp_grass">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/small_lamp_grass.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-small_lamp_grass" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-small_lamp_grass" />
+						</div>
+					</div>
+					<div class="panel" id="panel-valberry">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/valberry.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-valberry" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-valberry" />
+						</div>
+					</div>
+					<div class="panel" id="panel-windwheel_aster">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/windwheel_aster.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-windwheel_aster" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-windwheel_aster" />
+						</div>
+					</div>
+					<div class="panel" id="panel-wolfhook">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/wolfhook.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-wolfhook" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-wolfhook" />
+						</div>
+					</div>
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-cor_lapis">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/cor_lapis.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-cor_lapis" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-cor_lapis" />
+						</div>
+					</div>
+					<div class="panel" id="panel-glaze_lily">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/glaze_lily.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-glaze_lily" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-glaze_lily" />
+						</div>
+					</div>
+					<div class="panel" id="panel-jueyun_chili">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/jueyun_chili.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-jueyun_chili" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-jueyun_chili" />
+						</div>
+					</div>
+					<div class="panel" id="panel-noctilucous_jade">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/noctilucous_jade.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-noctilucous_jade" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-noctilucous_jade" />
+						</div>
+					</div>
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-silk_flower">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/silk_flower.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-silk_flower" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-silk_flower" />
+						</div>
+					</div>
+					<div class="panel" id="panel-violetgrass">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/violetgrass.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-violetgrass" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-violetgrass" />
+						</div>
+					</div>
+					<div class="panel" id="panel-qingxin">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/qingxin.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-qingxin" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-qingxin" />
+						</div>
+					</div>
+					<div class="panel" id="panel-starconch">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/starconch.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-starconch" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-starconch" />
+						</div>
+					</div>
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-sea_ganoderma">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/sea_ganoderma.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-sea_ganoderma" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-sea_ganoderma" />
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="flex row farm_ressources_tuesday_friday">
-				<div class="farm_ressources_days" id="farm_ressources_days_tuesday_friday">
-					<p>Mar./ Ven.</p>
+			<div class="normal_loot_list1 bigRightSpace">
+				<div class="flex row">
+					<div class="panel" id="panel-slime_gr">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/slime_gr.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-slime_gr" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-slime_gr" />
+						</div>
+					</div>
+					<div class="panel" id="panel-slime_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/slime_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-slime_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-slime_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-slime_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/slime_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-slime_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-slime_b" />
+						</div>
+					</div>
+
 				</div>
-				<div class="flex row farm_ressources_frame" id="farm_ressources_tuesday_friday_frame">
-					<div class="farm_ressources_tuesday_friday_talent bigRightSpace">
-						<!--Resistance-->
-						<div class="flex row">
-							<div class="panel" id="panel-talent_resistance_ve">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_resistance_ve.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_resistance_ve" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_resistance_ve" />
-								</div>
-							</div>
-							<div class="panel" id="panel-talent_resistance_b">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_resistance_b.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_resistance_b" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_resistance_b" />
-								</div>
-							</div>
-							<div class="panel" id="panel-talent_resistance_vi">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_resistance_vi.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_resistance_vi" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_resistance_vi" />
-								</div>
-							</div>
-
+				<div class="flex row">
+					<div class="panel" id="panel-mask_gr">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/mask_gr.png">
 						</div>
-						<!--Diligence-->
-						<div class="flex row">
-							<div class="panel" id="panel-talent_diligence_ve">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_diligence_ve.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_diligence_ve" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_diligence_ve" />
-								</div>
-							</div>
-							<div class="panel" id="panel-talent_diligence_b">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_diligence_b.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_diligence_b" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_diligence_b" />
-								</div>
-							</div>
-							<div class="panel" id="panel-talent_diligence_vi">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_diligence_vi.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_diligence_vi" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_diligence_vi" />
-								</div>
-							</div>
-
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-mask_gr" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-mask_gr" />
 						</div>
 					</div>
-					<div class="farm_ressources_tuesday_friday_domains">
-						<!--Fang-->
-						<div class="flex row">
-							<div class="panel" id="panel-fang_ve">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/fang_ve.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-fang_ve" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-fang_ve" />
-								</div>
-							</div>
-							<div class="panel" id="panel-fang_b">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/fang_b.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-fang_b" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-fang_b" />
-								</div>
-							</div>
-							<div class="panel" id="panel-fang_vi">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/fang_vi.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-fang_vi" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-fang_vi" />
-								</div>
-							</div>
-							<div class="panel" id="panel-fang_g">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/fang_g.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-fang_g" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-fang_g" />
-								</div>
-							</div>
+					<div class="panel" id="panel-mask_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/mask_ve.png">
 						</div>
-						<!--Billes-->
-						<div class="flex row">
-							<div class="panel" id="panel-billes_ve">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/billes_ve.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-billes_ve" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-billes_ve" />
-								</div>
-							</div>
-							<div class="panel" id="panel-billes_b">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/billes_b.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-billes_b" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-billes_b" />
-								</div>
-							</div>
-							<div class="panel" id="panel-billes_vi">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/billes_vi.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-billes_vi" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-billes_vi" />
-								</div>
-							</div>
-							<div class="panel" id="panel-billes_g">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/billes_g.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-billes_g" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-billes_g" />
-								</div>
-							</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-mask_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-mask_ve" />
 						</div>
 					</div>
+					<div class="panel" id="panel-mask_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/mask_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-mask_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-mask_b" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-scroll_gr">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/scroll_gr.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-scroll_gr" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-scroll_gr" />
+						</div>
+					</div>
+					<div class="panel" id="panel-scroll_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/scroll_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-scroll_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-scroll_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-scroll_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/scroll_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-scroll_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-scroll_b" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-arrowhead_gr">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/arrowhead_gr.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-arrowhead_gr" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-arrowhead_gr" />
+						</div>
+					</div>
+					<div class="panel" id="panel-arrowhead_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/arrowhead_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-arrowhead_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-arrowhead_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-arrowhead_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/arrowhead_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-arrowhead_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-arrowhead_b" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-insignia_gr">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/insignia_gr.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-insignia_gr" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-insignia_gr" />
+						</div>
+					</div>
+					<div class="panel" id="panel-insignia_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/insignia_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-insignia_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-insignia_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-insignia_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/insignia_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-insignia_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-insignia_b" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-tr_hoarder_gr">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/tr_hoarder_gr.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-tr_hoarder_gr" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-tr_hoarder_gr" />
+						</div>
+					</div>
+					<div class="panel" id="panel-tr_hoarder_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/tr_hoarder_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-tr_hoarder_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-tr_hoarder_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-tr_hoarder_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/tr_hoarder_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-tr_hoarder_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-tr_hoarder_b" />
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="normal_loot_list2 bigRightSpace">
+				<div class="flex row">
+					<div class="panel" id="panel-nectar_gr">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_gr.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/nectar_gr.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-nectar_gr" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-nectar_gr" />
+						</div>
+					</div>
+					<div class="panel" id="panel-nectar_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/nectar_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-nectar_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-nectar_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-nectar_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/nectar_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-nectar_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-nectar_b" />
+						</div>
+					</div>
+
 				</div>
 			</div>
 
-			<div class="flex row farm_ressources_wednesday_saturday">
-				<div class="farm_ressources_days" id="farm_ressources_days_wednesday_saturday">
-					<p>Mer./ Sam.</p>
-				</div>
-				<div class="flex row farm_ressources_frame" id="farm_ressources_wednesday_saturday_frame">
-					<div class="farm_ressources_wednesday_saturday_talent bigRightSpace">
-						<!--Ballad-->
-						<div class="flex row">
-							<div class="panel" id="panel-talent_ballad_ve">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_ballad_ve.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_ballad_ve" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_ballad_ve" />
-								</div>
-							</div>
-							<div class="panel" id="panel-talent_ballad_b">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_ballad_b.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_ballad_b" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_ballad_b" />
-								</div>
-							</div>
-							<div class="panel" id="panel-talent_ballad_vi">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_ballad_vi.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_ballad_vi" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_ballad_vi" />
-								</div>
-							</div>
+			<div class="rare_loot_list">
+				<div class="flex row">
+					<div class="panel" id="panel-horn_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/horn_ve.png">
 						</div>
-						<!--Gold-->
-						<div class="flex row">
-							<div class="panel" id="panel-talent_gold_ve">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_gold_ve.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_gold_ve" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_gold_ve" />
-								</div>
-							</div>
-							<div class="panel" id="panel-talent_gold_b">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_gold_b.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_gold_b" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_gold_b" />
-								</div>
-							</div>
-							<div class="panel" id="panel-talent_gold_vi">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/talent_gold_vi.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-talent_gold_vi" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-talent_gold_vi" />
-								</div>
-							</div>
-
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-horn_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-horn_ve" />
 						</div>
 					</div>
-					<div class="farm_ressources_wednesday_saturday_domains">
-						<!--Menottes-->
-						<div class="flex row">
-							<div class="panel" id="panel-menottes_ve">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/menottes_ve.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-menottes_ve" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-menottes_ve" />
-								</div>
-							</div>
-							<div class="panel" id="panel-menottes_b">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/menottes_b.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-menottes_b" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-menottes_b" />
-								</div>
-							</div>
-							<div class="panel" id="panel-menottes_vi">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/menottes_vi.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-menottes_vi" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-menottes_vi" />
-								</div>
-							</div>
-							<div class="panel" id="panel-menottes_g">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/menottes_g.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-menottes_g" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-menottes_g" />
-								</div>
-							</div>
+					<div class="panel" id="panel-horn_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/horn_b.png">
 						</div>
-						<!--Puzzle-->
-						<div class="flex row">
-							<div class="panel" id="panel-puzzle_ve">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/puzzle_ve.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-puzzle_ve" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-puzzle_ve" />
-								</div>
-							</div>
-							<div class="panel" id="panel-puzzle_b">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/puzzle_b.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-puzzle_b" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-puzzle_b" />
-								</div>
-							</div>
-							<div class="panel" id="panel-puzzle_vi">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/puzzle_vi.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-puzzle_vi" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-puzzle_vi" />
-								</div>
-							</div>
-							<div class="panel" id="panel-puzzle_g">
-								<div class="panel_content hideable">
-									<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_g.png">
-									<img class="panel_content_image" src="assets/Icons/recoltables_62/puzzle_g.png">
-								</div>
-								<div class="panel_footer flex row">
-									<input type="text" placeholder="x" id="input_left-puzzle_g" />
-									<span>/</span>
-									<input type="text" placeholder="x" id="input_right-puzzle_g" />
-								</div>
-							</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-horn_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-horn_b" />
+						</div>
+					</div>
+					<div class="panel" id="panel-horn_vi">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/horn_vi.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-horn_vi" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-horn_vi" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-branch_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/branch_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-branch_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-branch_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-branch_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/branch_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-branch_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-branch_b" />
+						</div>
+					</div>
+					<div class="panel" id="panel-branch_vi">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/branch_vi.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-branch_vi" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-branch_vi" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-chaos_device_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/chaos_device_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-chaos_device_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-chaos_device_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-chaos_device_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/chaos_device_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-chaos_device_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-chaos_device_b" />
+						</div>
+					</div>
+					<div class="panel" id="panel-chaos_device_vi">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/chaos_device_vi.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-chaos_device_vi" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-chaos_device_vi" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-mist_grass_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/mist_grass_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-mist_grass_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-mist_grass_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-mist_grass_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/mist_grass_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-mist_grass_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-mist_grass_b" />
+						</div>
+					</div>
+					<div class="panel" id="panel-mist_grass_vi">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/mist_grass_vi.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-mist_grass_vi" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-mist_grass_vi" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-knife_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/knife_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-knife_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-knife_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-knife_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/knife_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-knife_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-knife_b" />
+						</div>
+					</div>
+					<div class="panel" id="panel-knife_vi">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/knife_vi.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-knife_vi" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-knife_vi" />
+						</div>
+					</div>
+
+				</div>
+				<div class="flex row">
+					<div class="panel" id="panel-bone_ve">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_ve.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/bone_ve.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-bone_ve" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-bone_ve" />
+						</div>
+					</div>
+					<div class="panel" id="panel-bone_b">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_b.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/bone_b.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-bone_b" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-bone_b" />
+						</div>
+					</div>
+					<div class="panel" id="panel-bone_vi">
+						<div class="panel_content hideable">
+							<img class="panel_content_image" src="assets/icons/recoltables/case_vi.png">
+							<img class="panel_content_image" src="assets/icons/recoltables/bone_vi.png">
+						</div>
+						<div class="panel_footer item_center flex row">
+							<input type="text" placeholder="x" id="input_left-bone_vi" />
+							<span>/</span>
+							<input type="text" placeholder="x" id="input_right-bone_vi" />
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
-
-	<div id="list_ressources_harvestable" class="flex row">
-		<div class="material_list bigRightSpace">
-			<div class="flex row">
-				<div class="panel" id="panel-calla_lily">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/calla_lily.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-calla_lily" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-calla_lily" />
-					</div>
+	<div id="liste_personnages">
+		<div id="liste_personnages_filtres" class="flex row">
+			<div id="liste_personnages_filtres_etoile" class="btn btn_filtre">
+				<img class="btn_filtre_image center" src='assets/icons/filters/etoile_icon_27.png'>
+			</div>
+			<div id="liste_personnages_filtres_element_arme">
+				<div id="liste_personnages_filtres_element" class="btn btn_filtre_flat">
+					Elements
 				</div>
-				<div class="panel" id="panel-cecilia">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/cecilia.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-cecilia" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-cecilia" />
-					</div>
-				</div>
-				<div class="panel" id="panel-dandelion_seed">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/dandelion_seed.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-dandelion_seed" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-dandelion_seed" />
-					</div>
-				</div>
-				<div class="panel" id="panel-philanemo_mushroom">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/philanemo_mushroom.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-philanemo_mushroom" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-philanemo_mushroom" />
-					</div>
+				<div id="liste_personnages_filtres_arme" class="btn btn_filtre_flat">
+					Armes
 				</div>
 			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-small_lamp_grass">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/small_lamp_grass.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-small_lamp_grass" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-small_lamp_grass" />
-					</div>
+			<div id="liste_personnages_filtres_etoiles">
+				<div id="liste_personnages_filtres_etoiles_cinq" class="btn btn_filtre_flat flex row no_justify_left_padding">
+					<img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
+					<img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
+					<img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
+					<img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
+					<img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
 				</div>
-				<div class="panel" id="panel-valberry">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/valberry.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-valberry" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-valberry" />
-					</div>
-				</div>
-				<div class="panel" id="panel-windwheel_aster">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/windwheel_aster.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-windwheel_aster" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-windwheel_aster" />
-					</div>
-				</div>
-				<div class="panel" id="panel-wolfhook">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/wolfhook.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-wolfhook" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-wolfhook" />
-					</div>
+				<div id="liste_personnages_filtres_etoiles_quatre" class="btn btn_filtre_flat flex row no_justify_left_padding">
+					<img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
+					<img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
+					<img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">
+					<img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png">					
 				</div>
 			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-cor_lapis">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/cor_lapis.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-cor_lapis" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-cor_lapis" />
-					</div>
+			<div id="liste_personnages_filtres_elements" class="flex row">
+				<div id="liste_personnages_filtres_elements_feu" class="btn btn_filtre">
+					<img class="btn_filtre_image center" src="assets/icons/filters/element_pyro.png">
 				</div>
-				<div class="panel" id="panel-glaze_lily">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/glaze_lily.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-glaze_lily" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-glaze_lily" />
-					</div>
+				<div id="liste_personnages_filtres_elements_glace" class="btn btn_filtre">
+					<img class="btn_filtre_image center" src="assets/icons/filters/element_cryo.png">
 				</div>
-				<div class="panel" id="panel-jueyun_chili">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/jueyun_chili.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-jueyun_chili" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-jueyun_chili" />
-					</div>
+				<div id="liste_personnages_filtres_elements_electro" class="btn btn_filtre">
+					<img class="btn_filtre_image center" src="assets/icons/filters/element_electro.png">
 				</div>
-				<div class="panel" id="panel-noctilucous_jade">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/noctilucous_jade.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-noctilucous_jade" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-noctilucous_jade" />
-					</div>
+				<div id="liste_personnages_filtres_elements_eau" class="btn btn_filtre">
+					<img class="btn_filtre_image center" src="assets/icons/filters/element_hydro.png">
 				</div>
+				<div id="liste_personnages_filtres_elements_anemo" class="btn btn_filtre">
+					<img class="btn_filtre_image center" src="assets/icons/filters/element_anemo.png">
+				</div>
+				<div id="liste_personnages_filtres_elements_geo" class="btn btn_filtre">
+					<img class="btn_filtre_image center" src="assets/icons/filters/element_geo.png">
+				</div>	
 			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-silk_flower">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/silk_flower.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-silk_flower" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-silk_flower" />
-					</div>
+			<div id="liste_personnages_filtres_armes" class="flex row">
+				<div id="liste_personnages_filtres_armes_epee" class="btn btn_filtre">
+					<img class="btn_filtre_image center" src="assets/icons/filters/sword27.png">
 				</div>
-				<div class="panel" id="panel-violetgrass">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/violetgrass.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-violetgrass" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-violetgrass" />
-					</div>
+				<div id="liste_personnages_filtres_armes_arc" class="btn btn_filtre">
+					<img class="btn_filtre_image center" src="assets/icons/filters/bow27.png">
 				</div>
-				<div class="panel" id="panel-qingxin">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/qingxin.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-qingxin" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-qingxin" />
-					</div>
+				<div id="liste_personnages_filtres_armes_lance" class="btn btn_filtre">
+					<img class="btn_filtre_image center" src="assets/icons/filters/polearm27.png">
 				</div>
-				<div class="panel" id="panel-starconch">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/starconch.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-starconch" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-starconch" />
-					</div>
+				<div id="liste_personnages_filtres_armes_claymore" class="btn btn_filtre">
+					<img class="btn_filtre_image center" src="assets/icons/filters/claymore27.png">
 				</div>
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-sea_ganoderma">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/sea_ganoderma.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-sea_ganoderma" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-sea_ganoderma" />
-					</div>
+				<div id="liste_personnages_filtres_armes_catalyste" class="btn btn_filtre">
+					<img class="btn_filtre_image center" src="assets/icons/filters/catalyst27.png">
 				</div>
 			</div>
 		</div>
-
-		<div class="normal_loot_list1 bigRightSpace">
-			<div class="flex row">
-				<div class="panel" id="panel-slime_gr">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/slime_gr.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-slime_gr" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-slime_gr" />
-					</div>
-				</div>
-				<div class="panel" id="panel-slime_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/slime_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-slime_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-slime_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-slime_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/slime_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-slime_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-slime_b" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-mask_gr">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/mask_gr.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-mask_gr" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-mask_gr" />
-					</div>
-				</div>
-				<div class="panel" id="panel-mask_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/mask_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-mask_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-mask_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-mask_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/mask_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-mask_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-mask_b" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-scroll_gr">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/scroll_gr.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-scroll_gr" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-scroll_gr" />
-					</div>
-				</div>
-				<div class="panel" id="panel-scroll_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/scroll_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-scroll_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-scroll_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-scroll_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/scroll_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-scroll_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-scroll_b" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-arrowhead_gr">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/arrowhead_gr.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-arrowhead_gr" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-arrowhead_gr" />
-					</div>
-				</div>
-				<div class="panel" id="panel-arrowhead_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/arrowhead_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-arrowhead_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-arrowhead_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-arrowhead_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/arrowhead_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-arrowhead_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-arrowhead_b" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-insignia_gr">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/insignia_gr.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-insignia_gr" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-insignia_gr" />
-					</div>
-				</div>
-				<div class="panel" id="panel-insignia_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/insignia_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-insignia_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-insignia_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-insignia_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/insignia_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-insignia_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-insignia_b" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-tr_hoarder_gr">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/tr_hoarder_gr.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-tr_hoarder_gr" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-tr_hoarder_gr" />
-					</div>
-				</div>
-				<div class="panel" id="panel-tr_hoarder_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/tr_hoarder_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-tr_hoarder_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-tr_hoarder_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-tr_hoarder_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/tr_hoarder_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-tr_hoarder_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-tr_hoarder_b" />
-					</div>
-				</div>
-
-			</div>
-		</div>
-		<div class="normal_loot_list2 bigRightSpace">
-			<div class="flex row">
-				<div class="panel" id="panel-nectar_gr">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_gr.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/nectar_gr.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-nectar_gr" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-nectar_gr" />
-					</div>
-				</div>
-				<div class="panel" id="panel-nectar_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/nectar_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-nectar_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-nectar_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-nectar_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/nectar_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-nectar_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-nectar_b" />
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<div class="rare_loot_list">
-			<div class="flex row">
-				<div class="panel" id="panel-horn_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/horn_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-horn_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-horn_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-horn_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/horn_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-horn_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-horn_b" />
-					</div>
-				</div>
-				<div class="panel" id="panel-horn_vi">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/horn_vi.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-horn_vi" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-horn_vi" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-branch_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/branch_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-branch_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-branch_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-branch_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/branch_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-branch_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-branch_b" />
-					</div>
-				</div>
-				<div class="panel" id="panel-branch_vi">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/branch_vi.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-branch_vi" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-branch_vi" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-chaos_device_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/chaos_device_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-chaos_device_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-chaos_device_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-chaos_device_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/chaos_device_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-chaos_device_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-chaos_device_b" />
-					</div>
-				</div>
-				<div class="panel" id="panel-chaos_device_vi">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/chaos_device_vi.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-chaos_device_vi" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-chaos_device_vi" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-mist_grass_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/mist_grass_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-mist_grass_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-mist_grass_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-mist_grass_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/mist_grass_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-mist_grass_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-mist_grass_b" />
-					</div>
-				</div>
-				<div class="panel" id="panel-mist_grass_vi">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/mist_grass_vi.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-mist_grass_vi" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-mist_grass_vi" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-knife_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/knife_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-knife_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-knife_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-knife_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/knife_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-knife_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-knife_b" />
-					</div>
-				</div>
-				<div class="panel" id="panel-knife_vi">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/knife_vi.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-knife_vi" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-knife_vi" />
-					</div>
-				</div>
-
-			</div>
-			<div class="flex row">
-				<div class="panel" id="panel-bone_ve">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_ve.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/bone_ve.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-bone_ve" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-bone_ve" />
-					</div>
-				</div>
-				<div class="panel" id="panel-bone_b">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_b.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/bone_b.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-bone_b" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-bone_b" />
-					</div>
-				</div>
-				<div class="panel" id="panel-bone_vi">
-					<div class="panel_content hideable">
-						<img class="panel_content_image" src="assets/Icons_Case/recoltables/case_vi.png">
-						<img class="panel_content_image" src="assets/Icons/recoltables_62/bone_vi.png">
-					</div>
-					<div class="panel_footer flex row">
-						<input type="text" placeholder="x" id="input_left-bone_vi" />
-						<span>/</span>
-						<input type="text" placeholder="x" id="input_right-bone_vi" />
-					</div>
-				</div>
-			</div>
+		<div id="reactContainer_liste_personnages_personnages">
 		</div>
 	</div>
 
 	<script src="js/app.js"></script>
 	<script src="js/parametrique.js"></script>
 	<script src="js/farming_days.js"></script>
+	<script type="text/babel" src="js/characters.js"></script>
 </body>
 
 </html>
