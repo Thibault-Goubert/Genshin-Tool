@@ -3,8 +3,9 @@ const charactersCardsContainer = document.getElementById('reactContainer_liste_p
 const assetsRessourcesCharactersURL = "assets/icons/characters/char_";
 const assetsRessourcesElementURL = "assets/icons/filters/element_";
 
-const findCharacters = false;
 var characters = {characters: []};
+
+const findCharacters = true;
 if(findCharacters){
   var charactersNames = (function () {
       var json = null;
