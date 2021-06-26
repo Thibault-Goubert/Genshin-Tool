@@ -1,0 +1,36 @@
+Grosse étoile:
+- Ligne des 5 étoiles
+- Ligne des 4 étoiles
+- Saute une ligne entre les deux (60px)
+- 5/4 étoiles décoche la grosse étoile (et inversement)
+
+Elements:
+- Une ligne par élément
+- Même ordre d'élément que l'ordre dans le filtre
+- pyro/cryo/.. décoche Elements (et inversement)
+
+Armes:
+- Une ligne par arme
+- Même ordre d'arme que l'ordre dans le filtre
+- epee/arc/.. décoche Armes (et inversement)
+
+Etoiles:
+- Soit 5* soit 4*
+
+Elements:
+- Affiche les persos des éléments cochés
+- Si tout coché, tout décocher et cocher btn Elements
+
+Armes:
+- Affiche les persos des armes cochées
+- Si tout coché, tout décocher et cocher btn Armes
+
+Filtre priorité:
+- Arme => elements
+(
+    Epee => Pyro
+    Epee => Cryo
+    
+    Arc => Pyro
+    Arc => Cryo
+)

@@ -1,44 +1,26 @@
+
+
 const requestURLCharacters = 'https://api.genshin.dev/characters/';
-const charactersCardsContainer = document.getElementById('reactContainer_liste_personnages_personnages');
+const charactersCardsContainer = document.getElementById('liste_personnages_personnages');
 const assetsRessourcesCharactersURL = "assets/icons/characters/char_";
 const assetsRessourcesElementURL = "assets/icons/filters/element_";
 
-var characters = {characters: []};
-
-const findCharacters = true;
-if(findCharacters){
-  var charactersNames = (function () {
-      var json = null;
-      $.ajax({
-        'async': false,
-        'global': false,
-        'url': requestURLCharacters,
-        'dataType': "json",
-        'success': function (data) {
-          json = data;
-        }
-      });
-      return json;
-  })();
-  $.each(charactersNames, function (idx, name) {
-      console.log(name, idx);
-      var character = (function () {
-          var json = null;
-          $.ajax({
-            'async': false,
-            'global': false,
-            'url': requestURLCharacters+name,
-            'dataType': "json",
-            'success': function (data) {
-              json = data;
-            }
-          });
-          return json;
-      })();
-      characters['characters'].push(character);
-  });
+var characters = loadCharactersJSON();
+function loadCharactersJSON(){
+    var datas;
+    $.ajaxSetup({
+      async: false
+    });
+    $.getJSON("ressources/characters.json", function(data){
+        datas = data;
+    }).fail(function(){
+      console.log("An error has occurred.");
+    })
+    $.ajaxSetup({
+      async: true
+    });
+    return datas;
 }
-
 class CharacterCard extends React.Component{
   render(){    
     var characterNameNoSpace = this.props.name.replace(' ', '_');
@@ -66,7 +48,6 @@ class CharacterCard extends React.Component{
     ));
   }
 }
-
 class CharactersList extends React.Component{
   render(){
     const charactersCards = [];
@@ -80,20 +61,108 @@ class CharactersList extends React.Component{
       );
     })
     return(
-      <div id='liste_personnages_personnages' class='flex row'>{charactersCards}</div>
+      charactersCards
     )
   };
 }
 
 class FilterableCharactersList extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      isPyro: false
+    }
+    this.handlePyroChange = this.handlePyroChange.bind(this);
+  }
+  handlePyroChange(isPyro){
+    this.setState({
+      isPyro: isPyro
+    })
+  }
   render(){
     return(
-      <CharactersList characters={this.props.characters}/>
+      <CharactersList 
+        characters={this.props.characters}
+        onPyroChange={this.state.isPyro}
+      />
     )
   };
 }
 
 ReactDOM.render(
-  <FilterableCharactersList characters={characters.characters}/>,  
+  <FilterableCharactersList 
+    characters={characters.Characters}
+  />,  
   charactersCardsContainer
 );
+
+$(document).ready(function () {
+  //#region Filtre rariy
+  let btnFiltreEtoile  = $('#liste_personnages_filtres_etoile');
+  let btnFiltreEtoile5 = $('#liste_personnages_filtres_etoiles_cinq');
+  let btnFiltreEtoile4 = $('#liste_personnages_filtres_etoiles_quatre');
+
+  btnFiltreEtoile.click(function(){
+    var isChecked = btnFiltreEtoile.hasClass("checked");
+    if (!isChecked) {
+      btnFiltreEtoile.addClass("checked");
+      storage.setItem(btnFiltreEtoile[0].id, "checked");
+      btnFiltreEtoile5.removeClass("checked");
+      storage.removeItem(btnFiltreEtoile5[0].id, "checked");
+      btnFiltreEtoile4.removeClass("checked");
+      storage.removeItem(btnFiltreEtoile4[0].id, "checked");
+    }
+    else{
+      btnFiltreEtoile.removeClass("checked");
+      storage.removeItem(btnFiltreEtoile[0].id, "checked");
+    }
+  })
+  btnFiltreEtoile5.click(function(){
+    var isChecked = btnFiltreEtoile5.hasClass("checked");
+    if (!isChecked) {
+      btnFiltreEtoile5.addClass("checked");
+      storage.setItem(btnFiltreEtoile5[0].id, "checked");
+      btnFiltreEtoile.removeClass("checked");
+      storage.removeItem(btnFiltreEtoile[0].id, "checked");
+      btnFiltreEtoile4.removeClass("checked");
+      storage.removeItem(btnFiltreEtoile4[0].id, "checked");
+    }
+    else{
+      btnFiltreEtoile5.removeClass("checked");
+      storage.removeItem(btnFiltreEtoile5[0].id, "checked");
+    }
+  })
+  btnFiltreEtoile4.click(function(){
+    var isChecked = btnFiltreEtoile4.hasClass("checked");
+    if (!isChecked) {
+      btnFiltreEtoile4.addClass("checked");
+      storage.setItem(btnFiltreEtoile4[0].id, "checked");
+      btnFiltreEtoile5.removeClass("checked");
+      storage.removeItem(btnFiltreEtoile5[0].id, "checked");
+      btnFiltreEtoile.removeClass("checked");
+      storage.removeItem(btnFiltreEtoile[0].id, "checked");
+    }
+    else{
+      btnFiltreEtoile4.removeClass("checked");
+      storage.removeItem(btnFiltreEtoile4[0].id, "checked");
+    }
+  })
+  //#endregion
+  //#region Filtre Pyro
+  let btnElements = $('#liste_personnages_filtres_element')
+  let btnFiltrePyro = $('#liste_personnages_filtres_elements_feu');
+  btnFiltrePyro.click(function(){
+    var isChecked = btnFiltrePyro.hasClass("checked");
+    if (!isChecked) {
+      btnFiltrePyro.addClass("checked")
+      storage.setItem(btnFiltrePyro[0].id, "checked");
+      btnElements.removeClass("checked");
+      storage.removeItem(btnElements[0].id, "checked");
+    }
+    else{
+      btnFiltrePyro.removeClass("checked");
+      storage.removeItem(btnFiltrePyro[0].id, "checked");
+    }
+  })
+  //#endregion
+});

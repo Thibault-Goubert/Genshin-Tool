@@ -5,7 +5,6 @@ body{
 ::selection {
     background-color: #CCC;
 }
-
 .center{    
     left: 50%;
     top: 50%;
@@ -13,6 +12,9 @@ body{
 }
 .large,div.large,img.large{
     width: 124px;
+}
+img{
+    pointer-events: none;
 }
 img.right {
     right: 0%;
@@ -285,6 +287,8 @@ input, .btn, span, p{
 
     border-radius: 3px;
     box-shadow: 0px 0px 4px black;
+
+    user-select: none;
 }
 .personnage_panel_portrait_content{
     position: relative;
@@ -330,3 +334,4 @@ input, .btn, span, p{
 
     user-select: none;
 }
+

@@ -68,7 +68,7 @@ $(document).ready(function () {
         storage.setItem("list_ressources_harvestable", "collapsed");
         $("#btn_boss_domains").addClass("checked");
         storage.setItem("btn_boss_domains", "checked");
-    }    
+    }      
 });
 
 inputs.each(function () {
@@ -207,7 +207,6 @@ modalBtnNo.click(function () {
     modal[0].style.display = "none";
 });
 //#endregion
-
 
 //#region misc functions
 function isInteger(valueToCheck) {
