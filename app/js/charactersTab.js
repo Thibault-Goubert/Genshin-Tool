@@ -5,19 +5,18 @@ const assetsRessourcesElementURL = "assets/icons/filters/element_";
 
 class CharacterCard extends React.Component{
     render(){    
-      var characterNameNoSpace = this.props.name.replace(' ', '_');
-      characterNameNoSpace = characterNameNoSpace=="Traveler"? "aether" : characterNameNoSpace;
-      var displayCharacterName = characterNameNoSpace=="aether"? this.props.name + " " + this.props.vision[0] : this.props.name;
-  
-  
-      const IDBase = "liste_personnages_personnage_";
-      const IDMainContainer = IDBase+characterNameNoSpace;
-      const IDPortraitContent = IDBase+characterNameNoSpace+"_portrait";
-      const IDPortraitName = IDBase+characterNameNoSpace+"_name";
-  
-      const srcBackgroundCase = "assets/icons/characters/case"+this.props.rarity+"nat.png";
-      const srcPortrait = assetsRessourcesCharactersURL+characterNameNoSpace+".png";
-      const srcVision = assetsRessourcesElementURL+this.props.vision+".png";
+        var characterNameNoSpace = this.props.name.replace(' ', '_');
+        characterNameNoSpace = characterNameNoSpace=="Traveler"? "aether" : characterNameNoSpace;
+        var displayCharacterName = characterNameNoSpace=="aether"? this.props.name + " " + this.props.vision[0] : this.props.name;
+            
+        const IDBase = "liste_personnages_personnage_";
+        const IDMainContainer = IDBase+characterNameNoSpace;
+        const IDPortraitContent = IDBase+characterNameNoSpace+"_portrait";
+        const IDPortraitName = IDBase+characterNameNoSpace+"_name";
+    
+        const srcBackgroundCase = "assets/icons/characters/case"+this.props.rarity+"nat.png";
+        const srcPortrait = assetsRessourcesCharactersURL+characterNameNoSpace+".png";
+        const srcVision = assetsRessourcesElementURL+this.props.vision+".png";
       
         return(
             React.createElement('div', {className:'personnage_panel', id:IDMainContainer},
@@ -33,44 +32,702 @@ class CharacterCard extends React.Component{
 }
 class CharactersList extends React.Component{
     render(){
+        //#region Variables Elements
+        const isElements = this.props.isElements;
         const isPyro = this.props.isPyro;
         const isCryo = this.props.isCryo;
         const isAnemo = this.props.isAnemo;
         const isGeo = this.props.isGeo;
         const isHydro = this.props.isHydro;
         const isElectro = this.props.isElectro;
+        //#endregion
+        //#region Variables Armes
+        const isArmes = this.props.isArmes;
+        const isEpee = this.props.isEpee;
+        const isArc = this.props.isArc;
+        const isLance = this.props.isLance;
+        const isClaymore = this.props.isClaymore;
+        const isCatalyste = this.props.isCatalyste;
+        //#endregion
+        var isSortedByWeapons = (isEpee || isArc || isLance || isClaymore || isCatalyste || isArmes);
+        var isSortedByElements = (isPyro || isCryo || isElectro || isHydro || isAnemo || isGeo || isElements);
 
-        const charactersCards = [];
-        this.props.characters.forEach((character)=>{
-            if(isPyro && character.vision == "Pyro" 
-            || isCryo && character.vision == "Cryo"
-            || isAnemo && character.vision == "Anemo"
-            || isGeo && character.vision == "Geo"
-            || isHydro && character.vision == "Hydro"
-            || isElectro && character.vision == "Electro"
-            || (!isPyro && !isCryo && !isAnemo && !isGeo && !isHydro && !isElectro)
-            ){           
-                charactersCards.push(
-                <CharacterCard
-                    name={character.name}
-                    rarity={character.rarity}
-                    vision={character.vision}
-                />) 
+        var charactersCards = [];
+
+        if(isSortedByWeapons){
+            if(isEpee || isArmes){
+                console.log("Arme Epee")  
+                var charactersFilterByWeapon = filterCharacterListByWeapon(this.props.characters, "Sword");
+                if(isPyro || isElements){
+                    console.log("weapon element Pyro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Pyro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isCryo || isElements){
+                    console.log("weapon element Cryo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Cryo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isElectro || isElements){
+                    console.log("weapon element Electro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Electro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isHydro || isElements){
+                    console.log("weapon element Hydro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Hydro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isAnemo || isElements){
+                    console.log("weapon element Anemo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Anemo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isGeo || isElements){
+                    console.log("weapon element Geo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Geo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                else if(!isSortedByElements){
+                    var currentWeaponCharacters = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        currentWeaponCharacters.push(
+                            <CharacterCard
+                                name={character.name}
+                                rarity={character.rarity}
+                                vision={character.vision}
+                            />) 
+                }) 
+                charactersCards.push(<div class='flex row'>{currentWeaponCharacters}</div>)
+                }
             }
-        })
+            if(isArc || isArmes){
+                console.log("Arme Arc")  
+                var charactersFilterByWeapon = filterCharacterListByWeapon(this.props.characters, "Bow");
+                if(isPyro || isElements){
+                    console.log("weapon element Pyro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Pyro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isCryo || isElements){
+                    console.log("weapon element Cryo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Cryo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isElectro || isElements){
+                    console.log("weapon element Electro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Electro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isHydro || isElements){
+                    console.log("weapon element Hydro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Hydro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isAnemo || isElements){
+                    console.log("weapon element Anemo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Anemo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isGeo || isElements){
+                    console.log("weapon element Geo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Geo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                else if(!isSortedByElements){
+                    var currentWeaponCharacters = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        currentWeaponCharacters.push(
+                            <CharacterCard
+                                name={character.name}
+                                rarity={character.rarity}
+                                vision={character.vision}
+                            />) 
+                }) 
+                charactersCards.push(<div class='flex row'>{currentWeaponCharacters}</div>)
+                }  
+            }
+            if(isLance || isArmes){
+                console.log("Arme Lance")
+                var charactersFilterByWeapon = filterCharacterListByWeapon(this.props.characters, "Polearm");
+                if(isPyro || isElements){
+                    console.log("weapon element Pyro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Pyro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isCryo || isElements){
+                    console.log("weapon element Cryo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Cryo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isElectro || isElements){
+                    console.log("weapon element Electro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Electro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isHydro || isElements){
+                    console.log("weapon element Hydro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Hydro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isAnemo || isElements){
+                    console.log("weapon element Anemo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Anemo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isGeo || isElements){
+                    console.log("weapon element Geo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Geo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                else if(!isSortedByElements){
+                    var currentWeaponCharacters = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        currentWeaponCharacters.push(
+                            <CharacterCard
+                                name={character.name}
+                                rarity={character.rarity}
+                                vision={character.vision}
+                            />) 
+                }) 
+                charactersCards.push(<div class='flex row'>{currentWeaponCharacters}</div>)
+                } 
+            }
+            if(isClaymore || isArmes){
+                console.log("Arme Claymore") 
+                var charactersFilterByWeapon = filterCharacterListByWeapon(this.props.characters, "Claymore");
+                if(isPyro || isElements){
+                    console.log("weapon element Pyro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Pyro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isCryo || isElements){
+                    console.log("weapon element Cryo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Cryo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isElectro || isElements){
+                    console.log("weapon element Electro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Electro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isHydro || isElements){
+                    console.log("weapon element Hydro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Hydro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isAnemo || isElements){
+                    console.log("weapon element Anemo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Anemo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isGeo || isElements){
+                    console.log("weapon element Geo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Geo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                else if(!isSortedByElements){
+                    var currentWeaponCharacters = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        currentWeaponCharacters.push(
+                            <CharacterCard
+                                name={character.name}
+                                rarity={character.rarity}
+                                vision={character.vision}
+                            />) 
+                }) 
+                charactersCards.push(<div class='flex row'>{currentWeaponCharacters}</div>)
+                }
+            }
+            if(isCatalyste || isArmes){
+                console.log("Arme Catalyste") 
+                var charactersFilterByWeapon = filterCharacterListByWeapon(this.props.characters, "Catalyst");
+                if(isPyro || isElements){
+                    console.log("weapon element Pyro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Pyro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isCryo || isElements){
+                    console.log("weapon element Cryo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Cryo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isElectro || isElements){
+                    console.log("weapon element Electro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Electro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isHydro || isElements){
+                    console.log("weapon element Hydro")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Hydro'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isAnemo || isElements){
+                    console.log("weapon element Anemo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Anemo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                if(isGeo || isElements){
+                    console.log("weapon element Geo")  
+                    var currentWeaponElementCharacter = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        if(character.vision == 'Geo'){
+                            currentWeaponElementCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                />) 
+                        }
+                    }) 
+                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
+                }
+                else if(!isSortedByElements){
+                    var currentWeaponCharacters = []
+                    charactersFilterByWeapon.forEach((character)=>{
+                        currentWeaponCharacters.push(
+                            <CharacterCard
+                                name={character.name}
+                                rarity={character.rarity}
+                                vision={character.vision}
+                            />) 
+                }) 
+                charactersCards.push(<div class='flex row'>{currentWeaponCharacters}</div>)
+                }
+            }
+        }
+        else if(!isSortedByWeapons && isSortedByElements){
+            if(isPyro || isElements){
+                console.log("Element Pyro")  
+                var pyroCharacter = []
+                this.props.characters.forEach((character)=>{
+                    if(character.vision == 'Pyro'){
+                        pyroCharacter.push(
+                            <CharacterCard
+                                name={character.name}
+                                rarity={character.rarity}
+                                vision={character.vision}
+                            />) 
+                    }
+                }) 
+                charactersCards.push(<div class='flex row'>{pyroCharacter}</div>)
+            }
+            if(isCryo || isElements){
+                console.log("Element Cryo")
+                var cryoCharacter = []          
+                this.props.characters.forEach((character)=>{
+                    if(character.vision == 'Cryo'){
+                        cryoCharacter.push(
+                            <CharacterCard
+                                name={character.name}
+                                rarity={character.rarity}
+                                vision={character.vision}
+                            />) 
+                    }
+                }) 
+                charactersCards.push(<div class='flex row'>{cryoCharacter}</div>) 
+            }
+            if(isElectro || isElements){
+                console.log("Element Electro")
+                var electroCharacter = []          
+                this.props.characters.forEach((character)=>{
+                    if(character.vision == 'Electro'){
+                        electroCharacter.push(
+                            <CharacterCard
+                                name={character.name}
+                                rarity={character.rarity}
+                                vision={character.vision}
+                            />) 
+                    }
+                }) 
+                charactersCards.push(<div class='flex row'>{electroCharacter}</div>)
+            }
+            if(isHydro || isElements){
+                console.log("Element Hydro") 
+                var hydroCharacter = []          
+                this.props.characters.forEach((character)=>{
+                    if(character.vision == 'Hydro'){
+                        hydroCharacter.push(
+                            <CharacterCard
+                                name={character.name}
+                                rarity={character.rarity}
+                                vision={character.vision}
+                            />) 
+                    }
+                }) 
+                charactersCards.push(<div class='flex row'>{hydroCharacter}</div>) 
+            }
+            if(isAnemo || isElements){
+                console.log("Element Anemo")
+                var anemoCharacter = []          
+                this.props.characters.forEach((character)=>{
+                    if(character.vision == 'Anemo'){
+                        anemoCharacter.push(
+                            <CharacterCard
+                                name={character.name}
+                                rarity={character.rarity}
+                                vision={character.vision}
+                            />) 
+                    }
+                }) 
+                charactersCards.push(<div class='flex row'>{anemoCharacter}</div>) 
+            }
+            if(isGeo || isElements){
+                console.log("Element Geo")
+                var geoCharacter = []          
+                this.props.characters.forEach((character)=>{
+                    if(character.vision == 'Geo'){
+                        geoCharacter.push(
+                            <CharacterCard
+                                name={character.name  }
+                                rarity={character.rarity}
+                                vision={character.vision}
+                            />) 
+                    }
+                }) 
+                charactersCards.push(<div class='flex row'>{geoCharacter}</div>)
+            }
+        }
+        else{
+            if( !isPyro && !isCryo && !isAnemo && !isGeo && !isHydro && !isElectro && !isElements &&
+                !isEpee && !isArc && !isLance && !isClaymore && !isCatalyste && !isArmes
+                ){
+                console.log("All") 
+                this.props.characters.forEach((character)=>{
+                    charactersCards.push(
+                    <CharacterCard
+                        name={character.name}
+                        rarity={character.rarity}
+                        vision={character.vision}
+                    />) 
+                })     
+            }
+        }
         return(<div id='liste_personnages_personnages' class='flex row'>{charactersCards}</div>)
     };
 }
+function filterCharacterListByVision(characterList, vision){
+    return characterList.filter(character => character.vision == vision)
+}
+function filterCharacterListByWeapon(characterList, weapon){
+    return characterList.filter(character => character.weapon == weapon)
+}
+function filterCharacterListByRarity(characterList, rarity){
+    return characterList.filter(character => character.rarity == rarity)
+} 
+
 class Filters extends React.Component{
     constructor(props) {
       super(props);
+      //#region Elements
       this.handleIsPyroChange = this.handleIsPyroChange.bind(this);
       this.handleIsCryoChange = this.handleIsCryoChange.bind(this);
       this.handleIsAnemoChange = this.handleIsAnemoChange.bind(this);
       this.handleIsGeoChange = this.handleIsGeoChange.bind(this);
       this.handleIsElectroChange = this.handleIsElectroChange.bind(this);
       this.handleIsHydroChange = this.handleIsHydroChange.bind(this);
-    }    
+      this.handleIsElementsChange = this.handleIsElementsChange.bind(this);
+      //#endregion
+      //#region Armes
+      this.handleIsArmesChange = this.handleIsArmesChange.bind(this);
+      this.handleIsEpeeChange = this.handleIsEpeeChange.bind(this);
+      this.handleIsArcChange = this.handleIsArcChange.bind(this);
+      this.handleIsLanceChange = this.handleIsLanceChange.bind(this);
+      this.handleIsClaymoreChange = this.handleIsClaymoreChange.bind(this);
+      this.handleIsCatalysteChange = this.handleIsCatalysteChange.bind(this);
+      //#endregion
+    }
+    //#region Handlers Elements 
     handleIsPyroChange(e) {
         this.props.onIsPyroChange(e.currentTarget.classList.contains('checked'));
     }
@@ -89,6 +746,30 @@ class Filters extends React.Component{
     handleIsHydroChange(e) {
         this.props.onIsHydroChange(e.currentTarget.classList.contains('checked'));
     }
+    handleIsElementsChange(e){
+        this.props.onIsElementsChange(e.currentTarget.classList.contains('checked'));
+    }
+    //#endregion
+    //#region Handlers Armes
+    handleIsArmesChange(e) {
+        this.props.onIsArmesChange(e.currentTarget.classList.contains('checked'));
+    }
+    handleIsEpeeChange(e) {
+        this.props.onIsEpeeChange(e.currentTarget.classList.contains('checked'));
+    }
+    handleIsArcChange(e) {
+        this.props.onIsArcChange(e.currentTarget.classList.contains('checked'));
+    }
+    handleIsLanceChange(e){
+        this.props.onIsLanceChange(e.currentTarget.classList.contains('checked'));
+    }
+    handleIsClaymoreChange(e) {
+        this.props.onIsClaymoreChange(e.currentTarget.classList.contains('checked'));
+    }
+    handleIsCatalysteChange(e) {
+        this.props.onIsCatalysteChange(e.currentTarget.classList.contains('checked'));
+    }
+    //#endregion
     render(){
         return(
             <div id="liste_personnages_filtres" class="flex row">
@@ -96,13 +777,14 @@ class Filters extends React.Component{
                     <img class="btn_filtre_image center" src='assets/icons/filters/etoile_icon_27.png'/>
                 </div>
                 <div id="liste_personnages_filtres_element_arme">
-                    <div id="liste_personnages_filtres_element" class="btn btn_filtre_flat">
+                    <div id="liste_personnages_filtres_element" class="btn btn_filtre_flat" onClick={this.handleIsElementsChange} >
                         Elements
                     </div>
-                    <div id="liste_personnages_filtres_arme" class="btn btn_filtre_flat">
+                    <div id="liste_personnages_filtres_arme" class="btn btn_filtre_flat" onClick={this.handleIsArmesChange} >
                         Armes
                     </div>
                 </div>
+                
                 <div id="liste_personnages_filtres_etoiles">
                     <div id="liste_personnages_filtres_etoiles_cinq" class="btn btn_filtre_flat flex row no_justify_left_padding">
                         <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png"/>
@@ -118,6 +800,7 @@ class Filters extends React.Component{
                         <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png"/>					
                     </div>
                 </div>
+                
                 <div id="liste_personnages_filtres_elements" class="flex row">
                     <div id="liste_personnages_filtres_elements_feu" class="btn btn_filtre" onClick={this.handleIsPyroChange} >
                         <img class="btn_filtre_image center" src="assets/icons/filters/element_pyro.png"/>
@@ -138,20 +821,21 @@ class Filters extends React.Component{
                         <img class="btn_filtre_image center" src="assets/icons/filters/element_geo.png"/>
                     </div>	
                 </div>
+                
                 <div id="liste_personnages_filtres_armes" class="flex row">
-                    <div id="liste_personnages_filtres_armes_epee" class="btn btn_filtre">
+                    <div id="liste_personnages_filtres_armes_epee" class="btn btn_filtre" onClick={this.handleIsEpeeChange} >
                         <img class="btn_filtre_image center" src="assets/icons/filters/sword27.png"/>
                     </div>
-                    <div id="liste_personnages_filtres_armes_arc" class="btn btn_filtre">
+                    <div id="liste_personnages_filtres_armes_arc" class="btn btn_filtre" onClick={this.handleIsArcChange} >
                         <img class="btn_filtre_image center" src="assets/icons/filters/bow27.png"/>
                     </div>
-                    <div id="liste_personnages_filtres_armes_lance" class="btn btn_filtre">
+                    <div id="liste_personnages_filtres_armes_lance" class="btn btn_filtre" onClick={this.handleIsLanceChange} >
                         <img class="btn_filtre_image center" src="assets/icons/filters/polearm27.png"/>
                     </div>
-                    <div id="liste_personnages_filtres_armes_claymore" class="btn btn_filtre">
+                    <div id="liste_personnages_filtres_armes_claymore" class="btn btn_filtre" onClick={this.handleIsClaymoreChange} >
                         <img class="btn_filtre_image center" src="assets/icons/filters/claymore27.png"/>
                     </div>
-                    <div id="liste_personnages_filtres_armes_catalyste" class="btn btn_filtre">
+                    <div id="liste_personnages_filtres_armes_catalyste" class="btn btn_filtre" onClick={this.handleIsCatalysteChange} >
                         <img class="btn_filtre_image center" src="assets/icons/filters/catalyst27.png"/>
                     </div>
                 </div>
@@ -163,20 +847,43 @@ class FilterableCharactersList extends React.Component{
     constructor(props){
       super(props);
       this.state = {
+        //#region Elements
         isPyro: false,
         isCryo: false,
         isAnemo: false,
         isHydro: false,
         isGeo: false,
-        isElectro: false
+        isElectro: false,
+        isElements: false,
+        //#endregion
+        //#region Armes
+        isEpee: false,
+        isArc: false,
+        isLance: false,
+        isClaymore: false,
+        isCatalyste: false,
+        isArmes: false
+        //#endregion
       }
+      //#region Elements
       this.handleIsPyroChange = this.handleIsPyroChange.bind(this);
       this.handleIsCryoChange = this.handleIsCryoChange.bind(this);
       this.handleIsAnemoChange = this.handleIsAnemoChange.bind(this);
       this.handleIsHydroChange = this.handleIsHydroChange.bind(this);
       this.handleIsGeoChange = this.handleIsGeoChange.bind(this);
       this.handleIsElectroChange = this.handleIsElectroChange.bind(this);
+      this.handleIsElementsChange = this.handleIsElementsChange.bind(this);
+      //#endregion
+      //#region Armes
+      this.handleIsArmesChange = this.handleIsArmesChange.bind(this);
+      this.handleIsEpeeChange = this.handleIsEpeeChange.bind(this);
+      this.handleIsArcChange = this.handleIsArcChange.bind(this);
+      this.handleIsLanceChange = this.handleIsLanceChange.bind(this);
+      this.handleIsClaymoreChange = this.handleIsClaymoreChange.bind(this);
+      this.handleIsCatalysteChange = this.handleIsCatalysteChange.bind(this);
+      //#endregion
     }
+    //#region Handlers Elements
     handleIsPyroChange(isPyro){
         this.setState({
             isPyro: isPyro
@@ -207,10 +914,51 @@ class FilterableCharactersList extends React.Component{
             isElectro: isElectro
         })
     }
+    handleIsElementsChange(isElements){
+        this.setState({
+            isElements: isElements
+        })
+    }
+    //#endregion
+    //#region Handlers Armes
+    handleIsArmesChange(isArmes){
+        this.setState({
+            isArmes: isArmes
+        })
+    }
+    handleIsEpeeChange(isEpee){
+        this.setState({
+            isEpee: isEpee
+        })
+    }
+    handleIsArcChange(isArc){
+        this.setState({
+            isArc: isArc
+        })
+    }
+    handleIsLanceChange(isLance){
+        this.setState({
+            isLance: isLance
+        })
+    }
+    handleIsClaymoreChange(isClaymore){
+        this.setState({
+            isClaymore: isClaymore
+        })
+    }
+    handleIsCatalysteChange(isCatalyste){
+        this.setState({
+            isCatalyste: isCatalyste
+        })
+    }
+    //#endregion    
+    
     render(){
         return(
             <div>
                 <Filters
+                    //#region Elements
+                    isElements={this.state.isElements}
                     isPyro={this.state.isPyro}
                     isCryo={this.state.isCryo}
                     isAnemo={this.state.isAnemo}
@@ -218,21 +966,49 @@ class FilterableCharactersList extends React.Component{
                     isGeo={this.state.isGeo}
                     isElectro={this.state.isElectro}
 
+                    onIsElementsChange={this.handleIsElementsChange}
                     onIsPyroChange={this.handleIsPyroChange}
                     onIsCryoChange={this.handleIsCryoChange}
                     onIsAnemoChange={this.handleIsAnemoChange}
                     onIsHydroChange={this.handleIsHydroChange}
                     onIsGeoChange={this.handleIsGeoChange}
                     onIsElectroChange={this.handleIsElectroChange}
+                    //#endregion
+                    //#region Armes
+                    isEpee={this.state.isEpee}
+                    isArc={this.state.isArc}
+                    isLance={this.state.isLance}
+                    isClaymore={this.state.isClaymore}
+                    isCatalyste={this.state.isCatalyste}
+                    isArmes={this.state.isArmes}
+
+                    onIsArmesChange={this.handleIsArmesChange}
+                    onIsEpeeChange={this.handleIsEpeeChange}
+                    onIsArcChange={this.handleIsArcChange}
+                    onIsLanceChange={this.handleIsLanceChange}
+                    onIsClaymoreChange={this.handleIsClaymoreChange}
+                    onIsCatalysteChange={this.handleIsCatalysteChange}
+                    //#endregion
                 />
                 <CharactersList 
                     characters={this.props.characters}
+                    //#region Elements
+                    isElements={this.state.isElements}
                     isPyro={this.state.isPyro}
                     isCryo={this.state.isCryo}
                     isAnemo={this.state.isAnemo}
                     isHydro={this.state.isHydro}
                     isGeo={this.state.isGeo}
                     isElectro={this.state.isElectro}
+                    //#endregion
+                    //#region Armes
+                    isEpee={this.state.isEpee}
+                    isArc={this.state.isArc}
+                    isLance={this.state.isLance}
+                    isClaymore={this.state.isClaymore}
+                    isCatalyste={this.state.isCatalyste}
+                    isArmes={this.state.isArmes}
+                    //#endregion
                 />
             </div>
         )
@@ -258,35 +1034,72 @@ ReactDOM.render(
     <FilterableCharactersList characters={characters.Characters}/>,  
     document.getElementById('liste_personnages')
 );
-//#region Filtre Elements
+
+//#region Variables 
+//#region Elements
 let btnElements = $('#liste_personnages_filtres_element')
 let btnFiltrePyro = $('#liste_personnages_filtres_elements_feu');
 let btnFiltreCryo = $('#liste_personnages_filtres_elements_glace');
 let btnFiltreElectro = $('#liste_personnages_filtres_elements_electro');
 let btnFiltreHydro = $('#liste_personnages_filtres_elements_eau');
-let btnFiltreGeo = $('#liste_personnages_filtres_elements_geo');
 let btnFiltreAnemo = $('#liste_personnages_filtres_elements_anemo');
+let btnFiltreGeo = $('#liste_personnages_filtres_elements_geo');
+//#endregion
+//#region Armes
+let btnFiltreArmes = $('#liste_personnages_filtres_arme');
+let btnFiltreEpee = $('#liste_personnages_filtres_armes_epee');
+let btnFiltreArc = $('#liste_personnages_filtres_armes_arc');
+let btnFiltreLance = $('#liste_personnages_filtres_armes_lance');
+let btnFiltreClaymore = $('#liste_personnages_filtres_armes_claymore');
+let btnFiltreCatalyste = $('#liste_personnages_filtres_armes_catalyste');
+//#endregion
+//#endregion
 
+//#region Filtre Elements
+btnElements.click(function(){      
+    var isChecked = btnElements.hasClass("checked");    
+    if(!isChecked){
+        var isPyroChecked = btnFiltrePyro.hasClass("checked");
+        var isCryoChecked = btnFiltreCryo.hasClass("checked");
+        var isElectroChecked = btnFiltreElectro.hasClass("checked");
+        var isHydroChecked = btnFiltreHydro.hasClass("checked");
+        var isAnemoChecked = btnFiltreAnemo.hasClass("checked");
+        var isGeoChecked = btnFiltreGeo.hasClass("checked");
+    
+        if(isPyroChecked)btnFiltrePyro.click();
+        if(isCryoChecked)btnFiltreCryo.click();
+        if(isElectroChecked)btnFiltreElectro.click();
+        if(isHydroChecked)btnFiltreHydro.click();
+        if(isAnemoChecked)btnFiltreAnemo.click();
+        if(isGeoChecked)btnFiltreGeo.click();
+        
+        btnElements.addClass("checked")
+        storage.setItem(btnElements[0].id, "checked");
+    }
+    else{
+        btnElements.removeClass("checked")
+        storage.removeItem(btnElements[0].id, "checked");
+    }
+})
 btnFiltrePyro.click(function(){
     var isChecked = btnFiltrePyro.hasClass("checked");
     if (!isChecked) {
         btnFiltrePyro.addClass("checked")
         storage.setItem(btnFiltrePyro[0].id, "checked");
-        btnElements.removeClass("checked");
-        storage.removeItem(btnElements[0].id, "checked");
+        if(btnElements.hasClass("checked")) btnElements.click();
     }
     else{
         btnFiltrePyro.removeClass("checked");
         storage.removeItem(btnFiltrePyro[0].id, "checked");
     }
+    manageElementsFilters();
 })
 btnFiltreCryo.click(function(){
     var isChecked = btnFiltreCryo.hasClass("checked");
     if (!isChecked) {
         btnFiltreCryo.addClass("checked")
         storage.setItem(btnFiltreCryo[0].id, "checked");
-        btnElements.removeClass("checked");
-        storage.removeItem(btnElements[0].id, "checked");
+        if(btnElements.hasClass("checked")) btnElements.click();
     }
     else{
         btnFiltreCryo.removeClass("checked");
@@ -298,51 +1111,180 @@ btnFiltreElectro.click(function(){
     if (!isChecked) {
         btnFiltreElectro.addClass("checked")
         storage.setItem(btnFiltreElectro[0].id, "checked");
-        btnElements.removeClass("checked");
-        storage.removeItem(btnElements[0].id, "checked");
+        if(btnElements.hasClass("checked")) btnElements.click();
     }
     else{
         btnFiltreElectro.removeClass("checked");
         storage.removeItem(btnFiltreElectro[0].id, "checked");
     }
+    manageElementsFilters();
 })
 btnFiltreHydro.click(function(){
     var isChecked = btnFiltreHydro.hasClass("checked");
     if (!isChecked) {
         btnFiltreHydro.addClass("checked")
         storage.setItem(btnFiltreHydro[0].id, "checked");
-        btnElements.removeClass("checked");
-        storage.removeItem(btnElements[0].id, "checked");
+        if(btnElements.hasClass("checked")) btnElements.click();
     }
     else{
         btnFiltreHydro.removeClass("checked");
         storage.removeItem(btnFiltreHydro[0].id, "checked");
     }
+    manageElementsFilters();
 })
 btnFiltreGeo.click(function(){
     var isChecked = btnFiltreGeo.hasClass("checked");
     if (!isChecked) {
         btnFiltreGeo.addClass("checked")
         storage.setItem(btnFiltreGeo[0].id, "checked");
-        btnElements.removeClass("checked");
-        storage.removeItem(btnElements[0].id, "checked");
+        if(btnElements.hasClass("checked")) btnElements.click();
     }
     else{
         btnFiltreGeo.removeClass("checked");
         storage.removeItem(btnFiltreGeo[0].id, "checked");
     }
+    manageElementsFilters();
 })
 btnFiltreAnemo.click(function(){
     var isChecked = btnFiltreAnemo.hasClass("checked");
     if (!isChecked) {
         btnFiltreAnemo.addClass("checked")
         storage.setItem(btnFiltreAnemo[0].id, "checked");
-        btnElements.removeClass("checked");
-        storage.removeItem(btnElements[0].id, "checked");
+        if(btnElements.hasClass("checked")) btnElements.click();
     }
     else{
         btnFiltreAnemo.removeClass("checked");
         storage.removeItem(btnFiltreAnemo[0].id, "checked");
     }
+    manageElementsFilters();
 })
+function manageElementsFilters(){
+    var isPyroChecked = btnFiltrePyro.hasClass("checked");
+    var isCryoChecked = btnFiltreCryo.hasClass("checked");
+    var isElectroChecked = btnFiltreElectro.hasClass("checked");
+    var isHydroChecked = btnFiltreHydro.hasClass("checked");
+    var isAnemoChecked = btnFiltreAnemo.hasClass("checked");
+    var isGeoChecked = btnFiltreGeo.hasClass("checked");
+
+    if( isPyroChecked && isCryoChecked && isElectroChecked && 
+        isHydroChecked && isAnemoChecked && isGeoChecked
+        ){
+            btnFiltrePyro.click();
+            btnFiltreCryo.click();
+            btnFiltreElectro.click();
+            btnFiltreHydro.click();
+            btnFiltreAnemo.click();
+            btnFiltreGeo.click();
+            btnElements.click();
+        }
+}
+//#endregion
+//#region Filtre Armes
+btnFiltreArmes.click(function(){     
+    var isChecked = btnFiltreArmes.hasClass("checked");    
+    if(!isChecked){
+        var isEpeeChecked = btnFiltreEpee.hasClass("checked");
+        var isArcChecked = btnFiltreArc.hasClass("checked");
+        var isLanceChecked = btnFiltreLance.hasClass("checked");
+        var isClaymoreChecked = btnFiltreClaymore.hasClass("checked");
+        var isCatalysteChecked = btnFiltreCatalyste.hasClass("checked");
+    
+        if(isEpeeChecked) btnFiltreEpee.click();
+        if(isArcChecked) btnFiltreArc.click();
+        if(isLanceChecked) btnFiltreLance.click();
+        if(isClaymoreChecked) btnFiltreClaymore.click();
+        if(isCatalysteChecked) btnFiltreCatalyste.click();
+        
+        btnFiltreArmes.addClass("checked")
+        storage.setItem(btnFiltreArmes[0].id, "checked");
+    }
+    else{
+        btnFiltreArmes.removeClass("checked")
+        storage.removeItem(btnFiltreArmes[0].id, "checked");
+    }
+})
+btnFiltreEpee.click(function(){
+    var isChecked = btnFiltreEpee.hasClass("checked");
+    if (!isChecked) {
+        btnFiltreEpee.addClass("checked")
+        storage.setItem(btnFiltreEpee[0].id, "checked");
+        if(btnFiltreArmes.hasClass("checked")) btnFiltreArmes.click();
+    }
+    else{
+        btnFiltreEpee.removeClass("checked");
+        storage.removeItem(btnFiltreEpee[0].id, "checked");
+    }
+    manageArmesFilters();
+})
+btnFiltreArc.click(function(){
+    var isChecked = btnFiltreArc.hasClass("checked");
+    if (!isChecked) {
+        btnFiltreArc.addClass("checked")
+        storage.setItem(btnFiltreArc[0].id, "checked");
+        if(btnFiltreArmes.hasClass("checked")) btnFiltreArmes.click();
+    }
+    else{
+        btnFiltreArc.removeClass("checked");
+        storage.removeItem(btnFiltreArc[0].id, "checked");
+    }
+    manageArmesFilters();
+})
+btnFiltreLance.click(function(){
+    var isChecked = btnFiltreLance.hasClass("checked");
+    if (!isChecked) {
+        btnFiltreLance.addClass("checked")
+        storage.setItem(btnFiltreLance[0].id, "checked");
+        if(btnFiltreArmes.hasClass("checked")) btnFiltreArmes.click();
+    }
+    else{
+        btnFiltreLance.removeClass("checked");
+        storage.removeItem(btnFiltreLance[0].id, "checked");
+    }
+    manageArmesFilters();
+}) 
+btnFiltreClaymore.click(function(){
+    var isChecked = btnFiltreClaymore.hasClass("checked");
+    if (!isChecked) {
+        btnFiltreClaymore.addClass("checked")
+        storage.setItem(btnFiltreClaymore[0].id, "checked");
+        if(btnFiltreArmes.hasClass("checked")) btnFiltreArmes.click();
+    }
+    else{
+        btnFiltreClaymore.removeClass("checked");
+        storage.removeItem(btnFiltreClaymore[0].id, "checked");
+    }
+    manageArmesFilters();
+}) 
+btnFiltreCatalyste.click(function(){
+    var isChecked = btnFiltreCatalyste.hasClass("checked");
+    if (!isChecked) {
+        btnFiltreCatalyste.addClass("checked")
+        storage.setItem(btnFiltreCatalyste[0].id, "checked");
+        if(btnFiltreArmes.hasClass("checked")) btnFiltreArmes.click();
+    }
+    else{
+        btnFiltreCatalyste.removeClass("checked");
+        storage.removeItem(btnFiltreCatalyste[0].id, "checked");
+    }
+    manageArmesFilters();
+})
+function manageArmesFilters(){
+    var isEpeeChecked = btnFiltreEpee.hasClass("checked");
+    var isArcChecked = btnFiltreArc.hasClass("checked");
+    var isLanceChecked = btnFiltreLance.hasClass("checked");
+    var isClaymoreChecked = btnFiltreClaymore.hasClass("checked");
+    var isCatalysteChecked = btnFiltreCatalyste.hasClass("checked");
+
+    if( isEpeeChecked && isArcChecked && isLanceChecked && 
+        isClaymoreChecked && isCatalysteChecked
+        ){
+            btnFiltreEpee.click();
+            btnFiltreArc.click();
+            btnFiltreLance.click();
+            btnFiltreClaymore.click();
+            btnFiltreCatalyste.click();
+
+            btnFiltreArmes.click();
+        }
+}
 //#endregion

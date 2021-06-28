@@ -127,11 +127,18 @@ input, .btn, span, p{
     user-select: none;
     box-shadow: 0px 0px 4px black; 
 }
-.btn_principal{    
-    margin-bottom: 15px;
-    margin-top: 15px;   
+.btn_principal{ 
     margin-left: 6px; 
     margin-right: 6px;
+}
+#btn_groupe_principal,
+#liste_ressources_generales,
+#btn_groupe_ressources{    
+    margin-top: 23px;  
+}
+#list_ressources_boss_domains,
+#list_ressources_harvestable{
+    margin-top: 25px;
 }
 .btn.checked{
     background-color: #e9e5dc;
@@ -280,6 +287,11 @@ input, .btn, span, p{
 #liste_personnages_personnages {
     width: 900px;
     flex-flow: wrap;
+    margin-top: 28px;
+}
+
+#liste_personnages_filtres {
+    margin-top: 23px;
 }
 .personnage_panel{
     width: 90px;
@@ -289,6 +301,9 @@ input, .btn, span, p{
     box-shadow: 0px 0px 4px black;
 
     user-select: none;
+
+    margin-right: 12px;
+    margin-bottom: 12px;
 }
 .personnage_panel_portrait_content{
     position: relative;
@@ -335,3 +350,32 @@ input, .btn, span, p{
     user-select: none;
 }
 
+#liste_personnages_filtres_armes,
+#liste_personnages_filtres_elements,
+#liste_personnages_filtres_etoiles
+{
+    margin-left: 24px;
+}
+#liste_personnages_filtres_arme,
+#liste_personnages_filtres_etoiles_quatre{
+    margin-top: 4px;;
+}
+#liste_personnages_filtres_element_arme{
+    margin-left: 8px;
+}
+#liste_personnages{
+    margin-left: 6px;
+}
+
+#liste_personnages_filtres_armes_arc,
+#liste_personnages_filtres_armes_lance,
+#liste_personnages_filtres_armes_claymore,
+#liste_personnages_filtres_armes_catalyste,
+#liste_personnages_filtres_elements_geo,
+#liste_personnages_filtres_elements_anemo,
+#liste_personnages_filtres_elements_eau,
+#liste_personnages_filtres_elements_electro,
+#liste_personnages_filtres_elements_glace
+{
+    margin-left: 4px;
+}

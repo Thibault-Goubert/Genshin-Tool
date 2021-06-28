@@ -26,11 +26,11 @@ Armes:
 - Si tout coché, tout décocher et cocher btn Armes
 
 Filtre priorité:
-- Arme => elements
+- Arme => elements => Rarity
 (
-    Epee => Pyro
-    Epee => Cryo
+    Epee => Pyro => 5 => 4
+    Epee => Cryo => 5 => 4
     
-    Arc => Pyro
-    Arc => Cryo
+    Arc => Pyro => 5 => 4
+    Arc => Cryo => 5 => 4
 )
