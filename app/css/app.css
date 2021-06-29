@@ -151,12 +151,6 @@ input, .btn, span, p{
     height: 30px;
     width: 94px;
 }
-#myModal-btn-yes,
-#myModal-btn-no
-{
-    width: 26px;
-    height: 20px;
-}
 
 #input_left-nb_mora{
     width: 120px;
@@ -189,22 +183,34 @@ input, .btn, span, p{
 /* Modal Content/Box */
 .modal-content {
     background-color: #e9e5dc;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    margin: 15% auto; /* 15% from the top and centered */    
+    border: 1px;
+    width: 250px;
+    height: 100px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 4px black; 
 }
-/* The Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+#myModal-text{
+    margin-top: 20px;
+    user-select: none;
+    font-family: Calibri;
+    font-weight: lighter;
+    font-size:smaller;
+    padding-top: 22px;
 }
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
+#myModal-buttons{
+    margin-top: 15px;
+}
+#myModal-btn-yes,
+#myModal-btn-no
+{
+    width: 50px;
+    height: 25px;
+    color: #e9e5dc;
+}
+#myModal-btn-yes:hover,#myModal-btn-yes:focus,
+#myModal-btn-no:hover,#myModal-btn-no:focus
+{
     cursor: pointer;
 }
   
@@ -285,9 +291,11 @@ input, .btn, span, p{
 }
 
 #liste_personnages_personnages {
+    margin-top: 28px;
+}
+.limitCardsNumberByRow{
     width: 900px;
     flex-flow: wrap;
-    margin-top: 28px;
 }
 
 #liste_personnages_filtres {
@@ -304,6 +312,17 @@ input, .btn, span, p{
 
     margin-right: 12px;
     margin-bottom: 12px;
+}
+.weapon_panel{
+    position: relative;
+    width: 90px;
+    height: 120px;
+    user-select: none;
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+.weapon_panel_icon{
+    position: absolute;
 }
 .personnage_panel_portrait_content{
     position: relative;
@@ -378,4 +397,8 @@ input, .btn, span, p{
 #liste_personnages_filtres_elements_glace
 {
     margin-left: 4px;
+}
+
+#liste_personnages_personnages.flexDirectionColumn{
+    flex-flow: column;
 }

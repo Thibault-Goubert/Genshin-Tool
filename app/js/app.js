@@ -78,7 +78,6 @@ inputs.each(function () {
     if (inputid.includes("right")) {
         input.click(function () {        
             input.blur();
-            $("#myModal-text")[0].innerHTML = "Changer la valeur de " + inputid + " ?";
             modalBtnYes.click(function () {
                 modal[0].style.display = "none";
                 input[0].focus();
@@ -200,9 +199,6 @@ btnPersonnages.click(function () {
     }
 });
 // When the user clicks on <span> (x), close the modal
-modalSpan.onclick = function () {
-    modal[0].style.display = "none";
-};
 modalBtnNo.click(function () {
     modal[0].style.display = "none";
 });

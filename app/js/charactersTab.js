@@ -3,11 +3,22 @@ const charactersCardsContainer = document.getElementById('liste_personnages_pers
 const assetsRessourcesCharactersURL = "assets/icons/characters/char_";
 const assetsRessourcesElementURL = "assets/icons/filters/element_";
 
+class WeaponCard extends React.Component{
+    render(){
+        return(
+            React.createElement('div', {className:'weapon_panel'},
+                React.createElement('img', {className:'weapon_panel_icon center', src:this.props.weaponIconSrc})
+            )
+        );
+    }
+}
+
 class CharacterCard extends React.Component{
-    render(){    
-        var characterNameNoSpace = this.props.name.replace(' ', '_');
-        characterNameNoSpace = characterNameNoSpace=="Traveler"? "aether" : characterNameNoSpace;
-        var displayCharacterName = characterNameNoSpace=="aether"? this.props.name + " " + this.props.vision[0] : this.props.name;
+    render(){
+        //#region Variables
+        var isTraveler = this.props.name=="Traveler";
+
+        var characterNameNoSpace = isTraveler ? "aether" : this.props.name.replace(' ', '_');
             
         const IDBase = "liste_personnages_personnage_";
         const IDMainContainer = IDBase+characterNameNoSpace;
@@ -17,16 +28,28 @@ class CharacterCard extends React.Component{
         const srcBackgroundCase = "assets/icons/characters/case"+this.props.rarity+"nat.png";
         const srcPortrait = assetsRessourcesCharactersURL+characterNameNoSpace+".png";
         const srcVision = assetsRessourcesElementURL+this.props.vision+".png";
-      
+
+        var cardVision;
+        var displayCharacterName = displayCharacterName = this.props.name;
+        //#endregion
+
+        //#region Manage Display Traveler        
+        if(!isTraveler || this.props.displayTravelerVision) {
+            cardVision = React.createElement('img', {className:'personnage_panel_element', src:srcVision});
+        }
+        //#endregion
+
+        var card = 
+        React.createElement('div', {className:'personnage_panel', id:IDMainContainer},
+            React.createElement('div', {className:'personnage_panel_portrait_content', id:IDPortraitContent},
+                React.createElement('img', {className:'personnage_panel_background', src:srcBackgroundCase}),
+                React.createElement('img', {className:'personnage_panel_portrait', src:srcPortrait}),
+                cardVision        
+            ),
+            React.createElement('div', {className:'personnage_panel_name', id:IDPortraitName}, displayCharacterName)
+        )
         return(
-            React.createElement('div', {className:'personnage_panel', id:IDMainContainer},
-                React.createElement('div', {className:'personnage_panel_portrait_content', id:IDPortraitContent},
-                    React.createElement('img', {className:'personnage_panel_background', src:srcBackgroundCase}),
-                    React.createElement('img', {className:'personnage_panel_portrait', src:srcPortrait}),
-                    React.createElement('img', {className:'personnage_panel_element', src:srcVision})        
-                ),
-                React.createElement('div', {className:'personnage_panel_name', id:IDPortraitName}, displayCharacterName)
-            )
+            card
         );
     }
 }
@@ -49,541 +72,623 @@ class CharactersList extends React.Component{
         const isClaymore = this.props.isClaymore;
         const isCatalyste = this.props.isCatalyste;
         //#endregion
+        //#region Rarity
+        var charactersSortedByRarity = []
+        const isRarity = this.props.isRarity;
+        const isRarityCinq = this.props.isRarityCinq;
+        const isRarityQuatre = this.props.isRarityQuatre;
+        //#endregion
+        
+        var charactersCards = [];
         var isSortedByWeapons = (isEpee || isArc || isLance || isClaymore || isCatalyste || isArmes);
         var isSortedByElements = (isPyro || isCryo || isElectro || isHydro || isAnemo || isGeo || isElements);
+        var isSortedByRarity = (isRarity || isRarityCinq || isRarityQuatre);
+        var isFiltered = (isSortedByElements || isSortedByWeapons || isSortedByRarity);
+        var displayTravelerVision = !(!isFiltered || !isSortedByElements || (isEpee || isArmes && ((isAnemo && isGeo) || isElements)))
+               
+        console.log("display:",displayTravelerVision)
+        console.log("isAnemo:",isAnemo)
+        console.log("isGeo:",isGeo)
 
-        var charactersCards = [];
+        //#region FilterUnique
+        if(!displayTravelerVision){
+            this.props.characters = this.props.characters.filter(onlyUnique);
+        }
+        if(!displayTravelerVision && !isAnemo && isGeo){
+            this.props.characters.find(c => c.name == "Traveler").vision = "Geo";
+            displayTravelerVision = true;
+        }
+        //#endregion
 
+        if(isSortedByRarity && !isSortedByWeapons && !isSortedByElements){
+            console.log(charactersSortedByRarity)
+            if(isRarityCinq || isRarity){
+                var charactersRarityCinqRow = [];
+                filterCharacterListByRarity(this.props.characters, 5).forEach((character) => {
+                    charactersRarityCinqRow.push(
+                        <CharacterCard
+                            name={character.name}
+                            rarity={character.rarity}
+                            vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
+                            displayTravelerVision={displayTravelerVision}
+                        />) 
+                })
+                charactersCards.push(<div class='flex row limitCardsNumberByRow'>{charactersRarityCinqRow}</div>)   
+            }
+            if(isRarityQuatre || isRarity){
+                var charactersRarityQuatreRow = [];
+                filterCharacterListByRarity(this.props.characters, 4).forEach((character) => {
+                    charactersRarityQuatreRow.push(
+                        <CharacterCard
+                            name={character.name}
+                            rarity={character.rarity}
+                            vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
+                            displayTravelerVision={displayTravelerVision}
+                        />) 
+                })    
+                charactersCards.push(<div class='flex row limitCardsNumberByRow'>{charactersRarityQuatreRow}</div>)        
+            }
+            return(<div id='liste_personnages_personnages' class='flex row limitCardsNumberByRow'>{charactersCards}</div>)
+        }
+        
+        //#region FilterByRarity
+        if(isRarityCinq || isRarity){
+            filterCharacterListByRarity(this.props.characters, 5).forEach((character) => {
+                charactersSortedByRarity.push(character)
+            })
+        }
+        if(isRarityQuatre || isRarity){
+            filterCharacterListByRarity(this.props.characters, 4).forEach((character) => {
+                charactersSortedByRarity.push(character)
+            })           
+        }
+        if(isSortedByRarity){
+            this.props.characters = charactersSortedByRarity;
+        }
+        //#endregion
+        
         if(isSortedByWeapons){
+            console.log(this.props.characters)
             if(isEpee || isArmes){
                 console.log("Arme Epee")  
                 var charactersFilterByWeapon = filterCharacterListByWeapon(this.props.characters, "Sword");
+                var rowCharacterWeapon = [];
+                rowCharacterWeapon.push(
+                    <WeaponCard
+                        weaponType = "sword"
+                        weaponIconSrc = "assets/icons/filters/sword50.png"
+                    />
+                )
                 if(isPyro || isElements){
                     console.log("weapon element Pyro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Pyro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isCryo || isElements){
                     console.log("weapon element Cryo")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Cryo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isElectro || isElements){
                     console.log("weapon element Electro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Electro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isHydro || isElements){
                     console.log("weapon element Hydro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Hydro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isAnemo || isElements){
-                    console.log("weapon element Anemo")  
-                    var currentWeaponElementCharacter = []
+                    console.log("weapon element Anemo")
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Anemo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isGeo || isElements){
                     console.log("weapon element Geo")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Geo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 else if(!isSortedByElements){
-                    var currentWeaponCharacters = []
                     charactersFilterByWeapon.forEach((character)=>{
-                        currentWeaponCharacters.push(
+                        rowCharacterWeapon.push(
                             <CharacterCard
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                             />) 
                 }) 
-                charactersCards.push(<div class='flex row'>{currentWeaponCharacters}</div>)
                 }
+                charactersCards.push(<div class='flex row'>{rowCharacterWeapon}</div>)
             }
             if(isArc || isArmes){
                 console.log("Arme Arc")  
                 var charactersFilterByWeapon = filterCharacterListByWeapon(this.props.characters, "Bow");
+                var rowCharacterWeapon = [];
+                rowCharacterWeapon.push(
+                    <WeaponCard
+                        weaponType = "bow"
+                        weaponIconSrc = "assets/icons/filters/bow50.png"
+                    />
+                )
                 if(isPyro || isElements){
                     console.log("weapon element Pyro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Pyro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isCryo || isElements){
                     console.log("weapon element Cryo")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Cryo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isElectro || isElements){
                     console.log("weapon element Electro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Electro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isHydro || isElements){
                     console.log("weapon element Hydro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Hydro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isAnemo || isElements){
-                    console.log("weapon element Anemo")  
-                    var currentWeaponElementCharacter = []
+                    console.log("weapon element Anemo")
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Anemo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isGeo || isElements){
                     console.log("weapon element Geo")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Geo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 else if(!isSortedByElements){
-                    var currentWeaponCharacters = []
                     charactersFilterByWeapon.forEach((character)=>{
-                        currentWeaponCharacters.push(
+                        rowCharacterWeapon.push(
                             <CharacterCard
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                             />) 
                 }) 
-                charactersCards.push(<div class='flex row'>{currentWeaponCharacters}</div>)
-                }  
+                }
+                charactersCards.push(<div class='flex row'>{rowCharacterWeapon}</div>)
             }
             if(isLance || isArmes){
                 console.log("Arme Lance")
                 var charactersFilterByWeapon = filterCharacterListByWeapon(this.props.characters, "Polearm");
+                var rowCharacterWeapon = [];
+                rowCharacterWeapon.push(
+                    <WeaponCard
+                        weaponType = "polearm"
+                        weaponIconSrc = "assets/icons/filters/polearm50.png"
+                    />
+                )
                 if(isPyro || isElements){
                     console.log("weapon element Pyro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Pyro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isCryo || isElements){
                     console.log("weapon element Cryo")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Cryo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isElectro || isElements){
                     console.log("weapon element Electro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Electro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isHydro || isElements){
                     console.log("weapon element Hydro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Hydro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isAnemo || isElements){
-                    console.log("weapon element Anemo")  
-                    var currentWeaponElementCharacter = []
+                    console.log("weapon element Anemo")
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Anemo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isGeo || isElements){
                     console.log("weapon element Geo")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Geo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 else if(!isSortedByElements){
-                    var currentWeaponCharacters = []
                     charactersFilterByWeapon.forEach((character)=>{
-                        currentWeaponCharacters.push(
+                        rowCharacterWeapon.push(
                             <CharacterCard
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                             />) 
                 }) 
-                charactersCards.push(<div class='flex row'>{currentWeaponCharacters}</div>)
-                } 
+                }
+                charactersCards.push(<div class='flex row'>{rowCharacterWeapon}</div>)
             }
             if(isClaymore || isArmes){
                 console.log("Arme Claymore") 
                 var charactersFilterByWeapon = filterCharacterListByWeapon(this.props.characters, "Claymore");
+                var rowCharacterWeapon = [];
+                rowCharacterWeapon.push(
+                    <WeaponCard
+                        weaponType = "claymore"
+                        weaponIconSrc = "assets/icons/filters/claymore50.png"
+                    />
+                )
                 if(isPyro || isElements){
                     console.log("weapon element Pyro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Pyro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isCryo || isElements){
                     console.log("weapon element Cryo")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Cryo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isElectro || isElements){
                     console.log("weapon element Electro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Electro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isHydro || isElements){
                     console.log("weapon element Hydro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Hydro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isAnemo || isElements){
-                    console.log("weapon element Anemo")  
-                    var currentWeaponElementCharacter = []
+                    console.log("weapon element Anemo")
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Anemo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isGeo || isElements){
                     console.log("weapon element Geo")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Geo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 else if(!isSortedByElements){
-                    var currentWeaponCharacters = []
                     charactersFilterByWeapon.forEach((character)=>{
-                        currentWeaponCharacters.push(
+                        rowCharacterWeapon.push(
                             <CharacterCard
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                             />) 
                 }) 
-                charactersCards.push(<div class='flex row'>{currentWeaponCharacters}</div>)
                 }
+                charactersCards.push(<div class='flex row'>{rowCharacterWeapon}</div>)
             }
             if(isCatalyste || isArmes){
                 console.log("Arme Catalyste") 
                 var charactersFilterByWeapon = filterCharacterListByWeapon(this.props.characters, "Catalyst");
+                var rowCharacterWeapon = [];
+                rowCharacterWeapon.push(
+                    <WeaponCard
+                        weaponType = "catalyst"
+                        weaponIconSrc = "assets/icons/filters/catalyst50.png"
+                    />
+                )
                 if(isPyro || isElements){
                     console.log("weapon element Pyro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Pyro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isCryo || isElements){
                     console.log("weapon element Cryo")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Cryo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isElectro || isElements){
                     console.log("weapon element Electro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Electro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isHydro || isElements){
                     console.log("weapon element Hydro")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Hydro'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isAnemo || isElements){
-                    console.log("weapon element Anemo")  
-                    var currentWeaponElementCharacter = []
+                    console.log("weapon element Anemo")
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Anemo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 if(isGeo || isElements){
                     console.log("weapon element Geo")  
-                    var currentWeaponElementCharacter = []
                     charactersFilterByWeapon.forEach((character)=>{
                         if(character.vision == 'Geo'){
-                            currentWeaponElementCharacter.push(
+                            rowCharacterWeapon.push(
                                 <CharacterCard
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
-                    charactersCards.push(<div class='flex row'>{currentWeaponElementCharacter}</div>)
                 }
                 else if(!isSortedByElements){
-                    var currentWeaponCharacters = []
                     charactersFilterByWeapon.forEach((character)=>{
-                        currentWeaponCharacters.push(
+                        rowCharacterWeapon.push(
                             <CharacterCard
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                             />) 
                 }) 
-                charactersCards.push(<div class='flex row'>{currentWeaponCharacters}</div>)
                 }
+                charactersCards.push(<div class='flex row'>{rowCharacterWeapon}</div>)
             }
         }
         else if(!isSortedByWeapons && isSortedByElements){
@@ -597,6 +702,8 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                             />) 
                     }
                 }) 
@@ -612,6 +719,8 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                             />) 
                     }
                 }) 
@@ -627,6 +736,8 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                             />) 
                     }
                 }) 
@@ -642,6 +753,8 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                             />) 
                     }
                 }) 
@@ -657,6 +770,8 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                             />) 
                     }
                 }) 
@@ -672,6 +787,8 @@ class CharactersList extends React.Component{
                                 name={character.name  }
                                 rarity={character.rarity}
                                 vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                             />) 
                     }
                 }) 
@@ -679,21 +796,23 @@ class CharactersList extends React.Component{
             }
         }
         else{
-            if( !isPyro && !isCryo && !isAnemo && !isGeo && !isHydro && !isElectro && !isElements &&
-                !isEpee && !isArc && !isLance && !isClaymore && !isCatalyste && !isArmes
-                ){
-                console.log("All") 
-                this.props.characters.forEach((character)=>{
+            if(!isFiltered){
+                console.log("Not filtered") 
+                this.props.characters.filter(onlyUnique).forEach((character)=>{
                     charactersCards.push(
                     <CharacterCard
                         name={character.name}
                         rarity={character.rarity}
                         vision={character.vision}
+                                    displayTravelerVision={displayTravelerVision}
+                        displayTravelerVision={displayTravelerVision}
                     />) 
-                })     
+                })
+                return(<div id='liste_personnages_personnages' class='flex row limitCardsNumberByRow'>{charactersCards}</div>)    
             }
         }
-        return(<div id='liste_personnages_personnages' class='flex row'>{charactersCards}</div>)
+        
+        return(<div id='liste_personnages_personnages' class='flex row flexDirectionColumn'>{charactersCards}</div>)
     };
 }
 function filterCharacterListByVision(characterList, vision){
@@ -705,7 +824,10 @@ function filterCharacterListByWeapon(characterList, weapon){
 function filterCharacterListByRarity(characterList, rarity){
     return characterList.filter(character => character.rarity == rarity)
 } 
-
+function onlyUnique(value, index, self) {
+    return self.map(function(o) { return o.name; }).indexOf(value.name) === index;
+}
+  
 class Filters extends React.Component{
     constructor(props) {
       super(props);
@@ -725,6 +847,11 @@ class Filters extends React.Component{
       this.handleIsLanceChange = this.handleIsLanceChange.bind(this);
       this.handleIsClaymoreChange = this.handleIsClaymoreChange.bind(this);
       this.handleIsCatalysteChange = this.handleIsCatalysteChange.bind(this);
+      //#endregion
+      //#region Rarity
+      this.handleIsRarityChange = this.handleIsRarityChange.bind(this);
+      this.handleIsRarityCinqChange = this.handleIsRarityCinqChange.bind(this);
+      this.handleIsRarityQuatreChange = this.handleIsRarityQuatreChange.bind(this);
       //#endregion
     }
     //#region Handlers Elements 
@@ -770,10 +897,21 @@ class Filters extends React.Component{
         this.props.onIsCatalysteChange(e.currentTarget.classList.contains('checked'));
     }
     //#endregion
+    //#region Handlers Rarity
+    handleIsRarityChange(e){
+        this.props.onIsRarity(e.currentTarget.classList.contains('checked'));
+    }
+    handleIsRarityCinqChange(e) {
+        this.props.onIsRarityCinq(e.currentTarget.classList.contains('checked'));
+    }
+    handleIsRarityQuatreChange(e) {
+        this.props.onIsRarityQuatre(e.currentTarget.classList.contains('checked'));
+    }
+    //#endregion
     render(){
         return(
             <div id="liste_personnages_filtres" class="flex row">
-                <div id="liste_personnages_filtres_etoile" class="btn btn_filtre">
+                <div id="liste_personnages_filtres_etoile" class="btn btn_filtre" onClick={this.handleIsRarityChange} >
                     <img class="btn_filtre_image center" src='assets/icons/filters/etoile_icon_27.png'/>
                 </div>
                 <div id="liste_personnages_filtres_element_arme">
@@ -786,14 +924,14 @@ class Filters extends React.Component{
                 </div>
                 
                 <div id="liste_personnages_filtres_etoiles">
-                    <div id="liste_personnages_filtres_etoiles_cinq" class="btn btn_filtre_flat flex row no_justify_left_padding">
+                    <div id="liste_personnages_filtres_etoiles_cinq" class="btn btn_filtre_flat flex row no_justify_left_padding" onClick={this.handleIsRarityCinqChange} >
                         <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png"/>
                         <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png"/>
                         <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png"/>
                         <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png"/>
                         <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png"/>
                     </div>
-                    <div id="liste_personnages_filtres_etoiles_quatre" class="btn btn_filtre_flat flex row no_justify_left_padding">
+                    <div id="liste_personnages_filtres_etoiles_quatre" class="btn btn_filtre_flat flex row no_justify_left_padding" onClick={this.handleIsRarityQuatreChange} >
                         <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png"/>
                         <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png"/>
                         <img class="btn_filtre_image_small" src="assets/icons/filters/etoile_icon_12.png"/>
@@ -862,10 +1000,15 @@ class FilterableCharactersList extends React.Component{
         isLance: false,
         isClaymore: false,
         isCatalyste: false,
-        isArmes: false
+        isArmes: false,
+        //#endregion
+        //#region Rarity
+        isRarity: false,
+        isRarityCinq: false,
+        isRarityQuatre: false
         //#endregion
       }
-      //#region Elements
+      //#region Bind Elements
       this.handleIsPyroChange = this.handleIsPyroChange.bind(this);
       this.handleIsCryoChange = this.handleIsCryoChange.bind(this);
       this.handleIsAnemoChange = this.handleIsAnemoChange.bind(this);
@@ -874,13 +1017,18 @@ class FilterableCharactersList extends React.Component{
       this.handleIsElectroChange = this.handleIsElectroChange.bind(this);
       this.handleIsElementsChange = this.handleIsElementsChange.bind(this);
       //#endregion
-      //#region Armes
+      //#region Bind Armes
       this.handleIsArmesChange = this.handleIsArmesChange.bind(this);
       this.handleIsEpeeChange = this.handleIsEpeeChange.bind(this);
       this.handleIsArcChange = this.handleIsArcChange.bind(this);
       this.handleIsLanceChange = this.handleIsLanceChange.bind(this);
       this.handleIsClaymoreChange = this.handleIsClaymoreChange.bind(this);
       this.handleIsCatalysteChange = this.handleIsCatalysteChange.bind(this);
+      //#endregion
+      //#region Bind Rarity
+      this.handleIsRarityChange = this.handleIsRarityChange.bind(this);
+      this.handleIsRarityCinqChange = this.handleIsRarityCinqChange.bind(this);
+      this.handleIsRarityQuatreChange = this.handleIsRarityQuatreChange.bind(this);
       //#endregion
     }
     //#region Handlers Elements
@@ -952,7 +1100,23 @@ class FilterableCharactersList extends React.Component{
         })
     }
     //#endregion    
-    
+    //#region Handlers Rarity
+    handleIsRarityChange(isRarity){
+        this.setState({
+            isRarity: isRarity
+        })
+    }
+    handleIsRarityCinqChange(isRarityCinq){
+        this.setState({
+            isRarityCinq: isRarityCinq
+        })
+    }
+    handleIsRarityQuatreChange(isRarityQuatre){
+        this.setState({
+            isRarityQuatre: isRarityQuatre
+        })
+    }
+    //#endregion
     render(){
         return(
             <div>
@@ -989,6 +1153,15 @@ class FilterableCharactersList extends React.Component{
                     onIsClaymoreChange={this.handleIsClaymoreChange}
                     onIsCatalysteChange={this.handleIsCatalysteChange}
                     //#endregion
+                    //#region Rarity
+                    isRarity={this.state.isRarity}
+                    isRarityCinq={this.state.isRarityCinq}
+                    isRarityQuatre={this.state.isRarityQuatre}
+
+                    onIsRarity={this.handleIsRarityChange}
+                    onIsRarityCinq={this.handleIsRarityCinqChange}
+                    onIsRarityQuatre={this.handleIsRarityQuatreChange}
+                    //#endregion
                 />
                 <CharactersList 
                     characters={this.props.characters}
@@ -1008,6 +1181,11 @@ class FilterableCharactersList extends React.Component{
                     isClaymore={this.state.isClaymore}
                     isCatalyste={this.state.isCatalyste}
                     isArmes={this.state.isArmes}
+                    //#endregion
+                    //#region Rarity
+                    isRarity={this.state.isRarity}
+                    isRarityCinq={this.state.isRarityCinq}
+                    isRarityQuatre={this.state.isRarityQuatre}
                     //#endregion
                 />
             </div>
@@ -1037,21 +1215,26 @@ ReactDOM.render(
 
 //#region Variables 
 //#region Elements
-let btnElements = $('#liste_personnages_filtres_element')
-let btnFiltrePyro = $('#liste_personnages_filtres_elements_feu');
-let btnFiltreCryo = $('#liste_personnages_filtres_elements_glace');
-let btnFiltreElectro = $('#liste_personnages_filtres_elements_electro');
-let btnFiltreHydro = $('#liste_personnages_filtres_elements_eau');
-let btnFiltreAnemo = $('#liste_personnages_filtres_elements_anemo');
-let btnFiltreGeo = $('#liste_personnages_filtres_elements_geo');
+let btnElements         = $('#liste_personnages_filtres_element')
+let btnFiltrePyro       = $('#liste_personnages_filtres_elements_feu');
+let btnFiltreCryo       = $('#liste_personnages_filtres_elements_glace');
+let btnFiltreElectro    = $('#liste_personnages_filtres_elements_electro');
+let btnFiltreHydro      = $('#liste_personnages_filtres_elements_eau');
+let btnFiltreAnemo      = $('#liste_personnages_filtres_elements_anemo');
+let btnFiltreGeo        = $('#liste_personnages_filtres_elements_geo');
 //#endregion
 //#region Armes
-let btnFiltreArmes = $('#liste_personnages_filtres_arme');
-let btnFiltreEpee = $('#liste_personnages_filtres_armes_epee');
-let btnFiltreArc = $('#liste_personnages_filtres_armes_arc');
-let btnFiltreLance = $('#liste_personnages_filtres_armes_lance');
-let btnFiltreClaymore = $('#liste_personnages_filtres_armes_claymore');
-let btnFiltreCatalyste = $('#liste_personnages_filtres_armes_catalyste');
+let btnFiltreArmes      = $('#liste_personnages_filtres_arme');
+let btnFiltreEpee       = $('#liste_personnages_filtres_armes_epee');
+let btnFiltreArc        = $('#liste_personnages_filtres_armes_arc');
+let btnFiltreLance      = $('#liste_personnages_filtres_armes_lance');
+let btnFiltreClaymore   = $('#liste_personnages_filtres_armes_claymore');
+let btnFiltreCatalyste  = $('#liste_personnages_filtres_armes_catalyste');
+//#endregion
+//#region Rarity
+let btnFiltreEtoile         = $('#liste_personnages_filtres_etoile');
+let btnFiltreEtoilesCinq    = $('#liste_personnages_filtres_etoiles_cinq');
+let btnFiltreEtoilesQuatre  = $('#liste_personnages_filtres_etoiles_quatre');
 //#endregion
 //#endregion
 
@@ -1167,8 +1350,8 @@ function manageElementsFilters(){
     var isGeoChecked = btnFiltreGeo.hasClass("checked");
 
     if( isPyroChecked && isCryoChecked && isElectroChecked && 
-        isHydroChecked && isAnemoChecked && isGeoChecked
-        ){
+        isHydroChecked && isAnemoChecked && isGeoChecked )
+        {
             btnFiltrePyro.click();
             btnFiltreCryo.click();
             btnFiltreElectro.click();
@@ -1176,7 +1359,8 @@ function manageElementsFilters(){
             btnFiltreAnemo.click();
             btnFiltreGeo.click();
             btnElements.click();
-        }
+        }        
+    
 }
 //#endregion
 //#region Filtre Armes
@@ -1286,5 +1470,56 @@ function manageArmesFilters(){
 
             btnFiltreArmes.click();
         }
+        
 }
+//#endregion
+//#region Filtre Rarity
+btnFiltreEtoile.click(function(){
+    console.log("btnFiltreEtoiles")
+    var isChecked = btnFiltreEtoile.hasClass("checked"); 
+    if(!isChecked){
+        btnFiltreEtoile.addClass("checked")
+        storage.setItem(btnFiltreEtoile[0].id, "checked");
+
+        if(btnFiltreEtoilesCinq.hasClass("checked")) btnFiltreEtoilesCinq.click();
+        if(btnFiltreEtoilesQuatre.hasClass("checked")) btnFiltreEtoilesQuatre.click();
+    }
+    else{
+        btnFiltreEtoile.removeClass("checked")
+        storage.removeItem(btnFiltreEtoile[0].id, "checked");
+    }
+    
+})
+btnFiltreEtoilesCinq.click(function(){
+    console.log("btnFiltreEtoilesCinq")
+    var isChecked = btnFiltreEtoilesCinq.hasClass("checked"); 
+    if(!isChecked){
+        btnFiltreEtoilesCinq.addClass("checked")
+        storage.setItem(btnFiltreEtoilesCinq[0].id, "checked");
+
+        if(btnFiltreEtoile.hasClass("checked")) btnFiltreEtoile.click();
+        if(btnFiltreEtoilesQuatre.hasClass("checked")) btnFiltreEtoilesQuatre.click();
+    }
+    else{
+        btnFiltreEtoilesCinq.removeClass("checked")
+        storage.removeItem(btnFiltreEtoilesCinq[0].id, "checked");
+    }
+    
+})
+btnFiltreEtoilesQuatre.click(function(){
+    console.log("btnFiltreEtoilesQuatre")
+    var isChecked = btnFiltreEtoilesQuatre.hasClass("checked"); 
+    if(!isChecked){
+        btnFiltreEtoilesQuatre.addClass("checked")
+        storage.setItem(btnFiltreEtoilesQuatre[0].id, "checked");
+
+        if(btnFiltreEtoile.hasClass("checked")) btnFiltreEtoile.click();
+        if(btnFiltreEtoilesCinq.hasClass("checked")) btnFiltreEtoilesCinq.click();
+    }
+    else{
+        btnFiltreEtoilesQuatre.removeClass("checked")
+        storage.removeItem(btnFiltreEtoilesQuatre[0].id, "checked");
+    }
+    
+})
 //#endregion
