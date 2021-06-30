@@ -294,7 +294,7 @@ input, .btn, span, p{
     margin-top: 28px;
 }
 .limitCardsNumberByRow{
-    width: 900px;
+    width: 1500px;
     flex-flow: wrap;
 }
 

@@ -93,11 +93,16 @@ class CharactersList extends React.Component{
         //#region FilterUnique
         if(!displayTravelerVision){
             this.props.characters = this.props.characters.filter(onlyUnique);
+			if(!isAnemo && isGeo){
+				this.props.characters.find(c => c.name == "Traveler").vision = "Geo";
+				displayTravelerVision = true;
+			}
+			if(isAnemo && !isGeo){
+				this.props.characters.find(c => c.name == "Traveler").vision = "Anemo";
+				displayTravelerVision = true;
+			}
         }
-        if(!displayTravelerVision && !isAnemo && isGeo){
-            this.props.characters.find(c => c.name == "Traveler").vision = "Geo";
-            displayTravelerVision = true;
-        }
+        console.log("display:",displayTravelerVision)
         //#endregion
 
         if(isSortedByRarity && !isSortedByWeapons && !isSortedByElements){
@@ -110,8 +115,7 @@ class CharactersList extends React.Component{
                             name={character.name}
                             rarity={character.rarity}
                             vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
-                            displayTravelerVision={displayTravelerVision}
+                        displayTravelerVision={displayTravelerVision}
                         />) 
                 })
                 charactersCards.push(<div class='flex row limitCardsNumberByRow'>{charactersRarityCinqRow}</div>)   
@@ -124,8 +128,7 @@ class CharactersList extends React.Component{
                             name={character.name}
                             rarity={character.rarity}
                             vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
-                            displayTravelerVision={displayTravelerVision}
+                        displayTravelerVision={displayTravelerVision}
                         />) 
                 })    
                 charactersCards.push(<div class='flex row limitCardsNumberByRow'>{charactersRarityQuatreRow}</div>)        
@@ -170,7 +173,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -184,7 +187,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -198,7 +201,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -212,7 +215,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -226,7 +229,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -240,7 +243,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -252,7 +255,7 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                             />) 
                 }) 
                 }
@@ -277,7 +280,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -291,7 +294,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -305,7 +308,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -319,7 +322,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -333,7 +336,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -347,7 +350,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -359,8 +362,7 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
-                                displayTravelerVision={displayTravelerVision}
+                            displayTravelerVision={displayTravelerVision}
                             />) 
                 }) 
                 }
@@ -385,7 +387,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -399,7 +401,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -413,7 +415,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -427,7 +429,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -441,7 +443,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -455,7 +457,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -467,8 +469,7 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
-                                displayTravelerVision={displayTravelerVision}
+                            displayTravelerVision={displayTravelerVision}
                             />) 
                 }) 
                 }
@@ -493,7 +494,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -507,7 +508,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -521,7 +522,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -535,7 +536,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -549,7 +550,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -563,7 +564,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -575,8 +576,7 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
-                                displayTravelerVision={displayTravelerVision}
+                            displayTravelerVision={displayTravelerVision}
                             />) 
                 }) 
                 }
@@ -601,7 +601,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -615,7 +615,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -629,7 +629,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -643,7 +643,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -657,7 +657,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -671,7 +671,7 @@ class CharactersList extends React.Component{
                                     name={character.name}
                                     rarity={character.rarity}
                                     vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
+                                displayTravelerVision={displayTravelerVision}
                                 />) 
                         }
                     }) 
@@ -683,7 +683,6 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
                                 displayTravelerVision={displayTravelerVision}
                             />) 
                 }) 
@@ -702,7 +701,6 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
                                 displayTravelerVision={displayTravelerVision}
                             />) 
                     }
@@ -719,7 +717,6 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
                                 displayTravelerVision={displayTravelerVision}
                             />) 
                     }
@@ -736,7 +733,6 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
                                 displayTravelerVision={displayTravelerVision}
                             />) 
                     }
@@ -753,7 +749,6 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
                                 displayTravelerVision={displayTravelerVision}
                             />) 
                     }
@@ -770,7 +765,6 @@ class CharactersList extends React.Component{
                                 name={character.name}
                                 rarity={character.rarity}
                                 vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
                                 displayTravelerVision={displayTravelerVision}
                             />) 
                     }
@@ -787,7 +781,6 @@ class CharactersList extends React.Component{
                                 name={character.name  }
                                 rarity={character.rarity}
                                 vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
                                 displayTravelerVision={displayTravelerVision}
                             />) 
                     }
@@ -804,8 +797,7 @@ class CharactersList extends React.Component{
                         name={character.name}
                         rarity={character.rarity}
                         vision={character.vision}
-                                    displayTravelerVision={displayTravelerVision}
-                        displayTravelerVision={displayTravelerVision}
+						displayTravelerVision={displayTravelerVision}
                     />) 
                 })
                 return(<div id='liste_personnages_personnages' class='flex row limitCardsNumberByRow'>{charactersCards}</div>)    
