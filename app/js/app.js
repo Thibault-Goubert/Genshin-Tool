@@ -54,6 +54,7 @@ $(document).ready(function () {
             var key = storage.key(i);
             var dom = $('#' + key);
             var value = storage.getItem(key);
+            console.log('test: ' + key)
 
             if (value == "hide" || value == "checked" || value == "collapsed") {
                 dom.addClass(value);

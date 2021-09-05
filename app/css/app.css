@@ -131,7 +131,9 @@ input, .btn, span, p{
     margin-left: 6px; 
     margin-right: 6px;
 }
-#btn_groupe_principal,
+#btn_groupe_principal{
+    margin-top: 10px;
+}
 #liste_ressources_generales,
 #btn_groupe_ressources{    
     margin-top: 23px;  
@@ -227,10 +229,10 @@ input, .btn, span, p{
     position: relative;
 
     width: 40px;
-    height: 196px;
+    height: 293px;
 
     border-radius: 3px 0px 0px 3px;
-    box-shadow: 0px 0px 4px black;
+    box-shadow: 0px 0px 2px black;
     background-color: #282a2f;
     color: #36393f;
 }
@@ -264,12 +266,11 @@ input, .btn, span, p{
 }
 
 .btn_filtre{
-    position: relative;
+    display: flex;
     width: 30px;
     height: 30px;
 }
 .btn_filtre_image{
-    position: absolute;
     width: 27px;
     height: 27px;
 }
