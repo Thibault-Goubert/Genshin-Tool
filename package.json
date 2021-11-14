@@ -27,6 +27,7 @@
     "base64-js": "^1.5.1",
     "bluebird": "^3.7.2",
     "boolean": "^3.1.0",
+    "bootstrap-select": "^1.13.18",
     "brace-expansion": "^1.1.11",
     "buffer-alloc": "^1.2.0",
     "buffer-alloc-unsafe": "^1.1.0",

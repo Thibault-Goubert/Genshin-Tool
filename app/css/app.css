@@ -49,6 +49,17 @@ input, .btn, span, p{
     color: #36393f;
     border-radius: 3px;
 }
+textarea{
+    resize:none;
+    overflow-wrap:normal;
+    overflow:hidden;
+
+    display:inline-block;
+    vertical-align:middle;
+    text-align:center;
+
+    width: 100px;
+}
 .btn{    
     height: 30px;
     width: 100px;
@@ -399,7 +410,95 @@ input, .btn, span, p{
 {
     margin-left: 4px;
 }
-
 #liste_personnages_personnages.flexDirectionColumn{
     flex-flow: column;
+}
+
+#display_calculateur{
+    margin-top: 28px;
+}
+.calculateur_personnage_panel_element{
+    margin-top: 0px; margin-left: 0px;
+    height: 27px;width: 27px;
+    position: absolute;
+}
+.calculateur_personnage_element_choices{
+    height: 31px;width: 31px;
+    position: absolute;
+}
+#calculateur_personnage_element_active{
+    height: 31px;width: 31px;position: relative;left: -8px;top: -8px;
+    box-shadow: 1px 2px 2px #333;
+}
+
+.element_choices_background,
+.element-result-background{
+    background-color: #4c505a;
+    border-radius: 14.5px;
+    box-shadow: 10px;
+}
+
+.custom_select_ascension_dropdown{
+    width: 35px;
+    height: 35px;
+}
+.custom_dropdown{
+    position: relative;
+    z-index: 1;
+    left: 35px;
+}
+.calculateur_background_ascension{
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: #4c505a;
+}
+
+#calculateur-personnage-resultat{
+    margin-top: 15px;
+}
+
+#calculateur-personnage-resultat-element-active{
+    height: 31px;
+    width: 31px;
+    position: relative;
+    left: -8px;
+    top: -8px;
+    box-shadow: 1px 2px 2px #333;
+}
+
+.icon-width27-height27-bradius6{
+    width: 27px;
+    height: 27px;
+    border-radius: 6px;
+}
+.calculateur-text-result{
+    display:inline-block;
+    vertical-align:middle;
+    background: none;
+    color: #e9e5dc;
+    font-family: Calibri;
+    font-weight: lighter;
+    font-size: smaller;
+}
+.btn-calculateur-calculer{
+    display: flex;
+
+    width: 80px;
+    height: 30px;
+
+    background-color: #282a2f;
+    border-radius: 5px;
+
+    color: #e9e5dc;
+    font-family: Calibri;
+    font-weight: lighter;
+
+    box-shadow: 0px 0px 4px #e9e5dc;
+
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    user-select: none;
 }

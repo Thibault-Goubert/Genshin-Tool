@@ -8,9 +8,11 @@ let inputs = $("input");
 //Get tabs
 let btnRessources = $("#btn_ressources");
 let btnPersonnages = $("#btn_personnages");
+let btnNotes = $("#btn_notes");
 //Get tabs display
 let listeRessources = $("#liste_ressources");
 let listePersonnages = $("#liste_personnages");
+let notes = $("#display_calculateur");
 
 //Get tabs
 let btnBossDomains = $("#btn_boss_domains");
@@ -54,7 +56,7 @@ $(document).ready(function () {
             var key = storage.key(i);
             var dom = $('#' + key);
             var value = storage.getItem(key);
-            console.log('test: ' + key)
+            //console.log('test: ' + key)
 
             if (value == "hide" || value == "checked" || value == "collapsed") {
                 dom.addClass(value);
@@ -170,14 +172,22 @@ btnHarvestables.click(function () {
 btnRessources.click(function () {
     var isChecked = btnRessources.hasClass("checked");
     if (!isChecked) {
+        //Gestion boutons
         btnRessources.addClass("checked");
         storage.setItem(btnRessources[0].id, "checked");
 
         btnPersonnages.removeClass("checked");
         storage.removeItem(btnPersonnages[0].id, "checked");
 
+        btnNotes.removeClass("checked");
+        storage.removeItem(btnNotes[0].id, "checked");
+
+        //Gestion affichage
         listePersonnages.addClass("collapsed");
         storage.setItem(listePersonnages[0].id, "collapsed");
+
+        notes.addClass("collapsed");
+        storage.setItem(notes[0].id, "collapsed");
 
         listeRessources.removeClass("collapsed");
         storage.removeItem(listeRessources[0].id, "collapsed");
@@ -186,19 +196,52 @@ btnRessources.click(function () {
 btnPersonnages.click(function () {
     var isChecked = btnPersonnages.hasClass("checked");
     if (!isChecked) {
+        //Gestion boutons
         btnPersonnages.addClass("checked");
         storage.setItem(btnPersonnages[0].id, "checked");
 
         btnRessources.removeClass("checked");
         storage.removeItem(btnRessources[0].id, "checked");
 
+        btnNotes.removeClass("checked");
+        storage.removeItem(btnNotes[0].id, "checked");
+
+        //Gestion affichage
         listeRessources.addClass("collapsed");
         storage.setItem(listeRessources[0].id, "collapsed");
+
+        notes.addClass("collapsed");
+        storage.setItem(notes[0].id, "collapsed");
 
         listePersonnages.removeClass("collapsed");
         storage.removeItem(listePersonnages[0].id, "collapsed");
     }
 });
+btnNotes.click(function () {
+    var isChecked = btnNotes.hasClass("checked");
+    if (!isChecked) {
+        //Gestion boutons
+        btnNotes.addClass("checked");
+        storage.setItem(btnNotes[0].id, "checked");
+
+        btnRessources.removeClass("checked");
+        storage.removeItem(btnRessources[0].id, "checked");
+
+        btnPersonnages.removeClass("checked");
+        storage.removeItem(btnPersonnages[0].id, "checked");
+
+        //Gestion affichage
+        listeRessources.addClass("collapsed");
+        storage.setItem(listeRessources[0].id, "collapsed");
+
+        listePersonnages.addClass("collapsed");
+        storage.setItem(listePersonnages[0].id, "collapsed");
+
+        notes.removeClass("collapsed");
+        storage.removeItem(notes[0].id, "collapsed");
+    }
+});
+
 // When the user clicks on <span> (x), close the modal
 modalBtnNo.click(function () {
     modal[0].style.display = "none";
