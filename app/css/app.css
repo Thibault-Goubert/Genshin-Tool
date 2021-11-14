@@ -59,6 +59,11 @@ textarea{
     text-align:center;
 
     width: 100px;
+
+    font-family: Calibri;
+    font-weight: lighter;
+    font-size:smaller;
+    color: #36393f;
 }
 .btn{    
     height: 30px;
@@ -445,7 +450,7 @@ textarea{
 .custom_dropdown{
     position: relative;
     z-index: 1;
-    left: 35px;
+    left: 37px;
 }
 .calculateur_background_ascension{
     width: 35px;

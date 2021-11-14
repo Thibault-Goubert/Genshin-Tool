@@ -2506,6 +2506,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!--REACT-->
 	<div id="liste_personnages">		
 	</div>
@@ -2513,7 +2514,7 @@
 
 	<div id="display_calculateur" style="margin-left: 55px;margin-top: 65px;" class="flex row">
 		<div id="calculateur-personnage">
-			<div id="calculateur_personnage_titre">Calculateur Personnages</div>
+			<div id="calculateur_personnage_titre" style="margin-bottom: 23px;"><span class="calculateur-text-result" style="font-weight: bold;font-size: medium;">Calculateur Personnages</span></div>
 			<div class="flex row">
 				<div id="calculateur_personnage_panel" class="personnage_panel">
 					<div id="calculateur_personnage_portrait" class="personnage_panel_portrait_content">
@@ -2592,25 +2593,25 @@
 				<div id="calculateur_personnage_infos" >
 						<div id="calculateur_personnage_infos_lvl_talents" class="flex row" style="margin-left: 20px;">
 							<div>
-								<div>Lv.</div>
-								<input id="calculateur_personnage_infos_lvl_input" style="width: 15px;">
+								<div><span class="calculateur-text-result">Lv.</span></div>
+								<input id="calculateur_personnage_infos_lvl_input" style="width: 15px;outline: none;border: none;">
 							</div>
-							<div>
-								Talents
+							<div style="margin-left: 2px;">
+								<span class="calculateur-text-result">Talents</span>
 								<div class="flex row">
 									<div>
-										<input id="calculateur_personnage_infos_talent_current_input"  style="width: 25px;">
+										<input id="calculateur_personnage_infos_talent_current_input"  style="width: 25px;outline: none;border: none;">
 									</div>
-									→
+									<span class="calculateur-text-result">→</span>
 									<div>
-										<input id="calculateur_personnage_infos_talent_final_input"  style="width: 25px;">
+										<input id="calculateur_personnage_infos_talent_final_input"  style="width: 25px;outline: none;border: none;">
 									</div>
 
 								</div>
 							</div>
 						</div>
-						<div id="calculateur_personnage_infos_ascensions" class="flex row">
-							<div style="writing-mode: sideways-lr;">Ascension</div>
+						<div id="calculateur_personnage_infos_ascensions" class="flex row" style="margin-top: 2px;">
+							<div style="writing-mode: sideways-lr;"><span class="calculateur-text-result">Ascension:</span></div>
 							<div>
 								<div class="flex row">
 									<div id="custom_select_ascension_talent_selected" style="width: 35px;height: 35px;">
@@ -2623,39 +2624,39 @@
 													<div class="calculateur_background_ascension calculateur_ascension_select_talent">
 														<img src="assets/icons/recoltables/talent_ballad_vi.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_talent">
+													<div class="calculateur_background_ascension calculateur_ascension_select_talent" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/talent_diligence_vi.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_talent">
+													<div class="calculateur_background_ascension calculateur_ascension_select_talent" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/talent_elegance_vi.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
 												<div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_talent">
+													<div class="calculateur_background_ascension calculateur_ascension_select_talent" style="margin-left: 2px;">
 														<img src="assets/icons/recoltables/talent_freedom_vi.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_talent">
+													<div class="calculateur_background_ascension calculateur_ascension_select_talent" style="margin-left: 2px;margin-top: 2px;">
 														<img src="assets/icons/recoltables/talent_gold_vi.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_talent">
+													<div class="calculateur_background_ascension calculateur_ascension_select_talent" style="margin-left: 2px;margin-top: 2px;">
 														<img src="assets/icons/recoltables/talent_light_vi.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
 												<div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_talent">
+													<div class="calculateur_background_ascension calculateur_ascension_select_talent" style="margin-left: 2px;">
 														<img src="assets/icons/recoltables/talent_resistance_vi.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_talent">
+													<div class="calculateur_background_ascension calculateur_ascension_select_talent" style="margin-left: 2px;margin-top: 2px;">
 														<img src="assets/icons/recoltables/talent_prosperity_vi.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_talent">
+													<div class="calculateur_background_ascension calculateur_ascension_select_talent" style="margin-left: 2px;margin-top: 2px;">
 														<img src="assets/icons/recoltables/talent_transience_vi.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div id="custom_select_ascension_elem_selected" style="width: 35px;height: 35px;">
+									<div id="custom_select_ascension_elem_selected" style="width: 35px;height: 35px;margin-left: 2px;">
 										<img id="custom_select_ascension_elem_selected_background"  src="assets/icons/characters/caseunknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">
 										<img id="custom_select_ascension_elem_selected_icon"  src="assets/icons/characters/char_unknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">
 									
@@ -2665,62 +2666,62 @@
 													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
 														<img src="assets/icons/recoltables/elem_a_1.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
+													<div class="calculateur_background_ascension calculateur_ascension_select_elem" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/elem_a_2.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
 														<img src="assets/icons/recoltables/elem_c_1.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
+													<div class="calculateur_background_ascension calculateur_ascension_select_elem" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/elem_c_2.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
 														<img src="assets/icons/recoltables/elem_e_1.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
+													<div class="calculateur_background_ascension calculateur_ascension_select_elem" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/elem_e_2.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
 														<img src="assets/icons/recoltables/elem_g_1.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
+													<div class="calculateur_background_ascension calculateur_ascension_select_elem" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/elem_g_2.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
 														<img src="assets/icons/recoltables/elem_h_1.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
+													<div class="calculateur_background_ascension calculateur_ascension_select_elem" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/elem_h_2.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
 														<img src="assets/icons/recoltables/elem_o_1.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
+													<div class="calculateur_background_ascension calculateur_ascension_select_elem" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/elem_o_2.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
 														<img src="assets/icons/recoltables/elem_p_1.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_elem">
+													<div class="calculateur_background_ascension calculateur_ascension_select_elem" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/elem_p_2.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div id="custom_select_ascension_gem_selected"  style="width: 35px;height: 35px;">
+									<div id="custom_select_ascension_gem_selected"  style="width: 35px;height: 35px;margin-left: 2px;">
 										<img id="custom_select_ascension_gem_selected_backgrond" src="assets/icons/characters/caseunknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">
 										<img id="custom_select_ascension_gem_selected_icon"   src="assets/icons/characters/char_unknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">
 									
@@ -2730,23 +2731,23 @@
 													<div class="calculateur_background_ascension calculateur_ascension_select_gem">
 														<img src="assets/icons/recoltables/gem_a_g.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_gem">
+													<div class="calculateur_background_ascension calculateur_ascension_select_gem" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/gem_c_g.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_gem">
 														<img src="assets/icons/recoltables/gem_e_g.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_gem">
+													<div class="calculateur_background_ascension calculateur_ascension_select_gem" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/gem_h_g.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_gem">
 														<img src="assets/icons/recoltables/gem_g_g.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_gem">
+													<div class="calculateur_background_ascension calculateur_ascension_select_gem" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/gem_p_g.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
@@ -2755,7 +2756,7 @@
 									</div>
 								</div>
 								<div class="flex row">
-									<div id="custom_select_ascension_environment_selected" style="width: 35px;height: 35px;">
+									<div id="custom_select_ascension_environment_selected" style="width: 35px;height: 35px;margin-top: 2px;">
 										<img id="custom_select_ascension_environment_selected_background" src="assets/icons/characters/caseunknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">								
 										<img id="custom_select_ascension_environment_selected_icon" src="assets/icons/characters/char_unknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">
 										
@@ -2765,91 +2766,91 @@
 													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
 														<img src="assets/icons/recoltables/calla_lily.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/cecilia.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/dandelion_seed.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/philanemo_mushroom.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/small_lamp_grass.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
 														<img src="assets/icons/recoltables/valberry.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/windwheel_aster.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/wolfhook.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/cor_lapis.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/glaze_lily.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
 														<img src="assets/icons/recoltables/jueyun_chili.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/noctilucous_jade.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/silk_flower.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/starconch.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/violetgrass.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
 														<img src="assets/icons/recoltables/qingxin.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/amakumo_fruit.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/crystal_marrow.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/dendrobium.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/naku_weed.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
 														<img src="assets/icons/recoltables/onikabuto.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/sakura_bloom.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/sango_pearl.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/sea_ganoderma.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_environment">
+													<div class="calculateur_background_ascension calculateur_ascension_select_environment" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/fluorescent_fungus.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div id="custom_select_ascension_common_selected" style="width: 35px;height: 35px;">
+									<div id="custom_select_ascension_common_selected" style="width: 35px;height: 35px;margin-left: 2px;margin-top: 2px;">
 										<img id="custom_select_ascension_common_selected_background"  src="assets/icons/characters/caseunknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">
 										<img id="custom_select_ascension_common_selected_icon"  src="assets/icons/characters/char_unknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">
 									
@@ -2859,39 +2860,39 @@
 													<div class="calculateur_background_ascension calculateur_ascension_select_common">
 														<img src="assets/icons/recoltables/slime_b.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_common">
+													<div class="calculateur_background_ascension calculateur_ascension_select_common" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/mask_b.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_common">
+													<div class="calculateur_background_ascension calculateur_ascension_select_common" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/scroll_b.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_common">
 														<img src="assets/icons/recoltables/arrowhead_b.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_common">
+													<div class="calculateur_background_ascension calculateur_ascension_select_common" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/insignia_b.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_common">
+													<div class="calculateur_background_ascension calculateur_ascension_select_common" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/tr_hoarder_b.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_common">
 														<img src="assets/icons/recoltables/nectar_b.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_common">
+													<div class="calculateur_background_ascension calculateur_ascension_select_common" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/handguard_b.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_common">
+													<div class="calculateur_background_ascension calculateur_ascension_select_common" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/spectral_husk_b.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div id="custom_select_ascension_boss_selected"  style="width: 35px;height: 35px;">
+									<div id="custom_select_ascension_boss_selected"  style="width: 35px;height: 35px;margin-left: 2px;margin-top: 2px;">
 										<img id="custom_select_ascension_boss_selected_backgrond" src="assets/icons/characters/caseunknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">
 										<img id="custom_select_ascension_boss_selected_icon"   src="assets/icons/characters/char_unknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">
 									
@@ -2901,54 +2902,54 @@
 													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
 														<img src="assets/icons/recoltables/dvalin_feather.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
+													<div class="calculateur_background_ascension calculateur_ascension_select_boss" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/dvalin_sigh.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
+													<div class="calculateur_background_ascension calculateur_ascension_select_boss" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/dvalin_claw.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
 														<img src="assets/icons/recoltables/boreas_tail.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
+													<div class="calculateur_background_ascension calculateur_ascension_select_boss" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/boreas_ring.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
+													<div class="calculateur_background_ascension calculateur_ascension_select_boss" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/boreas_locket.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
 														<img src="assets/icons/recoltables/childe_shadow.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
+													<div class="calculateur_background_ascension calculateur_ascension_select_boss" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/childe_tusk.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
+													<div class="calculateur_background_ascension calculateur_ascension_select_boss" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/childe_shard.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
 														<img src="assets/icons/recoltables/azhdaha_scale.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
+													<div class="calculateur_background_ascension calculateur_ascension_select_boss" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/azhdaha_crown.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
+													<div class="calculateur_background_ascension calculateur_ascension_select_boss" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/azhdaha_branch.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
-												<div>
+												<div style="margin-left: 2px;">
 													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
 														<img src="assets/icons/recoltables/signora_heart.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
+													<div class="calculateur_background_ascension calculateur_ascension_select_boss" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/signora_flower.png" class="custom_select_ascension_dropdown">
 													</div>
-													<div class="calculateur_background_ascension calculateur_ascension_select_boss">
+													<div class="calculateur_background_ascension calculateur_ascension_select_boss" style="margin-top: 2px;">
 														<img src="assets/icons/recoltables/signora_butterfly.png" class="custom_select_ascension_dropdown">
 													</div>
 												</div>
@@ -2961,11 +2962,11 @@
 				</div>
 			</div>			
 			<div>
-				<div id="calculateur-personnage-btn-calculer" class="btn-calculateur-calculer">
+				<div id="calculateur-personnage-btn-calculer" class="btn-calculateur-calculer" style="margin-top: 15px;margin-bottom: 30px;">
 					Calculer
 				</div>
 			</div>			
-			<div id="calculateur-personnage-resultat" class="flex row">
+			<div id="calculateur-personnage-resultat" class="flex row collapsed">
 				<div id="calculateur-personnage-resultat-panel" class="personnage_panel">
 					<div id="calculateur-personnage-resultat_portrait" class="personnage_panel_portrait_content">
 						<img id="calculateur-personnage-resultat_panel_background" class="personnage_panel_background" src="assets/icons/characters/caseunknown.png">
@@ -2983,7 +2984,7 @@
 				</div>
 				<div class="flex row">
 					<div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-bouquin" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img src="assets/icons/recoltables/case_vi.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -2991,10 +2992,10 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-bouquin-amount" class="calculateur-text-result">46</span>
+								<span id="calculateur-personnage-resultat-bouquin-amount" class="calculateur-text-result" style="margin-left: 3px;">46</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-gem-ve" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-gem-ve-background" src="assets/icons/recoltables/case_ve.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3002,10 +3003,10 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-gem-ve-amount" class="calculateur-text-result">1</span>
+								<span id="calculateur-personnage-resultat-gem-ve-amount" class="calculateur-text-result" style="margin-left: 3px;">1</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-elem" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-elem-background" src="assets/icons/recoltables/case_vi.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3013,10 +3014,10 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-elem-amount" class="calculateur-text-result">46</span>
+								<span id="calculateur-personnage-resultat-elem-amount" class="calculateur-text-result" style="margin-left: 3px;">46</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-mob-gr" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-mob-gr-background" src="assets/icons/recoltables/case_gr.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3024,10 +3025,10 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-mob-gr-amount"  class="calculateur-text-result">36</span>
+								<span id="calculateur-personnage-resultat-mob-gr-amount"  class="calculateur-text-result" style="margin-left: 3px;">36</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-talent-ve" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-talent-ve-background" src="assets/icons/recoltables/case_ve.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3035,12 +3036,12 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-talent-ve-amount" class="calculateur-text-result">9</span>
+								<span id="calculateur-personnage-resultat-talent-ve-amount" class="calculateur-text-result" style="margin-left: 3px;">9</span>
 							</div>
 						</div>
 					</div>	
 					<div style="margin-left: 10px;">
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-moras" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-moras-background" src="assets/icons/recoltables/case_gr.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3048,10 +3049,10 @@
 								</div>
 							</div>
 							<div style="width: 10px;">
-								<span id="calculateur-personnage-resultat-moras-amount" class="calculateur-text-result">1m236,500</span>
+								<span id="calculateur-personnage-resultat-moras-amount" class="calculateur-text-result" style="margin-left: 3px;">1m236,500</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-gem-b" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-gem-b-background" src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3059,10 +3060,10 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-gem-b-amount" class="calculateur-text-result">6</span>
+								<span id="calculateur-personnage-resultat-gem-b-amount" class="calculateur-text-result" style="margin-left: 3px;">6</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-plant" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-plant-background" src="assets/icons/recoltables/case_gr.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3070,10 +3071,10 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-plant-amount" class="calculateur-text-result">68</span>
+								<span id="calculateur-personnage-resultat-plant-amount" class="calculateur-text-result" style="margin-left: 3px;">68</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-mob-ve" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-mob-ve-background" src="assets/icons/recoltables/case_ve.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3081,10 +3082,10 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-mob-ve-amount" class="calculateur-text-result">36</span>
+								<span id="calculateur-personnage-resultat-mob-ve-amount" class="calculateur-text-result" style="margin-left: 3px;">36</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-talent-b" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-talent-b-background" src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3092,14 +3093,14 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-talent-b-amount" class="calculateur-text-result">63</span>
+								<span id="calculateur-personnage-resultat-talent-b-amount" class="calculateur-text-result" style="margin-left: 3px;">63</span>
 							</div>
 						</div>
 					</div>		
 					<div style="margin-left: 10px;">
-						<div style="width: 27px;height: 27px;">
+						<div style="width: 27px;height: 27px;" style="margin-top: 4px;">
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-gem-vi" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-gem-vi-background" src="assets/icons/recoltables/case_vi.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3107,10 +3108,10 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-gem-vi-amount" class="calculateur-text-result">9</span>
+								<span id="calculateur-personnage-resultat-gem-vi-amount" class="calculateur-text-result" style="margin-left: 3px;">9</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-week" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-week-background" src="assets/icons/recoltables/case_g.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3118,10 +3119,10 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-week-amount" class="calculateur-text-result">18</span>
+								<span id="calculateur-personnage-resultat-week-amount" class="calculateur-text-result" style="margin-left: 3px;">18</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-mob-b" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-mob-b-background" src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3129,10 +3130,10 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-mob-b-amount" class="calculateur-text-result">106</span>
+								<span id="calculateur-personnage-resultat-mob-b-amount" class="calculateur-text-result" style="margin-left: 3px;">106</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-talent-vi" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-talent-vi-background" src="assets/icons/recoltables/case_vi.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3140,14 +3141,14 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-talent-vi-amount" class="calculateur-text-result">114</span>
+								<span id="calculateur-personnage-resultat-talent-vi-amount" class="calculateur-text-result" style="margin-left: 3px;">114</span>
 							</div>
 						</div>
 					</div>		
 					<div style="margin-left: 10px;">
-						<div style="width: 27px;height: 27px;">
+						<div style="width: 27px;height: 27px;" style="margin-top: 4px;">
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-gem-g" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-gem-g-background" src="assets/icons/recoltables/case_g.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3155,10 +3156,10 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-gem-g-amount" class="calculateur-text-result">9</span>
+								<span id="calculateur-personnage-resultat-gem-g-amount" class="calculateur-text-result" style="margin-left: 3px;">9</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div id="calculateur-personnage-resultat-crown" class="icon-width27-height27-bradius6" style="position: relative;">
 									<img id="calculateur-personnage-resultat-gemcrown-background" src="assets/icons/recoltables/case_g.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3166,15 +3167,15 @@
 								</div>
 							</div>
 							<div>
-								<span id="calculateur-personnage-resultat-crown-amount" class="calculateur-text-result">18</span>
+								<span id="calculateur-personnage-resultat-crown-amount" class="calculateur-text-result" style="margin-left: 3px;">18</span>
 							</div>
 						</div>	
 					</div>						
 				</div>
 			</div>
 		</div>
-		<div id="calculateur-arme" style="margin-left: 15px;">
-			<div id="calculateur-arme-titre">Calculateur Armes</div>
+		<div id="calculateur-arme" style="margin-left: 90px;">
+			<div id="calculateur-arme-titre" style="margin-bottom: 23px;"><span class="calculateur-text-result" style="font-weight: bold;font-size: medium;">Calculateur Armes</span></div>
 			<div id="calculateur-arme-stats-ascension" style="margin-bottom: 15px;">
 				<div id="calculateur-arme-stats" class="flex row">
 					<div id="calculateur-arme-rarity-nom">
@@ -3194,16 +3195,16 @@
 						</div>
 						<textarea id="calculateur-arme-nom"></textarea>
 					</div>
-					<div id="calculateur-arme-lvl">
-						<div>Lv.</div>
+					<div id="calculateur-arme-lvl" style="margin-left: 2px;">
+						<div><span class="calculateur-text-result">Lv.</span></div>
 						<div>
-							<input id="calculateur-arme-lvl-input" style="width: 15px;">
+							<input id="calculateur-arme-lvl-input" style="width: 15px;outline: none;border: none;">
 						</div>
 					</div>
 				</div>
 				<div id="calculateur-arme-ascension">
 					<div id="calculateur-arme-ascension-titre">
-						Ascension:
+						<span class="calculateur-text-result">Ascension:</span>
 					</div>
 					<div class="flex row">
 						<div id="calculateur-arme-ascension-ressources-domain" style="width:35px;height:35px;">
@@ -3216,32 +3217,32 @@
 										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/tablette_g.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/pillar_g.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/coral_g.png">
 										</div>
 									</div>
-									<div>
+									<div style="margin-left: 2px;">
 										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/fang_g.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/billes_g.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/narukami_g.png">
 										</div>
 									</div>
-									<div>
+									<div style="margin-left: 2px;">
 										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/menottes_g.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/puzzle_g.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-domain-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/oni_mask_g.png">
 										</div>
 									</div>
@@ -3249,7 +3250,7 @@
 							</div>
 						
 						</div>
-						<div id="calculateur-arme-ascension-ressources-elite" style="width:35px;height:35px;">
+						<div id="calculateur-arme-ascension-ressources-elite" style="width:35px;height:35px;margin-left: 2px;">
 							<img src="assets/icons/characters/caseunknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">
 							<img id="calculateur-arme-ascension-ressources-elite_selected_icon" src="assets/icons/characters/char_unknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">
 						
@@ -3260,32 +3261,32 @@
 										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/horn_vi.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/branch_vi.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/chaos_device_vi.png">
 										</div>
 									</div>
-									<div>
+									<div style="margin-left: 2px;">
 										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/mist_grass_vi.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/knife_vi.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/bone_vi.png">
 										</div>
 									</div>
-									<div>
+									<div style="margin-left: 2px;">
 										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/chaos_gear_vi.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/prism_vi.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-elite-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/claw_vi.png">
 										</div>
 									</div>
@@ -3293,7 +3294,7 @@
 							</div>
 						</div>
 
-						<div id="calculateur-arme-ascension-ressources-common" style="width:35px;height:35px;">
+						<div id="calculateur-arme-ascension-ressources-common" style="width:35px;height:35px;margin-left: 2px;">
 							<img src="assets/icons/characters/caseunknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">
 							<img id="calculateur-arme-ascension-ressources-common_selected_icon" src="assets/icons/characters/char_unknown.png" style="position: absolute;width: 35px;height: 35px;border-radius: 5px;">
 						
@@ -3303,32 +3304,32 @@
 										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/slime_b.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/mask_b.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/scroll_b.png">
 										</div>
 									</div>
-									<div>
+									<div style="margin-left: 2px;">
 										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/arrowhead_b.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/insignia_b.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/tr_hoarder_b.png">
 										</div>
 									</div>
-									<div>
+									<div style="margin-left: 2px;">
 										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/nectar_b.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/handguard_b.png">
 										</div>
-										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option">
+										<div class="calculateur_background_ascension calculateur-arme-custom-select-ascension-common-dropdown-option" style="margin-top: 2px;">
 											<img class="calculateur-arme-custom-select custom_select_ascension_dropdown" src="assets/icons/recoltables/spectral_husk_b.png">
 										</div>
 									</div>
@@ -3339,7 +3340,7 @@
 				</div>
 			</div>
 			<div>
-				<div id="calculateur-arme-btn-calculer" class="btn-calculateur-calculer">
+				<div id="calculateur-arme-btn-calculer" class="btn-calculateur-calculer" style="margin-top: 35px;margin-bottom: 30px;">
 					Calculer
 				</div>
 			</div>
@@ -3352,37 +3353,37 @@
 				</div>
 				<div class="flex row">
 					<div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div class="icon-width27-height27-bradius6" style="position: relative;">
 								<img src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
 								<img src="assets/icons/recoltables/minerais.png" class="icon-width27-height27-bradius6" style="position: absolute;">
 							</div>
-							<div><span id="calculateur-arme-result-minerais-amount" class="calculateur-text-result">13</span></div>
+							<div><span id="calculateur-arme-result-minerais-amount" class="calculateur-text-result" style="margin-left: 3px;">13</span></div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div class="icon-width27-height27-bradius6" style="position: relative;">
 								<img src="assets/icons/recoltables/case_ve.png" class="icon-width27-height27-bradius6" style="position: absolute;">
 								<img id="calculateur-arme-resultat-domain-icon-ve" src="assets/icons/recoltables/tablette_ve.png" class="icon-width27-height27-bradius6" style="position: absolute;">
 							</div>
-							<div><span id="calculateur-arme-result-domain-ve-amount"  class="calculateur-text-result">13</span></div>
+							<div><span id="calculateur-arme-result-domain-ve-amount" class="calculateur-text-result" style="margin-left: 3px;">13</span></div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div class="icon-width27-height27-bradius6" style="position: relative;">
 								<img src="assets/icons/recoltables/case_ve.png" class="icon-width27-height27-bradius6" style="position: absolute;">
 								<img id="calculateur-arme-resultat-elite-icon-ve" src="assets/icons/recoltables/horn_ve.png" class="icon-width27-height27-bradius6" style="position: absolute;">
 							</div>
-							<div><span id="calculateur-arme-result-elite-ve-amount" class="calculateur-text-result">13</span></div>
+							<div><span id="calculateur-arme-result-elite-ve-amount" class="calculateur-text-result" style="margin-left: 3px;">13</span></div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div class="icon-width27-height27-bradius6" style="position: relative;">
 								<img src="assets/icons/recoltables/case_gr.png" class="icon-width27-height27-bradius6" style="position: absolute;">
 								<img id="calculateur-arme-resultat-common-icon-gr" src="assets/icons/recoltables/arrowhead_gr.png" class="icon-width27-height27-bradius6" style="position: absolute;">
 							</div>
-							<div><span id="calculateur-arme-result-common-gr-amount" class="calculateur-text-result">13</span></div>
+							<div><span id="calculateur-arme-result-common-gr-amount" class="calculateur-text-result" style="margin-left: 3px;">13</span></div>
 						</div>
 					</div>
 					<div style="margin-left: 10px;">
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div class="icon-width27-height27-bradius6" style="position: relative;">
 									<img src="assets/icons/recoltables/case_gr.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3390,10 +3391,10 @@
 								</div>
 							</div>
 							<div style="width: 10px;">
-								<span id="calculateur-arme-result-moras-amount" class="calculateur-text-result">1m236,500</span>
+								<span id="calculateur-arme-result-moras-amount" class="calculateur-text-result" style="margin-left: 3px;">1m236,500</span>
 							</div>
 						</div>	
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div class="icon-width27-height27-bradius6" style="position: relative;">
 									<img src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3401,10 +3402,10 @@
 								</div>
 							</div>
 							<div style="width: 10px;">
-								<span id="calculateur-arme-result-domain-b-amount" class="calculateur-text-result">3</span>
+								<span id="calculateur-arme-result-domain-b-amount" class="calculateur-text-result" style="margin-left: 3px;">3</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div class="icon-width27-height27-bradius6" style="position: relative;">
 									<img src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3412,10 +3413,10 @@
 								</div>
 							</div>
 							<div style="width: 10px;">
-								<span id="calculateur-arme-result-elite-b-amount" class="calculateur-text-result">9</span>
+								<span id="calculateur-arme-result-elite-b-amount" class="calculateur-text-result" style="margin-left: 3px;">9</span>
 							</div>
 						</div>	
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div class="icon-width27-height27-bradius6" style="position: relative;">
 									<img src="assets/icons/recoltables/case_ve.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3423,14 +3424,14 @@
 								</div>
 							</div>
 							<div style="width: 10px;">
-								<span id="calculateur-arme-result-common-ve-amount" class="calculateur-text-result">9</span>
+								<span id="calculateur-arme-result-common-ve-amount" class="calculateur-text-result" style="margin-left: 3px;">9</span>
 							</div>
 						</div>			
 					</div>	
 					<div style="margin-left: 10px;">
-						<div style="width: 27px;height: 27px;">
+						<div style="width: 27px;height: 27px;" style="margin-top: 4px;">
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div class="icon-width27-height27-bradius6" style="position: relative;">
 									<img src="assets/icons/recoltables/case_vi.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3438,10 +3439,10 @@
 								</div>
 							</div>
 							<div style="width: 10px;">
-								<span id="calculateur-arme-result-domain-vi-amount" class="calculateur-text-result">9</span>
+								<span id="calculateur-arme-result-domain-vi-amount" class="calculateur-text-result" style="margin-left: 3px;">9</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div class="icon-width27-height27-bradius6" style="position: relative;">
 									<img src="assets/icons/recoltables/case_vi.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3449,10 +3450,10 @@
 								</div>
 							</div>
 							<div style="width: 10px;">
-								<span id="calculateur-arme-result-elite-vi-amount" class="calculateur-text-result">9</span>
+								<span id="calculateur-arme-result-elite-vi-amount" class="calculateur-text-result" style="margin-left: 3px;">9</span>
 							</div>
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div class="icon-width27-height27-bradius6" style="position: relative;">
 									<img src="assets/icons/recoltables/case_b.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3460,14 +3461,14 @@
 								</div>
 							</div>
 							<div style="width: 10px;">
-								<span id="calculateur-arme-result-common-b-amount" class="calculateur-text-result">9</span>
+								<span id="calculateur-arme-result-common-b-amount" class="calculateur-text-result" style="margin-left: 3px;">9</span>
 							</div>
 						</div>					
 					</div>
 					<div style="margin-left: 10px;">
-						<div style="width: 27px;height: 27px;">
+						<div style="width: 27px;height: 27px;" style="margin-top: 4px;">
 						</div>
-						<div class="flex row">
+						<div class="flex row" style="margin-top: 4px;">
 							<div>
 								<div class="icon-width27-height27-bradius6" style="position: relative;">
 									<img src="assets/icons/recoltables/case_g.png" class="icon-width27-height27-bradius6" style="position: absolute;">
@@ -3475,12 +3476,12 @@
 								</div>
 							</div>
 							<div style="width: 10px;">
-								<span id="calculateur-arme-result-domain-g-amount" class="calculateur-text-result">9</span>
+								<span id="calculateur-arme-result-domain-g-amount" class="calculateur-text-result" style="margin-left: 3px;">9</span>
 							</div>
 						</div>					
-						<div style="width: 27px;height: 27px;">
+						<div style="width: 27px;height: 27px;" style="margin-top: 4px;">
 						</div>
-						<div style="width: 27px;height: 27px;">
+						<div style="width: 27px;height: 27px;" style="margin-top: 4px;">
 						</div>					
 					</div>
 				</div>

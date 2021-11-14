@@ -282,6 +282,7 @@ $("#calculateur-personnage-btn-calculer").click(function(event){
     $("#calculateur-personnage-resultat-talent-vi-amount").text(computeTalentVi(talent1Start, talent1End)+computeTalentVi(talent2Start, talent2End)+computeTalentVi(talent3Start, talent3End));
     //#endregion
 
+    $("#calculateur-personnage-resultat").removeClass("collapsed");
 });
 
 function computeXP(lvl){
