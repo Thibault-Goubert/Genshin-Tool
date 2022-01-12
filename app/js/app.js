@@ -3,6 +3,7 @@ const storage = window.localStorage;
 //#region Variables
 //Get all inputs
 let inputs = $("input");
+let textarea = $("textarea");
 
 // #region Tabs 
 //Get tabs
@@ -64,7 +65,11 @@ $(document).ready(function () {
             else if (key.includes("input")) {
                 dom[0].value = value;
             }
-        }
+            else if (key.includes("textarea")) {
+                dom[0].value = value;
+                console.log(dom[0].value + " " + value)
+            }
+    }
     }
     else {
         $("#list_ressources_harvestable").addClass("collapsed");
@@ -121,6 +126,23 @@ inputs.each(function () {
         }
     });
 });
+
+function outputsize() {
+    console.log("test");
+};
+textarea.each(function () {
+    var textarea = $(this);
+    
+    textarea.bind('input propertychange', function (e) {
+        var value = e.target.value;
+        if (value == "") {
+            storage.removeItem(textarea.attr("id"));
+        }
+        else storage.setItem(textarea.attr("id"), e.target.value);
+    });
+});
+
+
 
 //#region clicks
 $(".hideable").click(function () {

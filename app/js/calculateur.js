@@ -22,9 +22,10 @@ function loadCharactersJSON(){
 $('.selectpicker').append( $('<option data-tokens="-1">Unknown</option>'));
 let idChar = 0;
 $.each(characters['Characters'], function (idx, char) {
-    console.log(idx, char);
-    $('.selectpicker').append( $('<option data-tokens="' + idChar + '" data-content="' + char.name + '">' + char.name + '</option>'));
-    idChar = idChar+1;
+    if(char.name!="Traveler"){
+        $('.selectpicker').append( $('<option data-tokens="' + idChar + '" data-content="' + char.name + '">' + char.name + '</option>'));
+        idChar = idChar+1;
+    }
 });
 
 var imgBackground = document.getElementById("calculateur_personnage_panel_background");
@@ -46,7 +47,7 @@ $('#calculateur_personnage_names').change(function () {
         var characterElement = characters.Characters[idSelected].vision;
 
         imgBackground.src = "assets/icons/characters/case"+characterRarity+"nat.png";
-        imgPortrait.src = "assets/icons/characters/char_"+characterName+".png";
+        imgPortrait.src = "assets/icons/characters/char_"+characterName.replace(" ", "_")+".png";
         imgElement.src = "assets/icons/filters/element_"+characterElement+".png";
     }
 });
@@ -81,9 +82,10 @@ $(".calculateur_personnage_element_choices").click(function(){
 //#region Gestion selection talent
 $("#custom-select-ascension-talent").click(function(event){
     event.stopPropagation();
-    closeAllAscensionsDropdown();
     var dropdown = $("#custom-select-ascension-talent-dropdown");
-    dropdown.hasClass("collapsed") ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
+    var iscollapsed = dropdown.hasClass("collapsed");
+    closeAllDropdown();
+    iscollapsed ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
 })
 $(".calculateur_ascension_select_talent").click(function(){
     event.stopPropagation();
@@ -95,9 +97,10 @@ $(".calculateur_ascension_select_talent").click(function(){
 //#region Gestion selection elem
 $("#custom-select-ascension-elem").click(function(event){
     event.stopPropagation();
-    closeAllAscensionsDropdown();
     var dropdown = $("#custom-select-ascension-elem-dropdown");
-    dropdown.hasClass("collapsed") ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
+    var iscollapsed = dropdown.hasClass("collapsed");
+    closeAllDropdown();
+    iscollapsed ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
 })
 $(".calculateur_ascension_select_elem").click(function(){
     event.stopPropagation();
@@ -109,9 +112,10 @@ $(".calculateur_ascension_select_elem").click(function(){
 //#region Gestion selection gem 
 $("#custom-select-ascension-gem").click(function(event){
     event.stopPropagation();
-    closeAllAscensionsDropdown();
     var dropdown = $("#custom-select-ascension-gem-dropdown");
-    dropdown.hasClass("collapsed") ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
+    var iscollapsed = dropdown.hasClass("collapsed");
+    closeAllDropdown();
+    iscollapsed ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
 })
 $(".calculateur_ascension_select_gem").click(function(){
     event.stopPropagation();
@@ -123,9 +127,10 @@ $(".calculateur_ascension_select_gem").click(function(){
 //#region Gestion selection harvestable
 $("#custom-select-ascension-environment").click(function(event){
     event.stopPropagation();
-    closeAllAscensionsDropdown();
     var dropdown = $("#custom-select-ascension-environment-dropdown");
-    dropdown.hasClass("collapsed") ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
+    var iscollapsed = dropdown.hasClass("collapsed");
+    closeAllDropdown();
+    iscollapsed ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
 })
 $(".calculateur_ascension_select_environment").click(function(){
     event.stopPropagation();
@@ -137,9 +142,10 @@ $(".calculateur_ascension_select_environment").click(function(){
 //#region Gestion selection commons
 $("#custom-select-ascension-common").click(function(event){
     event.stopPropagation();
-    closeAllAscensionsDropdown();
     var dropdown = $("#custom-select-ascension-common-dropdown");
-    dropdown.hasClass("collapsed") ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
+    var iscollapsed = dropdown.hasClass("collapsed");
+    closeAllDropdown();
+    iscollapsed ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
 })
 $(".calculateur_ascension_select_common").click(function(){
     event.stopPropagation();
@@ -151,9 +157,10 @@ $(".calculateur_ascension_select_common").click(function(){
 //#region Gestion selection boss
 $("#custom-select-ascension-boss").click(function(event){
     event.stopPropagation();
-    closeAllAscensionsDropdown();
     var dropdown = $("#custom-select-ascension-boss-dropdown");
-    dropdown.hasClass("collapsed") ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
+    var iscollapsed = dropdown.hasClass("collapsed");
+    closeAllDropdown();
+    iscollapsed ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
 })
 $(".calculateur_ascension_select_boss").click(function(){
     event.stopPropagation();
@@ -162,6 +169,46 @@ $(".calculateur_ascension_select_boss").click(function(){
 })
 //#endregion
 
+//#region Gestion personnage lvl-talents
+$("#calculateur_personnage_infos_lvl").click(function(event){
+    event.stopPropagation();
+    let choices = $("#calculateur_personnage_infos_lvl_choices");
+    var iscollapsed = choices.hasClass("collapsed");
+    closeAllDropdown();
+    iscollapsed ? choices.removeClass("collapsed") : choices.addClass("collapsed");
+})
+$(".custom-select-options-lvl-personnage-choice").click(function(event){
+    event.stopPropagation();
+    $("#calculateur_personnage_infos_lvl").text($(this).text());
+    $("#calculateur_personnage_infos_lvl_choices").addClass("collapsed");
+})
+
+$("#calculateur_personnage_infos_talent_final").click(function(event){
+    event.stopPropagation();
+    let choices = $("#custom-select-options-talents-choices");
+    var iscollapsed = choices.hasClass("collapsed");
+    closeAllDropdown();
+    iscollapsed ? choices.removeClass("collapsed") : choices.addClass("collapsed");
+})
+$(".custom-select-options-talents-choice").click(function(event){
+    event.stopPropagation();
+    $("#calculateur_personnage_infos_talent_final").text($(this).text());
+    $("#custom-select-options-talents-choices").addClass("collapsed");
+})
+
+$("#calculateur-arme-lvl").click(function(event){
+    event.stopPropagation();
+    let choices = $("#calculateur-arme-lvl-choices");
+    var iscollapsed = choices.hasClass("collapsed");
+    closeAllDropdown();
+    iscollapsed ? choices.removeClass("collapsed") : choices.addClass("collapsed");
+})
+$(".custom-select-options-lvl-arme-choice").click(function(event){
+    event.stopPropagation();
+    $("#calculateur-arme-lvl").text($(this).text());
+    $("#calculateur-arme-lvl-choices").addClass("collapsed");
+})
+//#endregion
 
 //#endregion
 
@@ -170,9 +217,9 @@ $(window).click(function() {
     elementChoices.each(function(){
         $(this).addClass("collapsed");
     });
-    closeAllAscensionsDropdown();
+    closeAllDropdown();
 });
-function closeAllAscensionsDropdown(){
+function closeAllDropdown(){
     $("#custom-select-ascension-talent-dropdown").addClass("collapsed");
     $("#custom-select-ascension-elem-dropdown").addClass("collapsed");
     $("#custom-select-ascension-gem-dropdown").addClass("collapsed");
@@ -183,6 +230,10 @@ function closeAllAscensionsDropdown(){
     $("#calculateur-arme-custom-select-ascension-domain-dropdown").addClass("collapsed");
     $("#calculateur-arme-custom-select-ascension-elite-dropdown").addClass("collapsed");
     $("#calculateur-arme-custom-select-ascension-common-dropdown").addClass("collapsed");
+    
+    $("#calculateur_personnage_infos_lvl_choices").addClass("collapsed");
+    $("#custom-select-options-talents-choices").addClass("collapsed");
+    $("#calculateur-arme-lvl-choices").addClass("collapsed");
 }
 
 //#region Gestion calculer Personnage 
@@ -195,10 +246,10 @@ $("#calculateur-personnage-btn-calculer").click(function(event){
     let personnagePortrait = $("#calculateur_personnage_panel_portrait").attr("src");
     let personnageName = $("#calculateur_personnage_names").val();
 
-    let lvl = parseInt($("#calculateur_personnage_infos_lvl_input").val());
+    let lvl = parseInt($("#calculateur_personnage_infos_lvl").text());
 
     let talentStart = $("#calculateur_personnage_infos_talent_current_input").val();
-    let talentEnd = $("#calculateur_personnage_infos_talent_final_input").val();
+    let talentEnd = $("#calculateur_personnage_infos_talent_final").text();
 
     let plant = $("#custom_select_ascension_environment_selected_icon").attr("src");
     let week = $("#custom_select_ascension_boss_selected_icon").attr("src");
@@ -254,7 +305,7 @@ $("#calculateur-personnage-btn-calculer").click(function(event){
     //#endregion
 
     //#region Compute values
-    $("#calculateur-personnage-resultat-bouquin-amount").text(computeXP(lvl));
+    let personnageXP = $("#calculateur-personnage-resultat-bouquin-amount").text(computeXP(lvl));
 
     let computedMoras = computeMorasLvl(lvl)+computeMorasTalent(talent1Start, talent1End)+computeMorasTalent(talent2Start, talent2End)+computeMorasTalent(talent3Start, talent3End);
     $("#calculateur-personnage-resultat-moras-amount").text(new Intl.NumberFormat('en-US', {style: 'decimal'}).format(computedMoras));
@@ -285,6 +336,19 @@ $("#calculateur-personnage-btn-calculer").click(function(event){
     $("#calculateur-personnage-resultat").removeClass("collapsed");
 });
 
+$(".calculateur-text-result").on('DOMSubtreeModified',function(){
+
+    console.log("test change span:" + $(this).attr("id"));
+    console.log($(this).text())
+
+    if($(this).text()=="0"){
+        $(this).parent().parent().addClass("invisible");
+    }
+    else{
+        $(this).parent().parent().removeClass("invisible");
+    }
+});
+
 function computeXP(lvl){
     if(lvl<20){
         return 421;
@@ -307,6 +371,7 @@ function computeXP(lvl){
     if(lvl<90){
         return 172;
     }
+    return 0;
 }
 
 function computeMorasLvl(lvl){
@@ -331,6 +396,7 @@ function computeMorasLvl(lvl){
     if(lvl<90){
         return 804625;
     }
+    return 0;
 }
 
 function computeMorasTalent(talentStart, talentEnd){
@@ -370,6 +436,7 @@ function computeGemVe(lvl){
     if(lvl<40){
         return 1;
     }
+    return 0;
 }
 function computeGemB(lvl){
     if(lvl<50){
@@ -378,19 +445,22 @@ function computeGemB(lvl){
     if(lvl<60){
         return 6
     }
+    return 0;
 }
 function computeGemVi(lvl){
-    if(lvl<60){
+    if(lvl<70){
         return 9;
     }
-    if(lvl<70){
+    if(lvl<80){
         return 6
     }
+    return 0;
 }
 function computeGemG(lvl){
     if(lvl<90){
         return 6;
     }
+    return 0;
 }
 //#endregion
 
@@ -410,6 +480,7 @@ function computeElem(lvl){
     if(lvl<90){
         return 20;
     }
+    return 0;
 }
 
 function computePlants(lvl){
@@ -431,6 +502,7 @@ function computePlants(lvl){
     if(lvl<90){
         return 60;
     }
+    return 0;
 }
 
 function computeBoss(talentStart, talentEnd){
@@ -460,9 +532,11 @@ function computeCrown(talentStart, talentEnd){
 
 //#region Compute Mobs
 function computeMobGr(talentStart, talentEnd){
+    let res = 0
     if(talentStart<2 && talentEnd>1){
         return 6;
     }
+    return res;
 }
 function computeMobVe(talentStart, talentEnd){
     let res = 0;
@@ -519,9 +593,11 @@ function computeMobBLvl(lvl){
 
 //#region Compute Talent
 function computeTalentVe(talentStart, talentEnd){
+    let res = 0;
     if(talentStart<2 && talentEnd>1){
         return 3;
     }
+    return res;
 }
 function computeTalentB(talentStart, talentEnd){
     let res = 0;
@@ -600,36 +676,27 @@ $("#calculateur-arme-rarity5-choice").click(function(event){
 //#region Dropdowns
 $("#calculateur-arme-custom-select-ascension-domain").click(function(event){
     event.stopPropagation();
-    closeAllAscensionsDropdown();
 
-    let dropdownArmeAscensionDomain = $("#calculateur-arme-custom-select-ascension-domain-dropdown");
-    if(dropdownArmeAscensionDomain.hasClass("collapsed")){
-        dropdownArmeAscensionDomain.removeClass("collapsed");
-    }else{
-        dropdownArmeAscensionDomain.addClass("collapsed");
-    }
+    let dropdown = $("#calculateur-arme-custom-select-ascension-domain-dropdown");
+    var iscollapsed = dropdown.hasClass("collapsed");
+    closeAllDropdown();
+    iscollapsed ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
 })
 $("#calculateur-arme-custom-select-ascension-elite").click(function(event){
     event.stopPropagation();
-    closeAllAscensionsDropdown();
 
-    let dropdownArmeAscensionElite = $("#calculateur-arme-custom-select-ascension-elite-dropdown");
-    if(dropdownArmeAscensionElite.hasClass("collapsed")){
-        dropdownArmeAscensionElite.removeClass("collapsed");
-    }else{
-        dropdownArmeAscensionElite.addClass("collapsed");
-    }
+    let dropdown = $("#calculateur-arme-custom-select-ascension-elite-dropdown");
+    var iscollapsed = dropdown.hasClass("collapsed");
+    closeAllDropdown();
+    iscollapsed ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
 })
 $("#calculateur-arme-custom-select-ascension-common").click(function(event){
     event.stopPropagation();
-    closeAllAscensionsDropdown();
 
-    let dropdownArmeAscensionCommon = $("#calculateur-arme-custom-select-ascension-common-dropdown");
-    if(dropdownArmeAscensionCommon.hasClass("collapsed")){
-        dropdownArmeAscensionCommon.removeClass("collapsed");
-    }else{
-        dropdownArmeAscensionCommon.addClass("collapsed");
-    }
+    let dropdown = $("#calculateur-arme-custom-select-ascension-common-dropdown");
+    var iscollapsed = dropdown.hasClass("collapsed");
+    closeAllDropdown();
+    iscollapsed ? dropdown.removeClass("collapsed") : dropdown.addClass("collapsed");
 })
 
 $(".calculateur-arme-custom-select-ascension-domain-dropdown-option").click(function(event){
@@ -679,7 +746,7 @@ $("#calculateur-arme-btn-calculer").click(function(event){
 
     let weaponRarityImg = $("#calculateur-arme-rarity-selected-img").attr("src");
     let weaponRarity = parseInt(weaponRarityImg.charAt(weaponRarityImg.length-11));
-    let weaponLvl = parseInt($("#calculateur-arme-lvl-input").val());
+    let weaponLvl = parseInt($("#calculateur-arme-lvl").text());
     console.log("weaponRarity: " + weaponRarity + " weaponLvl: " + weaponLvl)
 
     //#region Ressources img
@@ -704,17 +771,17 @@ $("#calculateur-arme-btn-calculer").click(function(event){
     let ressourceCommonB  = ressourceCommon + "b.png";
 
     $("#calculateur-arme-resultat-domain-icon-ve").attr("src",ressourceDomainVe);
-    $("#calculateur-arme-resultat-domain-icon-b") .attr("src",ressourceDomainB );
+    $("#calculateur-arme-resultat-domain-icon-b").attr("src",ressourceDomainB );
     $("#calculateur-arme-resultat-domain-icon-vi").attr("src",ressourceDomainVi);
-    $("#calculateur-arme-resultat-domain-icon-g") .attr("src",ressourceDomainG );
+    $("#calculateur-arme-resultat-domain-icon-g").attr("src",ressourceDomainG );
 
     $("#calculateur-arme-resultat-elite-icon-ve").attr("src",ressourceEliteVe);
-    $("#calculateur-arme-resultat-elite-icon-b") .attr("src",ressourceEliteB );
+    $("#calculateur-arme-resultat-elite-icon-b").attr("src",ressourceEliteB );
     $("#calculateur-arme-resultat-elite-icon-vi").attr("src",ressourceEliteVi);
 
     $("#calculateur-arme-resultat-common-icon-gr").attr("src",ressourceCommonGr);
     $("#calculateur-arme-resultat-common-icon-ve").attr("src",ressourceCommonVe);
-    $("#calculateur-arme-resultat-common-icon-b") .attr("src",ressourceCommonB );
+    $("#calculateur-arme-resultat-common-icon-b").attr("src",ressourceCommonB );
     //#endregion
 
     //#region Compute 
@@ -735,7 +802,7 @@ $("#calculateur-arme-btn-calculer").click(function(event){
         }
         return res;
     });
-    $("#calculateur-arme-result-domain-b-amount") .text(function(){
+    $("#calculateur-arme-result-domain-b-amount").text(function(){
         let res = 0;
         if(weaponRarity==5){
             if(weaponLvl<50) res += 14;
@@ -767,7 +834,7 @@ $("#calculateur-arme-btn-calculer").click(function(event){
         }
         return res;
     });
-    $("#calculateur-arme-result-domain-g-amount") .text(function(){
+    $("#calculateur-arme-result-domain-g-amount").text(function(){
         let res = 0;
         if(weaponRarity==5){
             if(weaponLvl<90) res += 6;
@@ -799,7 +866,7 @@ $("#calculateur-arme-btn-calculer").click(function(event){
         }
         return res;
     });
-    $("#calculateur-arme-result-elite-b-amount") .text(function(){
+    $("#calculateur-arme-result-elite-b-amount").text(function(){
         let res = 0;
         if(weaponRarity==5){
             if(weaponLvl<60) res += 27;
@@ -850,7 +917,7 @@ $("#calculateur-arme-btn-calculer").click(function(event){
         }
         return res;
     });
-    $("#calculateur-arme-result-common-ve-amount") .text(function(){
+    $("#calculateur-arme-result-common-ve-amount").text(function(){
         let res = 0;
         if(weaponRarity==5){
             if(weaponLvl<60) res += 23;
@@ -955,7 +1022,8 @@ $("#calculateur-arme-btn-calculer").click(function(event){
             if(weaponLvl<90){
                 return 164;
             }
-        }    
+        }  
+        return 0;  
     }
     function computeMorasArme(rarity, lvl){
         console.log(rarity + " " + lvl)
@@ -1028,6 +1096,7 @@ $("#calculateur-arme-btn-calculer").click(function(event){
                 return 193500;
             }
         }
+        return 0;
     }
     //#endregion
 

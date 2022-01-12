@@ -77,6 +77,9 @@ textarea{
     display: none;
     overflow: hidden;
 }
+.invisible{
+    opacity: 0;
+}
 
 .panel{
     width: 62px;
@@ -505,5 +508,62 @@ textarea{
     align-items: center;
     justify-content: center;
 
+    user-select: none;
+}
+.image-rendering-optimized{
+    image-rendering:-webkit-optimize-contrast;
+}
+.image-rendering-pixelated{
+    image-rendering: pixelated;
+}
+#notes-textarea1,#notes-textarea2,#notes-textarea3{
+    resize: none;
+    text-align: left; 
+    width: 257px; 
+    height: 700px;
+    font-family: Calibri;
+    font-weight: lighter;
+    font-size: medium;
+    background-color: #4c505a;
+    color: #e9e5dc;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+.writing-upsidedown {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    -o-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+.custom-select-options-lvl{
+    text-align: center;
+    background-color: #e9e5dc;
+    font-family: Calibri;
+    font-weight: lighter;
+    font-size: smaller;
+    color: #36393f;
+    border-radius: 3px;
+    width: 19px;
+    margin-top: 2px;
+    user-select: none;
+}
+.custom-select-options-talents{
+    text-align: center;
+    background-color: #e9e5dc;
+    font-family: Calibri;
+    font-weight: lighter;
+    font-size: smaller;
+    color: #36393f;
+    border-radius: 3px;
+    width: 25px;
+    margin-top: 2px;
     user-select: none;
 }
