@@ -389,6 +389,7 @@ textarea{
     user-select: none;
 }
 
+#liste_personnages_filtres_sex_both,
 #liste_personnages_filtres_armes,
 #liste_personnages_filtres_elements,
 #liste_personnages_filtres_etoiles
@@ -406,6 +407,8 @@ textarea{
     margin-left: 6px;
 }
 
+#liste_personnages_filtres_sex_m,
+#liste_personnages_filtres_etoile,
 #liste_personnages_filtres_armes_arc,
 #liste_personnages_filtres_armes_lance,
 #liste_personnages_filtres_armes_claymore,
