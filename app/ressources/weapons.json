@@ -1,0 +1,659 @@
+{
+    "Weapons":[
+        {
+            "name":"Summit ShaperSummit Shaper",
+            "type":"Sword",
+            "rarity":5
+        },
+        {
+            "name":"Skyward Blade",
+            "type":"Sword",
+            "rarity":5
+        },
+        {
+            "name":"Primordial Jade Cutter",
+            "type":"Sword",
+            "rarity":5
+        },
+        {
+            "name":"Mistsplitter Reforged",
+            "type":"Sword",
+            "rarity":5
+        },
+        {
+            "name":"Freedom-Sworn",
+            "type":"Sword",
+            "rarity":5
+        },
+        {
+            "name":"Aquila Favonia",
+            "type":"Sword",
+            "rarity":5
+        },
+        {
+            "name":"Vortex Vanquisher",
+            "type":"Polearm",
+            "rarity":5
+        },
+        {
+            "name":"Staff of Homa",
+            "type":"Polearm",
+            "rarity":5
+        },
+        {
+            "name":"Skyward Spine",
+            "type":"Polearm",
+            "rarity":5
+        },
+        {
+            "name":"Primordial Jade Winged-Spear",
+            "type":"Polearm",
+            "rarity":5
+        },
+        {
+            "name":"Engulfing Lightning",
+            "type":"Polearm",
+            "rarity":5
+        },
+        {
+            "name":"Wolf's Gravestone",
+            "type":"Claymore",
+            "rarity":5
+        },
+        {
+            "name":"The Unforged",
+            "type":"Claymore",
+            "rarity":5
+        },
+        {
+            "name":"Song of Broken Pines",
+            "type":"Claymore",
+            "rarity":5
+        },
+        {
+            "name":"Skyward Pride",
+            "type":"Claymore",
+            "rarity":
+        },
+        {
+            "name":"Skyward Atlas",
+            "type":"Catalyst",
+            "rarity":5
+        },
+        {
+            "name":"Lost Prayer to the Sacred Winds",
+            "type":"Catalyst",
+            "rarity":
+        },
+        {
+            "name":"Memory of Dust",
+            "type":"Catalyst",
+            "rarity":
+        },
+        {
+            "name":"Everlasting Moonglow",
+            "type":"Catalyst",
+            "rarity":
+        },
+        {
+            "name":"Thundering Pulse",
+            "type":"Bow",
+            "rarity":5
+        },
+        {
+            "name":"Skyward Harp",
+            "type":"Bow",
+            "rarity":5
+        },
+        {
+            "name":"Polar Star",
+            "type":"Bow",
+            "rarity":5
+        },
+        {
+            "name":"Elegy for the End",
+            "type":"Bow",
+            "rarity":5
+        },
+        {
+            "name":"Amos' Bow",
+            "type":"Bow",
+            "rarity":5
+        },
+        {
+            "name":"The Flute",
+            "type":"Sword",
+            "rarity":4
+        },
+        {
+            "name":"The Black Sword",
+            "type":"Sword",
+            "rarity":4
+        },
+        {
+            "name":"The Alley Flash",
+            "type":"Sword",
+            "rarity":4
+        },
+        {
+            "name":"Sword of Descension",
+            "type":"Sword",
+            "rarity":4
+        },
+        {
+            "name":"Sacrificial Sword",
+            "type":"Sword",
+            "rarity":4
+        },
+        {
+            "name":"Royal Longsword",
+            "type":"Sword",
+            "rarity":4
+        },
+        {
+            "name":"Prototype Rancour",
+            "type":"Sword",
+            "rarity":4
+        },
+        {
+            "name":"Lion's Roar",
+            "type":"Sword",
+            "rarity":4
+        },
+        {
+            "name":"Iron Sting",
+            "type":"Sword",
+            "rarity":4
+        },
+        {
+            "name":"Festering Desire",
+            "type":"Sword",
+            "rarity":4
+        },
+        {
+            "name":"Favonius Sword",
+            "type":"Sword",
+            "rarity":4
+        },
+        {
+            "name":"Blackcliff Longsword",
+            "type":"Sword",
+            "rarity":4
+        },
+        {
+            "name":"Amenoma Kageuchi",
+            "type":"Sword",
+            "rarity":4
+        },
+        {
+            "name":"The Catch",
+            "type":"Polearm",
+            "rarity":4
+        },
+        {
+            "name":"Royal SpearRoyal Spear",
+            "type":"Polearm",
+            "rarity":4
+        },
+        {
+            "name":"Prototype Grudge",
+            "type":"Polearm",
+            "rarity":4
+        },
+        {
+            "name":"Lithic Spear",
+            "type":"Polearm",
+            "rarity":4
+        },
+        {
+            "name":"Kitain Cross Spear",
+            "type":"Polearm",
+            "rarity":4
+        },
+        {
+            "name":"Favonius Lance",
+            "type":"Polearm",
+            "rarity":4
+        },
+        {
+            "name":"Dragon's Bane",
+            "type":"Polearm",
+            "rarity":4
+        },
+        {
+            "name":"Dragonspine Spear",
+            "type":"Polearm",
+            "rarity":4
+        },
+        {
+            "name":"Deathmatch",
+            "type":"Polearm",
+            "rarity":4
+        },
+        {
+            "name":"Crescent Pike",
+            "type":"Polearm",
+            "rarity":4
+        },
+        {
+            "name":"Blackcliff Pole",
+            "type":"Polearm",
+            "rarity":4
+        },
+        {
+            "name":"Whiteblind",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"The Bell",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"Snow-Tombed Starsilver",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"Serpent Spine",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"Sacrificial Greatsword",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"Royal Greatsword",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"Rainslasher",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"Prototype Aminus",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"Luxurious Sea-Lord",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"Lithic Blade",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"Katsuragikiri Nagamasa",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"Favonius Greatsword",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"Blackcliff Slasher",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"Akuoumaru",
+            "type":"Claymore",
+            "rarity":4
+        },
+        {
+            "name":"Wine and Song",
+            "type":"Catalyst",
+            "rarity":4
+        },
+        {
+            "name":"The Widsith",
+            "type":"Catalyst",
+            "rarity":4
+        },
+        {
+            "name":"Solar Pearl",
+            "type":"Catalyst",
+            "rarity":4
+        },
+        {
+            "name":"Sacrificial Fragments",
+            "type":"Catalyst",
+            "rarity":4
+        },
+        {
+            "name":"Royal Grimoire",
+            "type":"Catalyst",
+            "rarity":4
+        },
+        {
+            "name":"Prototype Amber",
+            "type":"Catalyst",
+            "rarity":4
+        },
+        {
+            "name":"Mappa Mare",
+            "type":"Catalyst",
+            "rarity":4
+        },
+        {
+            "name":"Hakushin Ring",
+            "type":"Catalyst",
+            "rarity":4
+        },
+        {
+            "name":"Frostbearer",
+            "type":"Catalyst",
+            "rarity":4
+        },
+        {
+            "name":"Favonius Codex",
+            "type":"Catalyst",
+            "rarity":4
+        },
+        {
+            "name":"Eye of Perception",
+            "type":"Catalyst",
+            "rarity":4
+        },
+        {
+            "name":"Dodoco Tales",
+            "type":"Catalyst",
+            "rarity":4
+        },
+        {
+            "name":"Blackcliff Amulet",
+            "type":"Catalyst",
+            "rarity":4
+        },
+        {
+            "name":"Windblume Ode",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"The Viridescent Hunt",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"The Stringless",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"Sacrificial Bow",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"Rust",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+        {
+            "name":"",
+            "type":"",
+            "rarity":
+        },
+    ]
+}

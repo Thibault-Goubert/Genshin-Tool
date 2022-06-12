@@ -1,6 +1,4 @@
 node_modules
 .vscode
-app/assets
-app/ressources
 GenshinTool-win32-x64
 windows_installer

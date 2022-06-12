@@ -1,0 +1,470 @@
+{
+    "Characters": [
+        {
+            "name": "Albedo",
+            "vision": "Geo",
+            "weapon": "Sword",
+            "nation": "Mondstadt",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Aloy",
+            "vision": "Cryo",
+            "weapon": "Bow",
+            "nation": "Other",
+            "rarity": 5,
+            "collab": true,
+            "sex": "F"
+        },
+        {
+            "name": "Amber",
+            "vision": "Pyro",
+            "weapon": "Bow",
+            "nation": "Mondstadt",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Ayaka",
+            "vision": "Cryo",
+            "weapon": "Sword",
+            "nation": "Inazuma",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Ayato",
+            "vision": "Hydro",
+            "weapon": "Sword",
+            "nation": "Inazuma",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Barbara",
+            "vision": "Hydro",
+            "weapon": "Catalyst",
+            "nation": "Mondstadt",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Beidou",
+            "vision": "Electro",
+            "weapon": "Claymore",
+            "nation": "Liyue",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Bennett",
+            "vision": "Pyro",
+            "weapon": "Sword",
+            "nation": "Mondstadt",
+            "rarity": 4,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Chongyun",
+            "vision": "Cryo",
+            "weapon": "Claymore",
+            "nation": "Liyue",
+            "rarity": 4,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Diluc",
+            "vision": "Pyro",
+            "weapon": "Claymore",
+            "nation": "Mondstadt",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Diona",
+            "vision": "Cryo",
+            "weapon": "Bow",
+            "nation": "Mondstadt",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Eula",
+            "vision": "Cryo",
+            "weapon": "Claymore",
+            "nation": "Mondstadt",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Fischl",
+            "vision": "Electro",
+            "weapon": "Bow",
+            "nation": "Mondstadt",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Ganyu",
+            "vision": "Cryo",
+            "weapon": "Bow",
+            "nation": "Liyue",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Gorou",
+            "vision": "Geo",
+            "weapon": "Bow",
+            "nation": "Inazuma",
+            "rarity": 4,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Heizou",
+            "vision": "Anemo",
+            "weapon": "Catalyst",
+            "nation": "Inazuma",
+            "rarity": 4,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Hu Tao",
+            "vision": "Pyro",
+            "weapon": "Polearm",
+            "nation": "Liyue",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Itto",
+            "vision": "Geo",
+            "weapon": "Claymore",
+            "nation": "Inazuma",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Jean",
+            "vision": "Anemo",
+            "weapon": "Sword",
+            "nation": "Mondstadt",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Kaeya",
+            "vision": "Cryo",
+            "weapon": "Sword",
+            "nation": "Mondstadt",
+            "rarity": 4,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Kazuha",
+            "vision": "Anemo",
+            "weapon": "Sword",
+            "nation": "Inazuma",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Keqing",
+            "vision": "Electro",
+            "weapon": "Sword",
+            "nation": "Liyue",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Klee",
+            "vision": "Pyro",
+            "weapon": "Catalyst",
+            "nation": "Mondstadt",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Kokomi",
+            "vision": "Hydro",
+            "weapon": "Catalyst",
+            "nation": "Inazuma",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Kujou Sara",
+            "vision": "Electro",
+            "weapon": "Bow",
+            "nation": "Inazuma",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Kuki Shinobu",
+            "vision": "Electro",
+            "weapon": "Sword",
+            "nation": "Inazuma",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Lisa",
+            "vision": "Electro",
+            "weapon": "Catalyst",
+            "nation": "Mondstadt",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Mona",
+            "vision": "Hydro",
+            "weapon": "Catalyst",
+            "nation": "Mondstadt",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Ningguang",
+            "vision": "Geo",
+            "weapon": "Catalyst",
+            "nation": "Liyue",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Noelle",
+            "vision": "Geo",
+            "weapon": "Claymore",
+            "nation": "Mondstadt",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Qiqi",
+            "vision": "Cryo",
+            "weapon": "Sword",
+            "nation": "Liyue",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Razor",
+            "vision": "Electro",
+            "weapon": "Claymore",
+            "nation": "Mondstadt",
+            "rarity": 4,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Raiden Shogun",
+            "vision": "Electro",
+            "weapon": "Polearm",
+            "nation": "Inazuma",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Rosaria",
+            "vision": "Cryo",
+            "weapon": "Polearm",
+            "nation": "Mondstadt",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Sayu",
+            "vision": "Anemo",
+            "weapon": "Claymore",
+            "nation": "Inazuma",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Shenhe",
+            "vision": "Cryo",
+            "weapon": "Polearm",
+            "nation": "Liyue",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Sucrose",
+            "vision": "Anemo",
+            "weapon": "Catalyst",
+            "nation": "Mondstadt",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Tartaglia",
+            "vision": "Hydro",
+            "weapon": "Bow",
+            "nation": "Snezhnaya",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Thoma",
+            "vision": "Pyro",
+            "weapon": "Polearm",
+            "nation": "Inazuma",
+            "rarity": 4,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Traveler",
+            "vision": "Anemo",
+            "weapon": "Sword",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Traveler",
+            "vision": "Geo",
+            "weapon": "Sword",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Venti",
+            "vision": "Anemo",
+            "weapon": "Bow",
+            "nation": "Mondstadt",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Xiangling",
+            "vision": "Pyro",
+            "weapon": "Polearm",
+            "nation": "Liyue",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Xiao",
+            "vision": "Anemo",
+            "weapon": "Polearm",
+            "nation": "Liyue",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Xingqiu",
+            "vision": "Hydro",
+            "weapon": "Sword",
+            "nation": "Liyue",
+            "rarity": 4,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Xinyan",
+            "vision": "Pyro",
+            "weapon": "Claymore",
+            "nation": "Liyue",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Yae Miko",
+            "vision": "Electro",
+            "weapon": "Catalyst",
+            "nation": "Inazuma",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Yanfei",
+            "vision": "Pyro",
+            "weapon": "Catalyst",
+            "nation": "Liyue",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Yelan",
+            "vision": "Hydro",
+            "weapon": "Bow",
+            "nation": "Liyue",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Yoimiya",
+            "vision": "Pyro",
+            "weapon": "Bow",
+            "nation": "Inazuma",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Yun Jin",
+            "vision": "Geo",
+            "weapon": "Polearm",
+            "nation": "Liyue",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Zhongli",
+            "vision": "Geo",
+            "weapon": "Polearm",
+            "nation": "Liyue",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        }
+    ]
+}
