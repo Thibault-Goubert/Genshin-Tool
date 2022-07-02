@@ -154,7 +154,8 @@ textarea{
     margin-top: 10px;
 }
 #liste_ressources_generales,
-#btn_groupe_ressources{    
+#btn_groupe_ressources,
+#btn_groupe_gestions{    
     margin-top: 23px;  
 }
 #list_ressources_boss_domains,
@@ -171,6 +172,14 @@ textarea{
 #btn_harvestables{
     height: 30px;
     width: 94px;
+}
+#btn_gestion_personnages{
+    height: 30;
+    width: 165;
+}
+#btn_gestion_artefacts{
+    height: 30;
+    width: 144;
 }
 
 #input_left-nb_mora{

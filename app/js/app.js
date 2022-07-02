@@ -10,17 +10,24 @@ let textarea = $("textarea");
 let btnRessources = $("#btn_ressources");
 let btnPersonnages = $("#btn_personnages");
 let btnNotes = $("#btn_notes");
+let btnArtefacts = $("#btn_artefacts");
 //Get tabs display
 let listeRessources = $("#liste_ressources");
 let listePersonnages = $("#liste_personnages");
 let notes = $("#display_calculateur");
-
+let artefacts = $("#artefacts");
 //Get tabs
 let btnBossDomains = $("#btn_boss_domains");
 let btnHarvestables = $("#btn_harvestables");
+
+let btnGestionPersonnages = $("#btn_gestion_personnages");
+let btnGestionsArtefacts = $("#btn_gestion_artefacts");
 //Get tabs display
 let listRessourcesBossDomains = $("#list_ressources_boss_domains");
 let listRessourcesHarvestable = $("#list_ressources_harvestable");
+
+let gridGestionPersonnages = $("#grid_gestion_personnages");
+let gridGestionArtefacts = $("#grid_gestion_artefacts");
 //#endregion
 
 // #region Modal Variables
@@ -130,6 +137,7 @@ inputs.each(function () {
 function outputsize() {
     console.log("test");
 };
+
 textarea.each(function () {
     var textarea = $(this);
     
@@ -141,8 +149,6 @@ textarea.each(function () {
         else storage.setItem(textarea.attr("id"), e.target.value);
     });
 });
-
-
 
 //#region clicks
 $(".hideable").click(function () {
@@ -158,6 +164,7 @@ $(".hideable").click(function () {
         storage.setItem(panel[0].id, "hide");
     }
 });
+
 btnBossDomains.click(function () {
     var isChecked = btnBossDomains.hasClass("checked");
     if (!isChecked) {
@@ -204,6 +211,9 @@ btnRessources.click(function () {
         btnNotes.removeClass("checked");
         storage.removeItem(btnNotes[0].id, "checked");
 
+        btnArtefacts.removeClass("checked");
+        storage.removeItem(btnArtefacts[0].id, "checked");
+
         //Gestion affichage
         listePersonnages.addClass("collapsed");
         storage.setItem(listePersonnages[0].id, "collapsed");
@@ -213,6 +223,9 @@ btnRessources.click(function () {
 
         listeRessources.removeClass("collapsed");
         storage.removeItem(listeRessources[0].id, "collapsed");
+        
+        artefacts.addClass("collapsed");
+        storage.setItem(artefacts[0].id, "collapsed");
     }
 });
 btnPersonnages.click(function () {
@@ -228,6 +241,9 @@ btnPersonnages.click(function () {
         btnNotes.removeClass("checked");
         storage.removeItem(btnNotes[0].id, "checked");
 
+        btnArtefacts.removeClass("checked");
+        storage.removeItem(btnArtefacts[0].id, "checked");
+
         //Gestion affichage
         listeRessources.addClass("collapsed");
         storage.setItem(listeRessources[0].id, "collapsed");
@@ -237,6 +253,9 @@ btnPersonnages.click(function () {
 
         listePersonnages.removeClass("collapsed");
         storage.removeItem(listePersonnages[0].id, "collapsed");
+        
+        artefacts.addClass("collapsed");
+        storage.setItem(artefacts[0].id, "collapsed");
     }
 });
 btnNotes.click(function () {
@@ -252,6 +271,39 @@ btnNotes.click(function () {
         btnPersonnages.removeClass("checked");
         storage.removeItem(btnPersonnages[0].id, "checked");
 
+        btnArtefacts.removeClass("checked");
+        storage.removeItem(btnArtefacts[0].id, "checked");
+
+        //Gestion affichage
+        listeRessources.addClass("collapsed");
+        storage.setItem(listeRessources[0].id, "collapsed");
+
+        listePersonnages.addClass("collapsed");
+        storage.setItem(listePersonnages[0].id, "collapsed");
+        
+        artefacts.addClass("collapsed");
+        storage.setItem(artefacts[0].id, "collapsed");
+
+        notes.removeClass("collapsed");
+        storage.removeItem(notes[0].id, "collapsed");
+    }
+});
+btnArtefacts.click(function () {
+    var isChecked = btnArtefacts.hasClass("checked");
+    if (!isChecked) {
+        //Gestion boutons
+        btnArtefacts.addClass("checked");
+        storage.setItem(btnArtefacts[0].id, "checked");
+
+        btnRessources.removeClass("checked");
+        storage.removeItem(btnRessources[0].id, "checked");
+
+        btnPersonnages.removeClass("checked");
+        storage.removeItem(btnPersonnages[0].id, "checked");
+
+        btnNotes.removeClass("checked");
+        storage.removeItem(btnNotes[0].id, "checked");
+
         //Gestion affichage
         listeRessources.addClass("collapsed");
         storage.setItem(listeRessources[0].id, "collapsed");
@@ -259,8 +311,44 @@ btnNotes.click(function () {
         listePersonnages.addClass("collapsed");
         storage.setItem(listePersonnages[0].id, "collapsed");
 
-        notes.removeClass("collapsed");
-        storage.removeItem(notes[0].id, "collapsed");
+        notes.addClass("collapsed");
+        storage.setItem(notes[0].id, "collapsed");
+
+        artefacts.removeClass("collapsed");
+        storage.removeItem(artefacts[0].id, "collapsed");
+    }
+});
+
+btnGestionPersonnages.click(function () {
+    var isChecked = btnGestionPersonnages.hasClass("checked");
+    if (!isChecked) {
+        btnGestionPersonnages.addClass("checked");
+        storage.setItem(btnGestionPersonnages[0].id, "checked");
+
+        btnGestionsArtefacts.removeClass("checked");
+        storage.removeItem(btnGestionsArtefacts[0].id, "checked");
+
+        gridGestionArtefacts.removeClass("collapsed");
+        storage.removeItem(gridGestionArtefacts[0].id, "collapsed");
+
+        gridGestionPersonnages.addClass("collapsed");
+        storage.setItem(gridGestionPersonnages[0].id, "collapsed");
+    }
+});
+btnGestionsArtefacts.click(function () {
+    var isChecked = btnGestionsArtefacts.hasClass("checked");
+    if (!isChecked) {
+        btnGestionsArtefacts.addClass("checked");
+        storage.setItem(btnGestionsArtefacts[0].id, "checked");
+
+        btnGestionPersonnages.removeClass("checked");
+        storage.removeItem(btnGestionPersonnages[0].id, "checked");
+
+        gridGestionPersonnages.addClass("collapsed");
+        storage.setItem(gridGestionPersonnages[0].id, "collapsed");
+
+        gridGestionArtefacts.removeClass("collapsed");
+        storage.removeItem(gridGestionArtefacts[0].id, "collapsed");
     }
 });
 
