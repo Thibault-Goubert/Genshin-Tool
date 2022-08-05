@@ -39,7 +39,9 @@ img.left{
 .bigRightSpace{
     margin-right: 60px;
 }
-
+.bigRightSpaceDouble{
+    margin-right: 120px;
+}
 input, .btn, span, p{
     text-align: center;
     background-color: #e9e5dc;
@@ -257,7 +259,7 @@ textarea{
     position: relative;
 
     width: 40px;
-    height: 293px;
+    height: 389px;
 
     border-radius: 3px 0px 0px 3px;
     box-shadow: 0px 0px 2px black;
@@ -426,6 +428,7 @@ textarea{
 #liste_personnages_filtres_elements_anemo,
 #liste_personnages_filtres_elements_eau,
 #liste_personnages_filtres_elements_electro,
+#liste_personnages_filtres_elements_dendro,
 #liste_personnages_filtres_elements_glace
 {
     margin-left: 4px;

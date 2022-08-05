@@ -67,6 +67,7 @@ class CharactersList extends React.Component {
         const isGeo = this.props.isGeo;
         const isHydro = this.props.isHydro;
         const isElectro = this.props.isElectro;
+        const isDendro = this.props.isDendro;
         //#endregion
         //#region Variables Armes
         const isArmes = this.props.isArmes;
@@ -90,24 +91,29 @@ class CharactersList extends React.Component {
 
         var charactersCards = [];
         var isSortedByWeapons = (isEpee || isArc || isLance || isClaymore || isCatalyste || isArmes);
-        var isSortedByElements = (isPyro || isCryo || isElectro || isHydro || isAnemo || isGeo || isElements);
+        var isSortedByElements = (isPyro || isCryo || isElectro || isHydro || isAnemo || isGeo || isDendro || isElements);
         var isSortedByRarity = (isRarity || isRarityCinq || isRarityQuatre);
         var isSortedBysex = (isMale || isFemale || isSex);
         var isFiltered = (isSortedByElements || isSortedByWeapons || isSortedByRarity || isSortedBysex);
-        var displayTravelerVision = !(!isFiltered || !isSortedByElements || (isEpee || isArmes && ((isAnemo && isGeo) || isElements)));
+        var displayTravelerVision = !(!isFiltered || !isSortedByElements || (isEpee || isArmes && ((isAnemo && isGeo && isDendro) || isElements)));
 
         console.log("display:", displayTravelerVision)
         console.log("isAnemo:", isAnemo)
         console.log("isGeo:", isGeo)
+        console.log("isDendro:", isDendro)
 
         //#region FilterUnique
         if (!displayTravelerVision) {
             this.props.characters = this.props.characters.filter(onlyUnique);
-            if (!isAnemo && isGeo) {
+            if (!isAnemo && isGeo && !isDendro) {
                 this.props.characters.find(c => c.name == "Traveler").vision = "Geo";
                 displayTravelerVision = true;
             }
-            else if (isAnemo && !isGeo) {
+            if (!isAnemo && !isGeo && isDendro) {
+                this.props.characters.find(c => c.name == "Traveler").vision = "Dendro";
+                displayTravelerVision = true;
+            }
+            else if (isAnemo && !isGeo && !isDendro) {
                 this.props.characters.find(c => c.name == "Traveler").vision = "Anemo";
                 displayTravelerVision = true;
             }
@@ -364,6 +370,21 @@ class CharactersList extends React.Component {
                             }
                         })
                     }
+                    if (isDendro || isElements) {
+                        console.log("weapon element Dendro")
+                        charactersFilterByWeapon.forEach((character) => {
+                            if (character.vision == 'Dendro') {
+                                rowCharacterWeapon.push(
+                                    <CharacterCard
+                                        name={character.name}
+                                        rarity={character.rarity}
+                                        vision={character.vision}
+                                        collab={character.collab}
+                                        displayTravelerVision={displayTravelerVision}
+                                    />)
+                            }
+                        })
+                    }
                     else if (!isSortedByElements) {
                         charactersFilterByWeapon.forEach((character) => {
                             rowCharacterWeapon.push(
@@ -471,6 +492,21 @@ class CharactersList extends React.Component {
                                 }
                             })
                         }
+                        if (isDendro || isElements) {
+                            console.log("weapon element Dendro")
+                            femaleCharactersList.forEach((character) => {
+                                if (character.vision == 'Dendro') {
+                                    rowCharacterWeapon.push(
+                                        <CharacterCard
+                                            name={character.name}
+                                            rarity={character.rarity}
+                                            vision={character.vision}
+                                            collab={character.collab}
+                                            displayTravelerVision={displayTravelerVision}
+                                        />)
+                                }
+                            })
+                        }
                         else if (!isSortedByElements) {
                             femaleCharactersList.forEach((character) => {
                                 rowCharacterWeapon.push(
@@ -565,6 +601,21 @@ class CharactersList extends React.Component {
                             console.log("weapon element Geo")
                             maleCharactersList.forEach((character) => {
                                 if (character.vision == 'Geo') {
+                                    rowCharacterWeapon.push(
+                                        <CharacterCard
+                                            name={character.name}
+                                            rarity={character.rarity}
+                                            vision={character.vision}
+                                            collab={character.collab}
+                                            displayTravelerVision={displayTravelerVision}
+                                        />)
+                                }
+                            })
+                        }
+                        if (isDendro || isElements) {
+                            console.log("weapon element Dendro")
+                            maleCharactersList.forEach((character) => {
+                                if (character.vision == 'Dendro') {
                                     rowCharacterWeapon.push(
                                         <CharacterCard
                                             name={character.name}
@@ -693,6 +744,21 @@ class CharactersList extends React.Component {
                             }
                         })
                     }
+                    if (isDendro || isElements) {
+                        console.log("weapon element Dendro")
+                        charactersFilterByWeapon.forEach((character) => {
+                            if (character.vision == 'Dendro') {
+                                rowCharacterWeapon.push(
+                                    <CharacterCard
+                                        name={character.name}
+                                        rarity={character.rarity}
+                                        vision={character.vision}
+                                        collab={character.collab}
+                                        displayTravelerVision={displayTravelerVision}
+                                    />)
+                            }
+                        })
+                    }
                     else if (!isSortedByElements) {
                         charactersFilterByWeapon.forEach((character) => {
                             rowCharacterWeapon.push(
@@ -800,6 +866,21 @@ class CharactersList extends React.Component {
                                 }
                             })
                         }
+                        if (isDendro || isElements) {
+                            console.log("weapon element Dendro")
+                            femaleCharactersList.forEach((character) => {
+                                if (character.vision == 'Dendro') {
+                                    rowCharacterWeapon.push(
+                                        <CharacterCard
+                                            name={character.name}
+                                            rarity={character.rarity}
+                                            vision={character.vision}
+                                            collab={character.collab}
+                                            displayTravelerVision={displayTravelerVision}
+                                        />)
+                                }
+                            })
+                        }
                         else if (!isSortedByElements) {
                             femaleCharactersList.forEach((character) => {
                                 rowCharacterWeapon.push(
@@ -894,6 +975,21 @@ class CharactersList extends React.Component {
                             console.log("weapon element Geo")
                             maleCharactersList.forEach((character) => {
                                 if (character.vision == 'Geo') {
+                                    rowCharacterWeapon.push(
+                                        <CharacterCard
+                                            name={character.name}
+                                            rarity={character.rarity}
+                                            vision={character.vision}
+                                            collab={character.collab}
+                                            displayTravelerVision={displayTravelerVision}
+                                        />)
+                                }
+                            })
+                        }
+                        if (isDendro || isElements) {
+                            console.log("weapon element Dendro")
+                            maleCharactersList.forEach((character) => {
+                                if (character.vision == 'Dendro') {
                                     rowCharacterWeapon.push(
                                         <CharacterCard
                                             name={character.name}
@@ -1022,6 +1118,21 @@ class CharactersList extends React.Component {
                             }
                         })
                     }
+                    if (isDendro || isElements) {
+                        console.log("weapon element Dendro")
+                        charactersFilterByWeapon.forEach((character) => {
+                            if (character.vision == 'Dendro') {
+                                rowCharacterWeapon.push(
+                                    <CharacterCard
+                                        name={character.name}
+                                        rarity={character.rarity}
+                                        vision={character.vision}
+                                        collab={character.collab}
+                                        displayTravelerVision={displayTravelerVision}
+                                    />)
+                            }
+                        })
+                    }
                     else if (!isSortedByElements) {
                         charactersFilterByWeapon.forEach((character) => {
                             rowCharacterWeapon.push(
@@ -1129,6 +1240,21 @@ class CharactersList extends React.Component {
                                 }
                             })
                         }
+                        if (isDendro || isElements) {
+                            console.log("weapon element Dendro")
+                            femaleCharactersList.forEach((character) => {
+                                if (character.vision == 'Dendro') {
+                                    rowCharacterWeapon.push(
+                                        <CharacterCard
+                                            name={character.name}
+                                            rarity={character.rarity}
+                                            vision={character.vision}
+                                            collab={character.collab}
+                                            displayTravelerVision={displayTravelerVision}
+                                        />)
+                                }
+                            })
+                        }
                         else if (!isSortedByElements) {
                             femaleCharactersList.forEach((character) => {
                                 rowCharacterWeapon.push(
@@ -1223,6 +1349,21 @@ class CharactersList extends React.Component {
                             console.log("weapon element Geo")
                             maleCharactersList.forEach((character) => {
                                 if (character.vision == 'Geo') {
+                                    rowCharacterWeapon.push(
+                                        <CharacterCard
+                                            name={character.name}
+                                            rarity={character.rarity}
+                                            vision={character.vision}
+                                            collab={character.collab}
+                                            displayTravelerVision={displayTravelerVision}
+                                        />)
+                                }
+                            })
+                        }
+                        if (isDendro || isElements) {
+                            console.log("weapon element Dendro")
+                            maleCharactersList.forEach((character) => {
+                                if (character.vision == 'Dendro') {
                                     rowCharacterWeapon.push(
                                         <CharacterCard
                                             name={character.name}
@@ -1351,6 +1492,21 @@ class CharactersList extends React.Component {
                             }
                         })
                     }
+                    if (isDendro || isElements) {
+                        console.log("weapon element Dendro")
+                        charactersFilterByWeapon.forEach((character) => {
+                            if (character.vision == 'Dendro') {
+                                rowCharacterWeapon.push(
+                                    <CharacterCard
+                                        name={character.name}
+                                        rarity={character.rarity}
+                                        vision={character.vision}
+                                        collab={character.collab}
+                                        displayTravelerVision={displayTravelerVision}
+                                    />)
+                            }
+                        })
+                    }
                     else if (!isSortedByElements) {
                         charactersFilterByWeapon.forEach((character) => {
                             rowCharacterWeapon.push(
@@ -1458,6 +1614,21 @@ class CharactersList extends React.Component {
                                 }
                             })
                         }
+                        if (isDendro || isElements) {
+                            console.log("weapon element Dendro")
+                            femaleCharactersList.forEach((character) => {
+                                if (character.vision == 'Dendro') {
+                                    rowCharacterWeapon.push(
+                                        <CharacterCard
+                                            name={character.name}
+                                            rarity={character.rarity}
+                                            vision={character.vision}
+                                            collab={character.collab}
+                                            displayTravelerVision={displayTravelerVision}
+                                        />)
+                                }
+                            })
+                        }
                         else if (!isSortedByElements) {
                             femaleCharactersList.forEach((character) => {
                                 rowCharacterWeapon.push(
@@ -1552,6 +1723,21 @@ class CharactersList extends React.Component {
                             console.log("weapon element Geo")
                             maleCharactersList.forEach((character) => {
                                 if (character.vision == 'Geo') {
+                                    rowCharacterWeapon.push(
+                                        <CharacterCard
+                                            name={character.name}
+                                            rarity={character.rarity}
+                                            vision={character.vision}
+                                            collab={character.collab}
+                                            displayTravelerVision={displayTravelerVision}
+                                        />)
+                                }
+                            })
+                        }
+                        if (isDendro || isElements) {
+                            console.log("weapon element Dendro")
+                            maleCharactersList.forEach((character) => {
+                                if (character.vision == 'Dendro') {
                                     rowCharacterWeapon.push(
                                         <CharacterCard
                                             name={character.name}
@@ -1680,6 +1866,21 @@ class CharactersList extends React.Component {
                             }
                         })
                     }
+                    if (isDendro || isElements) {
+                        console.log("weapon element Dendro")
+                        charactersFilterByWeapon.forEach((character) => {
+                            if (character.vision == 'Dendro') {
+                                rowCharacterWeapon.push(
+                                    <CharacterCard
+                                        name={character.name}
+                                        rarity={character.rarity}
+                                        vision={character.vision}
+                                        collab={character.collab}
+                                        displayTravelerVision={displayTravelerVision}
+                                    />)
+                            }
+                        })
+                    }
                     else if (!isSortedByElements) {
                         charactersFilterByWeapon.forEach((character) => {
                             rowCharacterWeapon.push(
@@ -1787,6 +1988,21 @@ class CharactersList extends React.Component {
                                 }
                             })
                         }
+                        if (isDendro || isElements) {
+                            console.log("weapon element Dendro")
+                            femaleCharactersList.forEach((character) => {
+                                if (character.vision == 'Dendro') {
+                                    rowCharacterWeapon.push(
+                                        <CharacterCard
+                                            name={character.name}
+                                            rarity={character.rarity}
+                                            vision={character.vision}
+                                            collab={character.collab}
+                                            displayTravelerVision={displayTravelerVision}
+                                        />)
+                                }
+                            })
+                        }
                         else if (!isSortedByElements) {
                             femaleCharactersList.forEach((character) => {
                                 rowCharacterWeapon.push(
@@ -1881,6 +2097,21 @@ class CharactersList extends React.Component {
                             console.log("weapon element Geo")
                             maleCharactersList.forEach((character) => {
                                 if (character.vision == 'Geo') {
+                                    rowCharacterWeapon.push(
+                                        <CharacterCard
+                                            name={character.name}
+                                            rarity={character.rarity}
+                                            vision={character.vision}
+                                            collab={character.collab}
+                                            displayTravelerVision={displayTravelerVision}
+                                        />)
+                                }
+                            })
+                        }
+                        if (isDendro || isElements) {
+                            console.log("weapon element Dendro")
+                            maleCharactersList.forEach((character) => {
+                                if (character.vision == 'Dendro') {
                                     rowCharacterWeapon.push(
                                         <CharacterCard
                                             name={character.name}
@@ -2013,6 +2244,23 @@ class CharactersList extends React.Component {
                     })
                     charactersCards.push(<div class='flex row'>{geoCharacter}</div>)
                 }
+                if (isDendro || isElements) {
+                    console.log("Element Dendro")
+                    var dendroCharacter = []
+                    this.props.characters.forEach((character) => {
+                        if (character.vision == 'Dendro') {
+                            dendroCharacter.push(
+                                <CharacterCard
+                                    name={character.name}
+                                    rarity={character.rarity}
+                                    vision={character.vision}
+                                    collab={character.collab}
+                                    displayTravelerVision={displayTravelerVision}
+                                />)
+                        }
+                    })
+                    charactersCards.push(<div class='flex row'>{dendroCharacter}</div>)
+                }
             }
             else{
                 if(isFemale || isSex){
@@ -2119,6 +2367,23 @@ class CharactersList extends React.Component {
                         })
                         charactersCards.push(<div class='flex row'>{geoCharacter}</div>)
                     }
+                    if (isDendro || isElements) {
+                        console.log("Element Dendro")
+                        var dendroCharacter = []
+                        charactersFilteredBySex.forEach((character) => {
+                            if (character.vision == 'Dendro') {
+                                dendroCharacter.push(
+                                    <CharacterCard
+                                        name={character.name}
+                                        rarity={character.rarity}
+                                        vision={character.vision}
+                                        collab={character.collab}
+                                        displayTravelerVision={displayTravelerVision}
+                                    />)
+                            }
+                        })
+                        charactersCards.push(<div class='flex row'>{dendroCharacter}</div>)
+                    }
                 }
                 if(isMale || isSex){
                     var charactersFilteredBySex = filterCharacterListBySex(this.props.characters, "M")
@@ -2224,6 +2489,23 @@ class CharactersList extends React.Component {
                         })
                         charactersCards.push(<div class='flex row'>{geoCharacter}</div>)
                     }
+                    if (isDendro || isElements) {
+                        console.log("Element Dendro")
+                        var dendroCharacter = []
+                        charactersFilteredBySex.forEach((character) => {
+                            if (character.vision == 'Dendro') {
+                                dendroCharacter.push(
+                                    <CharacterCard
+                                        name={character.name}
+                                        rarity={character.rarity}
+                                        vision={character.vision}
+                                        collab={character.collab}
+                                        displayTravelerVision={displayTravelerVision}
+                                    />)
+                            }
+                        })
+                        charactersCards.push(<div class='flex row'>{dendroCharacter}</div>)
+                    }
                 }
             }
         }
@@ -2274,6 +2556,7 @@ class Filters extends React.Component {
         this.handleIsGeoChange = this.handleIsGeoChange.bind(this);
         this.handleIsElectroChange = this.handleIsElectroChange.bind(this);
         this.handleIsHydroChange = this.handleIsHydroChange.bind(this);
+        this.handleIsDendroChange = this.handleIsDendroChange.bind(this);
         this.handleIsElementsChange = this.handleIsElementsChange.bind(this);
         //#endregion
         //#region Armes
@@ -2313,6 +2596,9 @@ class Filters extends React.Component {
     }
     handleIsHydroChange(e) {
         this.props.onIsHydroChange(e.currentTarget.classList.contains('checked'));
+    }
+    handleIsDendroChange(e) {
+        this.props.onIsDendroChange(e.currentTarget.classList.contains('checked'));
     }
     handleIsElementsChange(e) {
         this.props.onIsElementsChange(e.currentTarget.classList.contains('checked'));
@@ -2415,6 +2701,9 @@ class Filters extends React.Component {
                     <div id="liste_personnages_filtres_elements_geo" class="btn btn_filtre" onClick={this.handleIsGeoChange} >
                         <img class="btn_filtre_image" src="assets/icons/filters/element_geo.png" />
                     </div>
+                    <div id="liste_personnages_filtres_elements_dendro" class="btn btn_filtre" onClick={this.handleIsDendroChange} >
+                        <img class="btn_filtre_image" src="assets/icons/filters/element_dendro.png" />
+                    </div>
                 </div>
 
                 <div id="liste_personnages_filtres_armes" class="flex row">
@@ -2458,6 +2747,7 @@ class FilterableCharactersList extends React.Component {
             isHydro: false,
             isGeo: false,
             isElectro: false,
+            isDendro: false,
             isElements: false,
             //#endregion
             //#region Armes
@@ -2486,6 +2776,7 @@ class FilterableCharactersList extends React.Component {
         this.handleIsHydroChange = this.handleIsHydroChange.bind(this);
         this.handleIsGeoChange = this.handleIsGeoChange.bind(this);
         this.handleIsElectroChange = this.handleIsElectroChange.bind(this);
+        this.handleIsDendroChange = this.handleIsDendroChange.bind(this);
         this.handleIsElementsChange = this.handleIsElementsChange.bind(this);
         //#endregion
         //#region Bind Armes
@@ -2537,6 +2828,11 @@ class FilterableCharactersList extends React.Component {
     handleIsElectroChange(isElectro) {
         this.setState({
             isElectro: isElectro
+        })
+    }
+    handleIsDendroChange(isDendro) {
+        this.setState({
+            isDendro: isDendro
         })
     }
     handleIsElementsChange(isElements) {
@@ -2624,6 +2920,7 @@ class FilterableCharactersList extends React.Component {
                     isHydro={this.state.isHydro}
                     isGeo={this.state.isGeo}
                     isElectro={this.state.isElectro}
+                    isDendro={this.state.isDendro}
 
                     onIsElementsChange={this.handleIsElementsChange}
                     onIsPyroChange={this.handleIsPyroChange}
@@ -2632,6 +2929,7 @@ class FilterableCharactersList extends React.Component {
                     onIsHydroChange={this.handleIsHydroChange}
                     onIsGeoChange={this.handleIsGeoChange}
                     onIsElectroChange={this.handleIsElectroChange}
+                    onIsDendroChange={this.handleIsDendroChange}
                     //#endregion
                     //#region Armes
                     isEpee={this.state.isEpee}
@@ -2677,6 +2975,7 @@ class FilterableCharactersList extends React.Component {
                     isHydro={this.state.isHydro}
                     isGeo={this.state.isGeo}
                     isElectro={this.state.isElectro}
+                    isDendro={this.state.isDendro}
                     //#endregion
                     //#region Armes
                     isEpee={this.state.isEpee}
@@ -2732,6 +3031,7 @@ let btnFiltreElectro = $('#liste_personnages_filtres_elements_electro');
 let btnFiltreHydro = $('#liste_personnages_filtres_elements_eau');
 let btnFiltreAnemo = $('#liste_personnages_filtres_elements_anemo');
 let btnFiltreGeo = $('#liste_personnages_filtres_elements_geo');
+let btnFiltreDendro = $('#liste_personnages_filtres_elements_dendro');
 //#endregion
 //#region Armes
 let btnFiltreArmes = $('#liste_personnages_filtres_arme');
@@ -2763,6 +3063,7 @@ btnElements.click(function () {
         var isHydroChecked = btnFiltreHydro.hasClass("checked");
         var isAnemoChecked = btnFiltreAnemo.hasClass("checked");
         var isGeoChecked = btnFiltreGeo.hasClass("checked");
+        var isDendroChecked = btnFiltreDendro.hasClass("checked");
 
         if (isPyroChecked) btnFiltrePyro.click();
         if (isCryoChecked) btnFiltreCryo.click();
@@ -2770,6 +3071,7 @@ btnElements.click(function () {
         if (isHydroChecked) btnFiltreHydro.click();
         if (isAnemoChecked) btnFiltreAnemo.click();
         if (isGeoChecked) btnFiltreGeo.click();
+        if (isDendroChecked) btnFiltreDendro.click();
 
         btnElements.addClass("checked")
         storage.setItem(btnElements[0].id, "checked");
@@ -2803,6 +3105,10 @@ btnFiltreAnemo.click(function () {
     InverseSelection(btnFiltreAnemo, btnElements, null)
     manageElementsFilters();
 })
+btnFiltreDendro.click(function () {
+    InverseSelection(btnFiltreDendro, btnElements, null)
+    manageElementsFilters();
+})
 function manageElementsFilters() {
     var isPyroChecked = btnFiltrePyro.hasClass("checked");
     var isCryoChecked = btnFiltreCryo.hasClass("checked");
@@ -2810,15 +3116,17 @@ function manageElementsFilters() {
     var isHydroChecked = btnFiltreHydro.hasClass("checked");
     var isAnemoChecked = btnFiltreAnemo.hasClass("checked");
     var isGeoChecked = btnFiltreGeo.hasClass("checked");
+    var isDendroChecked = btnFiltreDendro.hasClass("checked");
 
-    if (isPyroChecked && isCryoChecked && isElectroChecked &&
-        isHydroChecked && isAnemoChecked && isGeoChecked) {
+    if (isPyroChecked && isCryoChecked && isElectroChecked && isHydroChecked 
+        && isAnemoChecked && isGeoChecked && isDendroChecked) {
         btnFiltrePyro.click();
         btnFiltreCryo.click();
         btnFiltreElectro.click();
         btnFiltreHydro.click();
         btnFiltreAnemo.click();
         btnFiltreGeo.click();
+        btnFiltreDendro.click();
         btnElements.click();
     }
 }

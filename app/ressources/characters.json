@@ -73,6 +73,15 @@
             "sex": "M"
         },
         {
+            "name": "Collei",
+            "vision": "Dendro",
+            "weapon": "Bow",
+            "nation": "Sumeru",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
             "name": "Chongyun",
             "vision": "Cryo",
             "weapon": "Claymore",
@@ -95,6 +104,15 @@
             "vision": "Cryo",
             "weapon": "Bow",
             "nation": "Mondstadt",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Dori",
+            "vision": "Electro",
+            "weapon": "Claymore",
+            "nation": "Sumeru",
             "rarity": 4,
             "collab": false,
             "sex": "F"
@@ -352,6 +370,15 @@
             "sex": "M"
         },
         {
+            "name": "Tighnari",
+            "vision": "Dendro",
+            "weapon": "Bow",
+            "nation": "Sumeru",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
             "name": "Traveler",
             "vision": "Anemo",
             "weapon": "Sword",
@@ -362,6 +389,14 @@
         {
             "name": "Traveler",
             "vision": "Geo",
+            "weapon": "Sword",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Traveler",
+            "vision": "Dendro",
             "weapon": "Sword",
             "rarity": 5,
             "collab": false,
