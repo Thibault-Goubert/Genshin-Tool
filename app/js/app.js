@@ -328,11 +328,11 @@ btnGestionPersonnages.click(function () {
         btnGestionsArtefacts.removeClass("checked");
         storage.removeItem(btnGestionsArtefacts[0].id, "checked");
 
-        gridGestionArtefacts.removeClass("collapsed");
-        storage.removeItem(gridGestionArtefacts[0].id, "collapsed");
+        gridGestionPersonnages.removeClass("collapsed");
+        storage.removeItem(gridGestionPersonnages[0].id, "collapsed");
 
-        gridGestionPersonnages.addClass("collapsed");
-        storage.setItem(gridGestionPersonnages[0].id, "collapsed");
+        gridGestionArtefacts.addClass("collapsed");
+        storage.setItem(gridGestionArtefacts[0].id, "collapsed");
     }
 });
 btnGestionsArtefacts.click(function () {
@@ -344,11 +344,11 @@ btnGestionsArtefacts.click(function () {
         btnGestionPersonnages.removeClass("checked");
         storage.removeItem(btnGestionPersonnages[0].id, "checked");
 
-        gridGestionPersonnages.addClass("collapsed");
-        storage.setItem(gridGestionPersonnages[0].id, "collapsed");
-
         gridGestionArtefacts.removeClass("collapsed");
         storage.removeItem(gridGestionArtefacts[0].id, "collapsed");
+
+        gridGestionPersonnages.addClass("collapsed");
+        storage.setItem(gridGestionPersonnages[0].id, "collapsed");
     }
 });
 
