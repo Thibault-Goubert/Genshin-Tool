@@ -1,21 +1,3 @@
-var characters = loadCharactersJSON();
-
-function loadCharactersJSON(){
-    var datas;
-    $.ajaxSetup({
-    async: false
-    });
-    $.getJSON("ressources/characters.json", function(data){
-        datas = data;
-    }).fail(function(){
-    console.log("An error has occurred.");
-    })
-    $.ajaxSetup({
-    async: true
-    });
-    return datas;
-}
-
 //#region Gestion Personnage
 
 //#region Gestion de la dropdown des personnages

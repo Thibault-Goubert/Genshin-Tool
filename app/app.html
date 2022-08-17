@@ -17,7 +17,7 @@
 </head>
 
 <body>
-	<!-- The Modal -->
+	<!-- Modals -->
 	<div id="myModal" class="modal">
 		<!-- Modal panel_content hideable -->
 		<div id="myModal-content" class="modal-content">
@@ -25,6 +25,31 @@
 			<div id="myModal-buttons"  class="flex row item_center">
 				<div id="myModal-btn-yes" class="btn flex btn_principal">Oui</div>
 				<div id="myModal-btn-no" class="btn flex btn_principal">Non</div>
+			</div>
+		</div>
+	</div>
+	<div id="myModal-gestion_personnages" class="modal" style="display: block;">
+		<!-- Modal panel_content hideable -->
+		<div id="myModal-gestion_personnages-content">	
+			<div id="myModal-gestion_personnages-content-title">
+				<div>
+					<span>Gestion des Personnages</span>
+				</div>
+			</div>
+			<div id="myModal-gestion_personnages-content-lists">
+				<div id="myModal-gestion_personnages-content-used">
+					<input id="myModal-gestion_personnages-content-used_search" placeholder="Personnages utilisés...">
+					<div id="myModal-gestion_personnages-content-used_list"></div>
+				</div>
+				<div id="myModal-gestion_personnages-content-all">
+					<input id="myModal-gestion_personnages-content-all_search" placeholder="Liste entière...">
+					<div id="myModal-gestion_personnages-content-all_list">
+						<nav id="myModal-gestion_personnages-content-all_list-nav">
+							<ul id="myModal-gestion_personnages-content-all_list-ul">
+							</ul>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -3066,11 +3091,7 @@
 			<div id="btn_gestion_personnages" class="btn flex btn_principal">Gestions des Personnages</div>
 			<div id="btn_gestion_artefacts" class="btn flex btn_principal">Gestion des Artéfacts</div>
 		</div>	
-		<div id="grid_gestion_personnages" class="flex row"></div>
-		<div id="grid_gestion_artefacts" class="flex row"></div>
-
-		<div id="grid_gestion" class="flex row" style="height: 150px;">
-		</div>
+		<div id="grid_gestion" class="flex row" style="height: 150px;"></div>
 		</div>
 	</div>
 	<!--REACT-->
@@ -4101,6 +4122,7 @@
 	<script src="js/farming_days.js"></script>
 	<script type="text/babel" src="js/charactersTab.js"></script>
 	<script src="js/calculateur.js"></script>
+	<script src="js/gestion_personnages.js"></script>
 </body>
 
 </html>

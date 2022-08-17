@@ -1,4 +1,3 @@
-const requestURLCharacters = 'https://api.genshin.dev/characters/';
 const charactersCardsContainer = document.getElementById('liste_personnages_personnages');
 const assetsRessourcesCharactersURL = "assets/icons/characters/char_";
 const assetsRessourcesElementURL = "assets/icons/filters/element_";
@@ -2999,22 +2998,6 @@ class FilterableCharactersList extends React.Component {
             </div>
         )
     }
-}
-var characters = loadCharactersJSON();
-function loadCharactersJSON() {
-    var datas;
-    $.ajaxSetup({
-        async: false
-    });
-    $.getJSON("ressources/characters.json", function (data) {
-        datas = data;
-    }).fail(function () {
-        console.log("An error has occurred.");
-    })
-    $.ajaxSetup({
-        async: true
-    });
-    return datas;
 }
 
 ReactDOM.render(
