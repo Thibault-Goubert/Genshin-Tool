@@ -1,0 +1,28 @@
+SOLID, CleanArchi, Hezagonal
+
+- Front => Electron, Angular, React, HTML, JS, CSS
+- Back => C#, API, UnitTest (fixtures)
+- DB => SQLServer
+- Git, CI/CD
+
+-Ajout de la couche de sécurité pour protéger l'application des attaques comme l'injection SQL, l'authentification et l'autorisation.
+
+-Ajout de la couche de gestion des erreurs pour gérer les erreurs et les exceptions qui peuvent survenir dans l'application.
+
+-Ajout de la couche de gestion des données pour gérer les données de l'application, y compris la validation, la transformation et la persistance des données.
+
+-Ajout d'un cache de données pour améliorer les performances de l'application en stockant les données fréquemment utilisées en mémoire.
+
+-Ajout d'un mécanisme de journalisation pour enregistrer les activités de l'application et les utiliser pour le débogage et l'analyse.
+
+=> objectif microservices
+
+Ya du taff :D
+
+Electron is used as the framework for building the desktop application. It allows for the development of cross-platform desktop apps using web technologies such as JavaScript, HTML, and CSS.
+
+Angular is used as the front-end framework for building the user interface of the application. Angular's component-based architecture and powerful data binding capabilities make it a great choice for building complex and responsive UIs.
+
+C# is used for the back-end logic of the application. It can be used to build a RESTful API that connects to the SQL database, or to create a service that runs on the server and communicates with the front-end through Electron's IPC (Inter-Process Communication) mechanism.
+
+SQL is used as the database management system for storing and retrieving data. The C# back-end can use ADO.NET or Entity Framework to interact with the SQL database and perform CRUD operations.

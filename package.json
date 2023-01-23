@@ -144,6 +144,7 @@
     "spdx-expression-parse": "^3.0.1",
     "spdx-license-ids": "^3.0.9",
     "sprintf-js": "^1.1.2",
+    "sqlite3": "^5.1.4",
     "string_decoder": "^1.1.1",
     "strip-bom": "^3.0.0",
     "strip-outer": "^1.0.1",
