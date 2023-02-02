@@ -1,3 +1,4 @@
+const requestURLCharacters = 'https://api.genshin.dev/characters/';
 const charactersCardsContainer = document.getElementById('liste_personnages_personnages');
 const assetsRessourcesCharactersURL = "assets/icons/characters/char_";
 const assetsRessourcesElementURL = "assets/icons/filters/element_";
@@ -2649,7 +2650,7 @@ class Filters extends React.Component {
         return (
             <div id="liste_personnages_filtres" class="flex row">
                 <div id="liste_personnages_filtres_sex" class="btn btn_filtre" onClick={this.handleIsSexChange} >
-                    <img class="btn_filtre_image" src='assets/icons/filters/etoile_icon_27.png'/>
+                    <img class="btn_filtre_image" src='assets/icons/filters/sex_both.png'/>
                 </div>
 
                 <div id="liste_personnages_filtres_etoile" class="btn btn_filtre" onClick={this.handleIsRarityChange} >
@@ -2725,10 +2726,10 @@ class Filters extends React.Component {
 
                 <div id="liste_personnages_filtres_sex_both" class="flex row">
                     <div id="liste_personnages_filtres_sex_f" class="btn btn_filtre" onClick={this.handleIsFemaleChange} >
-                        <img class="btn_filtre_image" src="assets/icons/filters/catalyst27.png" />
+                        <img class="btn_filtre_image" src="assets/icons/filters/sex_female.png" />
                     </div>
                     <div id="liste_personnages_filtres_sex_m" class="btn btn_filtre" onClick={this.handleIsMaleChange} >
-                        <img class="btn_filtre_image" src="assets/icons/filters/catalyst27.png" />
+                        <img class="btn_filtre_image" src="assets/icons/filters/sex_male.png" />
                     </div>
                 </div>
             </div>
@@ -2998,6 +2999,22 @@ class FilterableCharactersList extends React.Component {
             </div>
         )
     }
+}
+var characters = loadCharactersJSON();
+function loadCharactersJSON() {
+    var datas;
+    $.ajaxSetup({
+        async: false
+    });
+    $.getJSON("ressources/characters.json", function (data) {
+        datas = data;
+    }).fail(function () {
+        console.log("An error has occurred.");
+    })
+    $.ajaxSetup({
+        async: true
+    });
+    return datas;
 }
 
 ReactDOM.render(
