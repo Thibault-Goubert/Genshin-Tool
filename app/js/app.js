@@ -4,7 +4,7 @@ const storage = window.localStorage;
 //Get all inputs
 let inputs = $("input");
 let textarea = $("textarea");
-var characters = loadCharactersJSON();
+
 // #region Tabs 
 //Get tabs
 let btnRessources = $("#btn_ressources");
@@ -133,6 +133,10 @@ inputs.each(function () {
         }
     });
 });
+
+function outputsize() {
+    console.log("test");
+};
 
 textarea.each(function () {
     var textarea = $(this);
@@ -318,13 +322,33 @@ btnArtefacts.click(function () {
 btnGestionPersonnages.click(function () {
     var isChecked = btnGestionPersonnages.hasClass("checked");
     if (!isChecked) {
-        
+        btnGestionPersonnages.addClass("checked");
+        storage.setItem(btnGestionPersonnages[0].id, "checked");
+
+        btnGestionsArtefacts.removeClass("checked");
+        storage.removeItem(btnGestionsArtefacts[0].id, "checked");
+
+        gridGestionPersonnages.removeClass("collapsed");
+        storage.removeItem(gridGestionPersonnages[0].id, "collapsed");
+
+        gridGestionArtefacts.addClass("collapsed");
+        storage.setItem(gridGestionArtefacts[0].id, "collapsed");
     }
 });
 btnGestionsArtefacts.click(function () {
     var isChecked = btnGestionsArtefacts.hasClass("checked");
     if (!isChecked) {
+        btnGestionsArtefacts.addClass("checked");
+        storage.setItem(btnGestionsArtefacts[0].id, "checked");
 
+        btnGestionPersonnages.removeClass("checked");
+        storage.removeItem(btnGestionPersonnages[0].id, "checked");
+
+        gridGestionArtefacts.removeClass("collapsed");
+        storage.removeItem(gridGestionArtefacts[0].id, "collapsed");
+
+        gridGestionPersonnages.addClass("collapsed");
+        storage.setItem(gridGestionPersonnages[0].id, "collapsed");
     }
 });
 
@@ -337,23 +361,5 @@ modalBtnNo.click(function () {
 //#region misc functions
 function isInteger(valueToCheck) {
     return typeof valueToCheck !== 'undefined' && (valueToCheck == parseInt(valueToCheck, 10));
-};
-function loadCharactersJSON(){
-    var datas;
-    $.ajaxSetup({
-    async: false
-    });
-    $.getJSON("ressources/characters.json", function(data){
-        datas = data;
-    }).fail(function(){
-    console.log("An error has occurred.");
-    })
-    $.ajaxSetup({
-    async: true
-    });
-    return datas;
-}
-function outputsize() {
-    console.log("test");
 };
 //#endregion

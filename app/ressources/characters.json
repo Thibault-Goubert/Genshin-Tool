@@ -10,6 +10,15 @@
             "sex": "M"
         },
         {
+            "name": "Alhaitham",
+            "vision": "Dendro",
+            "weapon": "Sword",
+            "nation": "Sumeru",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
             "name": "Aloy",
             "vision": "Cryo",
             "weapon": "Bow",
@@ -73,6 +82,15 @@
             "sex": "M"
         },
         {
+            "name": "Candace",
+            "vision": "Hydro",
+            "weapon": "Polearm",
+            "nation": "Sumeru",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
             "name": "Collei",
             "vision": "Dendro",
             "weapon": "Bow",
@@ -87,6 +105,15 @@
             "weapon": "Claymore",
             "nation": "Liyue",
             "rarity": 4,
+            "collab": false,
+            "sex": "M"
+        },
+        {
+            "name": "Cyno",
+            "vision": "Electro",
+            "weapon": "Polearm",
+            "nation": "Sumeru",
+            "rarity": 5,
             "collab": false,
             "sex": "M"
         },
@@ -123,6 +150,15 @@
             "weapon": "Claymore",
             "nation": "Mondstadt",
             "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Faruzan",
+            "vision": "Anemo",
+            "weapon": "Bow",
+            "nation": "Sumeru",
+            "rarity": 4,
             "collab": false,
             "sex": "F"
         },
@@ -253,6 +289,15 @@
             "sex": "F"
         },
         {
+            "name": "Layla",
+            "vision": "Cryo",
+            "weapon": "Sword",
+            "nation": "Sumeru",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
             "name": "Lisa",
             "vision": "Electro",
             "weapon": "Catalyst",
@@ -271,11 +316,29 @@
             "sex": "F"
         },
         {
+            "name": "Nahida",
+            "vision": "Dendro",
+            "weapon": "Catalyst",
+            "nation": "Sumeru",
+            "rarity": 5,
+            "collab": false,
+            "sex": "F"
+        },
+        {
             "name": "Ningguang",
             "vision": "Geo",
             "weapon": "Catalyst",
             "nation": "Liyue",
             "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Nilou",
+            "vision": "Hydro",
+            "weapon": "Sword",
+            "nation": "Sumeru",
+            "rarity": 5,
             "collab": false,
             "sex": "F"
         },
@@ -412,6 +475,15 @@
             "sex": "M"
         },
         {
+            "name": "Wanderer",
+            "vision": "Anemo",
+            "weapon": "Catalyst",
+            "nation": "Sumeru",
+            "rarity": 5,
+            "collab": false,
+            "sex": "M"
+        },
+        {
             "name": "Xiangling",
             "vision": "Pyro",
             "weapon": "Polearm",
@@ -461,6 +533,15 @@
             "vision": "Pyro",
             "weapon": "Catalyst",
             "nation": "Liyue",
+            "rarity": 4,
+            "collab": false,
+            "sex": "F"
+        },
+        {
+            "name": "Yaoyao",
+            "vision": "Dendro",
+            "weapon": "Polearm",
+            "nation": "Sumeru",
             "rarity": 4,
             "collab": false,
             "sex": "F"
